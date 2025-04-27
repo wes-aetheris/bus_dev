@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Watchtower Feature Timeline</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 30px;
+      font-weight: bold;
+    }
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 40px;
+    }
+    .timeline-container {
+      position: relative;
+      width: 95vw;
+      max-width: 1400px;
+      margin: 0 auto;
+      height: 350px;
+      overflow: visible;
+    }
+    .timeline-line {
+      position: absolute;
+      top: 180px;
+      left: 5%;
+      width: calc(90% + 130px);
+      height: 6px;
+      background: #222;
+      border-radius: 3px;
+      z-index: 1;
+    }
+    .timeline-arrow {
+      position: absolute;
+      top: 170px;
+      right: calc(3.5% - 130px);
+      width: 0;
+      height: 0;
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+      border-left: 30px solid #222;
+      z-index: 2;
+    }
+    .milestone {
+      position: absolute;
+      top: 172px;
+      width: 20px;
+      height: 20px;
+      background: #222;
+      border-radius: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+    }
+    .milestone-label {
+      position: absolute;
+      top: 200px;
+      transform: translateX(-50%);
+      font-size: 18px;
+      color: #222;
+      font-weight: bold;
+      z-index: 4;
+      background: #fff;
+      padding: 0 4px;
+      border-radius: 3px;
+    }
+    .feature-list {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 2;
+    }
+    .feature-up {
+      margin-bottom: 8px;
+      background: #fff;
+      border: 2px solid #e74c3c;
+      border-radius: 8px;
+      padding: 7px 18px;
+      font-size: 17px;
+      color: #c0392b;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      white-space: nowrap;
+      font-weight: bold;
+    }
+    .feature-down {
+      margin-top: 8px;
+      background: #fff;
+      border: 2px solid #e74c3c;
+      border-radius: 8px;
+      padding: 7px 18px;
+      font-size: 17px;
+      color: #c0392b;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      white-space: nowrap;
+      font-weight: bold;
+    }
+    .branch-line {
+      position: absolute;
+      width: 3px;
+      background: #222;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+  <h2>Watchtower Feature Development Timeline (0-36 Months)</h2>
+  <div class="timeline-container" id="timeline">
+    <div class="timeline-line"></div>
+    <div class="timeline-arrow"></div>
+  </div>
+  <div style="margin-top: 40px; overflow-x: auto;">
+    <table style="border-collapse: collapse; width: 100%; font-size: 1rem; background: #fff;">
+      <thead>
+        <tr>
+          <th style="border: 1px solid #ccc; padding: 8px;">Feature</th>
+          <th style="border: 1px solid #ccc; padding: 8px;">3M</th>
+          <th style="border: 1px solid #ccc; padding: 8px;">6M</th>
+          <th style="border: 1px solid #ccc; padding: 8px;">9M</th>
+          <th style="border: 1px solid #ccc; padding: 8px;">12M</th>
+          <th style="border: 1px solid #ccc; padding: 8px;">15M</th>
+          <th style="border: 1px solid #ccc; padding: 8px;">18M</th>
+          <th style="border: 1px solid #ccc; padding: 8px;">24M</th>
+          <th style="border: 1px solid #ccc; padding: 8px;">30M</th>
+          <th style="border: 1px solid #ccc; padding: 8px;">36M</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="border: 1px solid #ccc; padding: 8px;">Sensor Data Ingestion (Raw Streams)</td><td style="text-align:center">🔴</td><td style="text-align:center">🔴</td><td style="text-align:center">🟡</td><td style="text-align:center">🟡</td><td style="text-align:center">🟢</td><td style="text-align:center">🟢</td><td style="text-align:center">🟢</td><td style="text-align:center">🟢</td><td style="text-align:center">🟢</td></tr>
+        <tr><td style="border: 1px solid #ccc; padding: 8px;">Sensor Health Telemetry Logging</td><td style="text-align:center">🔴</td><td style="text-align:center">🔴</td><td style="text-align:center">🟡</td><td style="text-align:center">🟡</td><td style="text-align:center">🟢</td><td style="text-align:center">🟢</td><td style="text-align:center">🟢</td><td style="text-align:center">🟢</td><td style="text-align:center">🟢</td></tr>
+        <tr><td style="border: 1px solid #ccc; padding: 8px;">Initial Health Profiling and Baseline Creation</td><td></td><td style="text-align:center">🔴</td><td style="text-align:center">🔴</td><td style="text-align:center">🟡</td><td style="text-align:center">🟡</td><td style="text-align:center">🟢</td><td style="text-align:center">🟢</td><td style="text-align:center">🟢</td><td style="text-align:center">🟢</td></tr>
+        <tr><td style="border: 1px solid #ccc; padding: 8px;">Trend Tracking and Early Drift Detection</td><td></td><td style="text-align:center">🔴</td><td style="text-align:center">🔴</td><td style="text-align:center">🟡</td><td style="text-align:center">🟡</td><td style="text-align:center">🟢</td><td style="text-align:center">🟢</td><td style="text-align:center">🟢</td><td style="text-align:center">🟢</td></tr>
+        <tr><td style="border: 1px solid #ccc; padding: 8px;">Degradation Rate Estimation (Physics-Informed)</td><td></td><td></td><td style="text-align:center">🔴</td><td style="text-align:center">🔴</td><td style="text-align:center">🟡</td><td style="text-align:center">🟡</td><td style="text-align:center">🟢</td><td style="text-align:center">🟢</td><td style="text-align:center">🟢</td></tr>
+        <tr><td style="border: 1px solid #ccc; padding: 8px;">Time-to-Threshold (TTT) Prediction</td><td></td><td></td><td style="text-align:center">🔴</td><td style="text-align:center">🔴</td><td style="text-align:center">🟡</td><td style="text-align:center">🟡</td><td style="text-align:center">🟢</td><td style="text-align:center">🟢</td><td style="text-align:center">🟢</td></tr>
+        <tr><td style="border: 1px solid #ccc; padding: 8px;">Mission Health Confidence Scoring (Pre-Flight)</td><td></td><td></td><td></td><td style="text-align:center">🔴</td><td style="text-align:center">🔴</td><td style="text-align:center">🟡</td><td style="text-align:center">🟢</td><td style="text-align:center">🟢</td><td style="text-align:center">🟢</td></tr>
+        <tr><td style="border: 1px solid #ccc; padding: 8px;">Mid-Mission Risk Recalculation</td><td></td><td></td><td></td><td></td><td style="text-align:center">🔴</td><td style="text-align:center">🔴</td><td style="text-align:center">🟡</td><td style="text-align:center">🟢</td><td style="text-align:center">🟢</td></tr>
+        <tr><td style="border: 1px solid #ccc; padding: 8px;">Cross-Sensor Drift Pattern Recognition</td><td></td><td></td><td></td><td></td><td style="text-align:center">🔴</td><td style="text-align:center">🔴</td><td style="text-align:center">🟡</td><td style="text-align:center">🟢</td><td style="text-align:center">🟢</td></tr>
+        <tr><td style="border: 1px solid #ccc; padding: 8px;">Post-Mission Data Sync to Depot</td><td></td><td></td><td></td><td></td><td></td><td style="text-align:center">🔴</td><td style="text-align:center">🔴</td><td style="text-align:center">🟡</td><td style="text-align:center">🟢</td></tr>
+        <tr><td style="border: 1px solid #ccc; padding: 8px;">Fleetwide Health Statistics Generation</td><td></td><td></td><td></td><td></td><td></td><td style="text-align:center">🔴</td><td style="text-align:center">🔴</td><td style="text-align:center">🟡</td><td style="text-align:center">🟢</td></tr>
+        <tr><td style="border: 1px solid #ccc; padding: 8px;">Cross-Platform Learning Updates</td><td></td><td></td><td></td><td></td><td></td><td style="text-align:center">🔴</td><td style="text-align:center">🔴</td><td style="text-align:center">🟡</td><td style="text-align:center">🟢</td></tr>
+        <tr><td style="border: 1px solid #ccc; padding: 8px;">Dynamic Route/Risk Plan Updates</td><td></td><td></td><td></td><td></td><td></td><td></td><td style="text-align:center">🔴</td><td style="text-align:center">🔴</td><td style="text-align:center">🟡</td></tr>
+        <tr><td style="border: 1px solid #ccc; padding: 8px;">Cross-Fleet Knowledge Sharing Models</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td style="text-align:center">🔴</td><td style="text-align:center">🔴</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <script>
+    const milestones = [3, 6, 9, 12, 15, 18, 24, 30, 36];
+    const features = {
+      3: ['Sensor Data Ingestion', 'Sensor Health Telemetry Logging'],
+      6: ['Initial Health Profiling', 'Trend Tracking'],
+      9: ['Degradation Rate Estimation', 'Time-to-Threshold Prediction'],
+      12: ['Mission Health Confidence'],
+      15: ['Mid-Mission Risk Recalculation'],
+      18: ['Cross-Sensor Drift Pattern', 'Post-Mission Data Sync'],
+      24: ['Fleetwide Health Statistics', 'Cross-Platform Learning Updates'],
+      30: ['Dynamic Route/Risk Planning'],
+      36: ['Cross-Fleet Knowledge Sharing']
+    };
+    const timeline = document.getElementById('timeline');
+    const featureDivRefs = {};
+    const milestoneDotRefs = {};
+    const shortBranchMilestones = [3, 9, 24];
+    const SHORTEN_AMOUNT = 50; // Adjust this value as needed
+
+    milestones.forEach((month, idx) => {
+      const percent = 5 + (idx / (milestones.length - 1)) * 90; // 5% to 95%
+      // Milestone dot
+      const dot = document.createElement('div');
+      dot.className = 'milestone';
+      dot.style.left = percent + '%';
+      timeline.appendChild(dot);
+      milestoneDotRefs[month] = dot;
+      // Milestone label
+      const label = document.createElement('div');
+      label.className = 'milestone-label';
+      label.style.left = percent + '%';
+      label.innerText = month + 'M';
+      timeline.appendChild(label);
+      // Features
+      const featureList = features[month];
+      if (featureList) {
+        const featureDiv = document.createElement('div');
+        featureDiv.className = 'feature-list';
+        featureDiv.style.left = percent + '%';
+        // Alternate up/down for each milestone for clarity
+        const isUp = idx % 2 === 0;
+        featureList.forEach((text) => {
+          const labelFeature = document.createElement('div');
+          labelFeature.className = isUp ? 'feature-up' : 'feature-down';
+          labelFeature.innerText = text;
+          featureDiv.appendChild(labelFeature);
+        });
+        featureDiv.style.top = isUp ? '80px' : '220px';
+        timeline.appendChild(featureDiv);
+        featureDivRefs[month] = featureDiv;
+      }
+    });
+
+    // Draw branch lines from milestone to first feature label
+    window.requestAnimationFrame(() => {
+      milestones.forEach((month, idx) => {
+        const dot = milestoneDotRefs[month];
+        const featureDiv = featureDivRefs[month];
+        if (!dot || !featureDiv) return;
+        const dotRect = dot.getBoundingClientRect();
+        const label = featureDiv.children[0];
+        if (!label) return;
+        const labelRect = label.getBoundingClientRect();
+        const containerRect = timeline.getBoundingClientRect();
+        const labelCenter = (labelRect.left + labelRect.right) / 2 - containerRect.left;
+        const dotBottom = dotRect.top + dotRect.height - containerRect.top;
+        const dotTop = dotRect.top - containerRect.top;
+        const labelBottom = labelRect.bottom - containerRect.top;
+        const labelTop = labelRect.top - containerRect.top;
+        const isUp = idx % 2 === 0;
+        const branchLine = document.createElement('div');
+        branchLine.className = 'branch-line';
+        branchLine.style.left = `${labelCenter - 1.5}px`;
+        if (isUp) {
+          let height = dotTop - labelBottom + 10;
+          let top = labelBottom;
+          if (shortBranchMilestones.includes(month)) {
+            top += SHORTEN_AMOUNT;
+            height = Math.max(0, height - SHORTEN_AMOUNT);
+          }
+          branchLine.style.top = `${top}px`;
+          branchLine.style.height = `${height}px`;
+        } else {
+          branchLine.style.top = `${dotBottom}px`;
+          branchLine.style.height = `${labelTop - dotBottom}px`;
+        }
+        timeline.appendChild(branchLine);
+      });
+    });
+  </script>
+</body>
+</html> 
