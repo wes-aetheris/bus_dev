@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f9f9f9;
+      background: transparent;
       margin: 0;
       padding: 30px;
       font-weight: bold;
@@ -16,13 +16,22 @@
       font-size: 2rem;
       margin-bottom: 40px;
     }
+    .timeline-outer-container {
+      width: 100vw;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding-right: 180px; /* extra space for arrowhead */
+      background: transparent;
+      overflow-x: visible;
+    }
     .timeline-container {
       position: relative;
-      width: 95vw;
-      max-width: 1400px;
-      margin: 0 auto;
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
       height: 350px;
       overflow: visible;
+      background: transparent;
     }
     .timeline-line {
       position: absolute;
@@ -110,9 +119,11 @@
 </head>
 <body>
   <h2>Watchtower Feature Development Timeline (0-36 Months)</h2>
-  <div class="timeline-container" id="timeline">
-    <div class="timeline-line"></div>
-    <div class="timeline-arrow"></div>
+  <div class="timeline-outer-container">
+    <div class="timeline-container" id="timeline">
+      <div class="timeline-line"></div>
+      <div class="timeline-arrow"></div>
+    </div>
   </div>
   <div style="margin-top: 40px; overflow-x: auto;">
     <table style="border-collapse: collapse; width: 100%; font-size: 1rem; background: #fff;">
