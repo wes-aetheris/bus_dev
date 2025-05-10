@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Aetheris Growth Slide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', Arial, sans-serif;
+      background: transparent;
+      color: #fff;
+      font-weight: 400;
+      min-height: 100vh;
+    }
+    .growth-bg {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(ellipse at 70% 100%, #2d267a 0%, #18162a 100%) no-repeat;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .growth-curve {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 60vh;
+      background: #000;
+      border-bottom-right-radius: 70% 100%;
+      border-bottom-left-radius: 70% 100%;
+      z-index: 1;
+    }
+    .growth-content {
+      position: relative;
+      z-index: 2;
+      padding: 48px 60px 0 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .growth-badge {
+      display: inline-block;
+      background: #5d5dff;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 16px;
+      padding: 6px 22px;
+      margin-bottom: 24px;
+      letter-spacing: 1px;
+    }
+    .growth-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      line-height: 1.2;
+    }
+    .growth-prospects {
+      margin: 18px 0 32px 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #7d7dff;
+      letter-spacing: 1px;
+    }
+    .prospect-list {
+      display: flex;
+      gap: 16px;
+      margin-top: 10px;
+    }
+    .prospect-pill {
+      background: #222;
+      color: #fff;
+      border-radius: 20px;
+      padding: 8px 22px;
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      display: inline-block;
+    }
+    .growth-circles {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: 60px;
+      margin-bottom: 30px;
+    }
+    .growth-circle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      position: relative;
+    }
+    .circle {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      background: #5d5dff;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.1rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      box-shadow: 0 4px 24px 0 rgba(93,93,255,0.18);
+    }
+    .circle.white {
+      background: #fff;
+      color: #18162a;
+      box-shadow: 0 4px 24px 0 rgba(0,0,0,0.10);
+    }
+    .circle-label {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #fff;
+      text-align: center;
+    }
+    .circle-year {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #bdbdfc;
+      margin-bottom: 2px;
+    }
+    .circle-revenue {
+      font-size: 2.1rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .circle-revenue-label {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #5d5dff;
+    }
+    .growth-bullets {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      font-size: 1.1rem;
+      font-weight: 400;
+    }
+    .growth-bullets ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      color: #fff;
+    }
+    .growth-bullets li {
+      margin-bottom: 10px;
+      font-size: 1.08rem;
+    }
+    .growth-footer {
+      position: absolute;
+      right: 40px;
+      bottom: 18px;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      opacity: 0.8;
+    }
+    @media (max-width: 900px) {
+      .growth-content { padding: 24px 10px 0 10px; }
+      .growth-circles { flex-direction: column; align-items: center; gap: 30px; }
+      .growth-bullets { flex-direction: column; align-items: center; gap: 30px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="growth-bg"></div>
+  <div class="growth-curve"></div>
+  <div class="growth-content">
+    <div class="growth-badge">GROWTH</div>
+    <div class="growth-title">Aetheris is poised to capture the commercial drone market by leveraging strategic partnerships and expanding its customer base.</div>
+    <div class="growth-prospects">PROSPECTS
+      <span class="prospect-list" id="prospect-list"></span>
+    </div>
+    <div class="growth-circles" id="growth-circles"></div>
+    <div class="growth-bullets" id="growth-bullets"></div>
+    <div class="growth-footer">Aetheris</div>
+  </div>
+  <script>
+    // CSV loader (simple, for this structure)
+    function parseCSV(text) {
+      const lines = text.trim().split('\n');
+      const headers = lines[0].split(',');
+      return lines.slice(1).map(line => {
+        const values = [];
+        let inQuotes = false, value = '', i = 0;
+        while (i < line.length) {
+          if (line[i] === '"') inQuotes = !inQuotes;
+          else if (line[i] === ',' && !inQuotes) { values.push(value); value = ''; }
+          else value += line[i];
+          i++;
+        }
+        values.push(value);
+        const obj = {};
+        headers.forEach((h, idx) => obj[h.trim()] = (values[idx] || '').replace(/^"|"$/g, ''));
+        return obj;
+      });
+    }
+    fetch('growth_slide.csv')
+      .then(r => r.text())
+      .then(csv => {
+        const data = parseCSV(csv);
+        // Prospects
+        const prospects = data[0].prospects.split(';').filter(Boolean);
+        const prospectList = document.getElementById('prospect-list');
+        prospects.forEach(p => {
+          const pill = document.createElement('span');
+          pill.className = 'prospect-pill';
+          pill.textContent = p;
+          prospectList.appendChild(pill);
+        });
+        // Circles
+        const circlesDiv = document.getElementById('growth-circles');
+        data.forEach((row, idx) => {
+          const circleWrap = document.createElement('div');
+          circleWrap.className = 'growth-circle';
+          const label = document.createElement('div');
+          label.className = 'circle-label';
+          label.textContent = `${row.customers} Customers`;
+          circleWrap.appendChild(label);
+          const circle = document.createElement('div');
+          circle.className = 'circle' + (idx === 0 ? '' : ' white');
+          circle.innerHTML = `<div class="circle-year">${row.year}</div><div class="circle-revenue">$${row.revenue}</div><div class="circle-revenue-label">Revenue</div>`;
+          circleWrap.appendChild(circle);
+          circlesDiv.appendChild(circleWrap);
+        });
+        // Bullets
+        const bulletsDiv = document.getElementById('growth-bullets');
+        data.forEach(row => {
+          const ul = document.createElement('ul');
+          row.bullets.split(';').filter(Boolean).forEach(b => {
+            const li = document.createElement('li');
+            li.textContent = b;
+            ul.appendChild(li);
+          });
+          bulletsDiv.appendChild(ul);
+        });
+      });
+  </script>
+</body>
+</html> 
