@@ -1,15 +1,14 @@
-OutputMode,show,,,,,,,,
+OutputMode,save,,,,,,,,
 LabelMode,off,,,,,,,,
-DiagramLabel,My Custom Sankey Diagram,,,,,,,,
+DiagramLabel,$75k Spend Plan,,,,,,,,
 NodeOrderMode,on,,,,,,,,
 Source,Target,Value,InputColor,OutputColor,InputAlpha,OutputAlpha
-"DoD SBIR","Budget",150,#0080FF,,0.3
-"Investment","Budget",50,#20B2AA,,0.8
-"Personal Funds","Budget",50,#008080,,0.8
+"Investment","Budget",75,#20B2AA,,0.8
+"Personal Funds","Budget",40,#008080,,0.8
 "Budget","Travel and Marketing",15,,#e67e22,,0.8
-"Budget","Living Expenses",70,,#e74c3c,,0.8
-"Budget","MVP Tech Development",15,,#40E0D0,,0.8
-
+"Budget","Living Expenses",60,,#e74c3c,,0.8
+"Budget","Fractional Sales Assistance",20,,#40E0D0,,0.8
+"Budget","PoC Tech Dev",20,,#40E0D0,,0.8
 
 
 

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sensor Health Flow Diagram</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: #fff;
+      font-family: 'Inter', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #183153;
+    }
+    .flow-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 60px;
+      gap: 32px;
+    }
+    .camera-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-right: 12px;
+      justify-content: center;
+      height: 100%;
+    }
+    .camera-icon {
+      width: 108px;
+      height: 108px;
+      margin-bottom: 8px;
+    }
+    .camera-label {
+      font-size: 1.1rem;
+      color: #183153;
+      font-weight: 500;
+      margin-top: 12px;
+      text-align: center;
+      width: 100%;
+    }
+    .flow-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-width: 220px;
+      min-height: 120px;
+      padding: 18px 24px;
+      border-radius: 20px;
+      background: #eaf4ff;
+      box-shadow: 0 2px 8px rgba(24,49,83,0.04);
+      border: 2px solid #b3d4fc;
+      margin: 0 0px;
+      position: relative;
+    }
+    .flow-box.yellow {
+      background: #fff3c4;
+      border: 2px solid #ffe082;
+    }
+    .box-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #183153;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .box-subtitle {
+      font-size: 1.05rem;
+      color: #183153;
+      text-align: center;
+      font-weight: 400;
+    }
+    .arrow {
+      width: 40px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .arrow svg {
+      width: 40px;
+      height: 24px;
+      display: block;
+    }
+    @media (max-width: 900px) {
+      .flow-container {
+        flex-direction: column;
+        gap: 24px;
+      }
+      .arrow {
+        transform: rotate(90deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="flow-container">
+    <div class="camera-block">
+      <svg class="camera-icon" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="7" y="15" width="40" height="28" rx="7" fill="#183153"/>
+        <circle cx="27" cy="29" r="9" fill="#fff"/>
+        <circle cx="27" cy="29" r="5" fill="#b3d4fc"/>
+        <rect x="18" y="8" width="18" height="10" rx="4" fill="#183153"/>
+      </svg>
+      <div class="camera-label">Camera<br> Data</div>
+    </div>
+    <div class="arrow">
+      <svg viewBox="0 0 40 24"><path d="M2 12h36m0 0l-6-6m6 6l-6 6" stroke="#183153" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="flow-box">
+      <div class="box-title">Sensor Health Estimator</div>
+      <div class="box-subtitle">Score internal degradation</div>
+    </div>
+    <div class="arrow">
+      <svg viewBox="0 0 40 24"><path d="M2 12h36m0 0l-6-6m6 6l-6 6" stroke="#183153" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="flow-box">
+      <div class="box-title">Drift &amp; Anomaly Detector</div>
+      <div class="box-subtitle">Detect silent failures</div>
+    </div>
+    <div class="arrow">
+      <svg viewBox="0 0 40 24"><path d="M2 12h36m0 0l-6-6m6 6l-6 6" stroke="#183153" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="flow-box">
+      <div class="box-title">Environmental<br>Confidence Estimator</div>
+      <div class="box-subtitle">Evaluate impact of conditions</div>
+    </div>
+    <div class="arrow">
+      <svg viewBox="0 0 40 24"><path d="M2 12h36m0 0l-6-6m6 6l-6 6" stroke="#183153" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="flow-box yellow">
+      <div class="box-title">Outputs</div>
+      <div class="box-subtitle">Track long-term decay</div>
+    </div>
+  </div>
+</body>
+</html> 
