@@ -1,0 +1,45 @@
+%%{ init: { "dark": "default", "gantt": { "barHeight": 30, "fontSize": 10 }}}%%
+gantt
+    title PoC Execution Phases - May to November 2025
+    dateFormat %d MM %Y
+
+    section Planning
+    Phase_I_Ordering_Planning         :active, p1, 2025-05-12, 28d
+
+    section Data Collection
+    Phase_II_Data_Collection          :p2, after p1, 35d
+
+    section Model Training
+    Phase_III_Validation_Model_Training :p3, after p2, 21d
+    Phase_IV_Data_Augmentation        :p4, after p3, 21d
+    Phase_V_Non_PINN_Model_Training   :p5, after p4, 21d
+    Phase_VI_PINN_Model_Training      :p6, after p5, 21d
+
+    section Deployment
+    Phase_VII_Deployment_on_Jetson_Orin :p7, after p6, 7d
+
+    section Reporting
+    Phase_VIII_Results_and_Reporting  :p8, after p7, 21d
+
+    section Stretch Goal
+    Cross_Manufacturer_Testing        :p9, after p4, 14d
+
+ 
+%    "gantt": {
+%  "barHeight": 35,
+%  "barGap": 4,
+%  "topPadding": 50,
+%  "leftPadding": 75,
+%"rightPadding": 18,
+%  "gridLineStartPadding": 35,
+%  "fontSize": 16,
+%  "numberSectionStyles": 4,
+%  "axisFormat": "%Y-%m-%d"
+%
+%  Theme Name	Description
+%default	Light theme with blue accents (classic Mermaid style)
+%forest	Green-colored theme, good for eco or nature-focused visuals
+%dark	Dark background, light text – great for presentations or dark mode UIs
+%neutral	Gray-scale neutral tones – minimal distraction, clean & print-friendly
+%base	Very minimal baseline styling – best for overriding with custom CSS later
+%} --> -->
