@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watchtower System Architecture</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .diagram-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 1000px;
+            height: 650px;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="diagram-container">
+        <svg viewBox="0 0 1000 650" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background -->
+            <rect width="1000" height="650" fill="#f8f9fa" rx="10" ry="10"/>
+            
+            <!-- Title -->
+            <text x="450" y="35" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" font-weight="bold" fill="#333">Watchtower System Architecture</text>
+            
+            <!-- Platform Layer -->
+            <rect x="100" y="80" width="700" height="180" fill="#e6f2ff" stroke="#0066cc" stroke-width="2" rx="8" ry="8"/>
+            <text x="315" y="105" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#0066cc">Edge Runtime Layer (On-Platform)</text>
+            
+            <!-- Sensor Interface Layer -->
+            <rect x="130" y="125" width="200" height="110" fill="#ffffff" stroke="#0099cc" stroke-width="2" rx="5" ry="5"/>
+            <text x="230" y="145" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" font-weight="bold" fill="#333">Sensor Interface Layer</text>
+            <text x="230" y="170" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#555" width="180">• Universal Protocol Support</text>
+            <text x="230" y="190" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#555" width="180">• Standardized Protocols</text>
+            <text x="230" y="210" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#555" width="180">• Device-Agnostic Adapters</text>
+            
+            <!-- Data Processing Subsystem -->
+            <rect x="350" y="125" width="200" height="110" fill="#ffffff" stroke="#0099cc" stroke-width="2" rx="5" ry="5"/>
+            <text x="450" y="145" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" font-weight="bold" fill="#333">Data Processing Subsystem</text>
+            <text x="450" y="170" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#555" width="180">• Real-time Computation</text>
+            <text x="450" y="190" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#555" width="180">• Environmental Correlation</text>
+            <text x="450" y="210" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#555" width="180">• Cross-Sensor Correlation</text>
+            
+            <!-- Analysis Engine -->
+            <rect x="570" y="125" width="200" height="110" fill="#ffffff" stroke="#0099cc" stroke-width="2" rx="5" ry="5"/>
+            <text x="670" y="145" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" font-weight="bold" fill="#333">Analysis Engine</text>
+            <text x="670" y="170" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#555" width="180">• Physics-Informed Neural Networks</text>
+            <text x="670" y="190" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#555" width="180">• Class-Based Sensor Models</text>
+            <text x="670" y="210" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#555" width="180">• Degradation Detection</text>
+            
+            <!-- Maintenance Layer -->
+            <rect x="100" y="280" width="700" height="180" fill="#f0f5ea" stroke="#518735" stroke-width="2" rx="8" ry="8"/>
+            <text x="310" y="305" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#518735">Maintenance and Planning Layer</text>
+            
+            <!-- Persistence & Aggregation Framework -->
+            <rect x="130" y="325" width="310" height="110" fill="#ffffff" stroke="#66aa44" stroke-width="2" rx="5" ry="5"/>
+            <text x="285" y="345" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" font-weight="bold" fill="#333">Persistence & Aggregation Framework</text>
+            <text x="285" y="370" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#555" width="280">• Hybrid Database Architecture</text>
+            <text x="285" y="390" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#555" width="280">• Time-Series + Relationship Modeling</text>
+            <text x="285" y="410" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#555" width="280">• Fleet-Wide Learning</text>
+            
+            <!-- Depot Synchronization -->
+            <rect x="460" y="325" width="310" height="110" fill="#ffffff" stroke="#66aa44" stroke-width="2" rx="5" ry="5"/>
+            <text x="615" y="345" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" font-weight="bold" fill="#333">Depot Synchronization Architecture</text>
+            <text x="615" y="370" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#555" width="280">• Bidirectional Delta Synchronization</text>
+            <text x="615" y="390" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#555" width="280">• Disconnected Operation Management</text>
+            <text x="615" y="410" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#555" width="280">• Transfer Reliability Framework</text>
+            
+            <!-- Integration & Output Layer -->
+            <rect x="100" y="480" width="700" height="130" fill="#f9f2f4" stroke="#993366" stroke-width="2" rx="8" ry="8"/>
+            <text x="335" y="505" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#993366">Integration & Output Layer</text>
+            
+            <!-- Autonomy Integration -->
+            <rect x="130" y="525" width="200" height="60" fill="#ffffff" stroke="#cc6699" stroke-width="2" rx="5" ry="5"/>
+            <text x="230" y="545" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" font-weight="bold" fill="#333">Autonomy Integration</text>
+            <text x="230" y="565" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#555" width="180">• Real-Time Trust Scores</text>
+            
+            <!-- Operator Interface -->
+            <rect x="350" y="525" width="200" height="60" fill="#ffffff" stroke="#cc6699" stroke-width="2" rx="5" ry="5"/>
+            <text x="450" y="545" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" font-weight="bold" fill="#333">Operator Interface</text>
+            <text x="450" y="565" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#555" width="180">• Alerting & Visualization</text>
+            
+            <!-- Output & Alerting -->
+            <rect x="570" y="525" width="200" height="60" fill="#ffffff" stroke="#cc6699" stroke-width="2" rx="5" ry="5"/>
+            <text x="670" y="545" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" font-weight="bold" fill="#333">Output & Alerting</text>
+            <text x="670" y="565" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#555" width="180">• Multi-dimensional Classification</text>
+            
+            <!-- Security Architecture (Cross-Cutting) -->
+            <rect x="50" y="630" width="800" height="15" fill="#ffe6cc" stroke="#e69138" stroke-width="2" rx="5" ry="5"/>
+            <text x="450" y="642" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#333">Security Architecture (Cross-Cutting Concern)</text>
+            
+            <!-- Connections -->
+            <!-- Between Sensor Interface and Data Processing -->
+            <path d="M330 180 L350 180" stroke="#0066cc" stroke-width="2" fill="none"/>
+            
+            <!-- Between Data Processing and Analysis Engine -->
+            <path d="M550 180 L570 180" stroke="#0066cc" stroke-width="2" fill="none"/>
+            
+            <!-- Between Edge and Maintenance Layer -->
+            <path d="M450 260 L450 280" stroke="#333" stroke-width="2" fill="none" stroke-dasharray="10,5"/>
+            
+            <!-- Between Persistence and Depot Sync -->
+            <path d="M440 380 L460 380" stroke="#518735" stroke-width="2" fill="none"/>
+            
+            <!-- Between Maintenance and Integration Layer -->
+            <path d="M450 460 L450 480" stroke="#333" stroke-width="2" fill="none" stroke-dasharray="10,5"/>
+            
+            <!-- Between Integration Components -->
+            <path d="M330 555 L350 555" stroke="#993366" stroke-width="2" fill="none"/>
+            <path d="M550 555 L570 555" stroke="#993366" stroke-width="2" fill="none"/>
+            
+            <!-- Legend -->
+            <rect x="820" y="40" width="140" height="28" fill="#e6f2ff" stroke="#0066cc" stroke-width="2" rx="6" ry="6"/>
+            <text x="890" y="58" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" alignment-baseline="middle" fill="#333">Edge Runtime</text>
+            
+            <rect x="820" y="75" width="140" height="28" fill="#f0f5ea" stroke="#518735" stroke-width="2" rx="6" ry="6"/>
+            <text x="890" y="93" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" alignment-baseline="middle" fill="#333">Maintenance Layer</text>
+            
+            <rect x="820" y="110" width="140" height="28" fill="#f9f2f4" stroke="#993366" stroke-width="2" rx="6" ry="6"/>
+            <text x="890" y="128" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" alignment-baseline="middle" fill="#333">Integration & Output</text>
+            
+            <rect x="820" y="145" width="140" height="28" fill="#ffe6cc" stroke="#e69138" stroke-width="2" rx="6" ry="6"/>
+            <text x="890" y="163" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" alignment-baseline="middle" fill="#333">Security (Cross-Cutting)</text>
+        </svg>
+    </div>
+</body>
+</html> 
