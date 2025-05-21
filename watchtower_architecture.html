@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watchtower System Architecture</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .caption {
+            text-align: center;
+            color: #666;
+            margin-top: 20px;
+            font-style: italic;
+            margin-bottom: 40px;
+        }
+        svg {
+            width: 100%;
+            height: auto;
+            max-width: 1000px;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Watchtower System Architecture</h1>
+        <svg viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background -->
+            <rect width="1000" height="600" fill="#ffffff"/>
+            
+            <!-- Title -->
+            <text x="500" y="40" text-anchor="middle" font-size="24" font-weight="bold" fill="#2c3e50">
+                Watchtower: Physics-Informed Sensor Monitoring System
+            </text>
+
+            <!-- Edge Runtime Layer -->
+            <rect x="50" y="100" width="400" height="200" rx="10" fill="#e8f4f8" stroke="#3498db" stroke-width="2"/>
+            <text x="250" y="130" text-anchor="middle" font-size="18" font-weight="bold" fill="#2980b9">Edge Runtime Layer</text>
+            
+            <!-- Edge Components -->
+            <rect x="70" y="150" width="360" height="40" rx="5" fill="#bde0fe" stroke="#2980b9" stroke-width="1"/>
+            <text x="250" y="175" text-anchor="middle" font-size="14" fill="#2c3e50">Lightweight PINN Models</text>
+            
+            <rect x="70" y="200" width="360" height="40" rx="5" fill="#bde0fe" stroke="#2980b9" stroke-width="1"/>
+            <text x="250" y="225" text-anchor="middle" font-size="14" fill="#2c3e50">Real-time Sensor Monitoring</text>
+            
+            <rect x="70" y="250" width="360" height="40" rx="5" fill="#bde0fe" stroke="#2980b9" stroke-width="1"/>
+            <text x="250" y="275" text-anchor="middle" font-size="14" fill="#2c3e50">In-situ Calibration</text>
+
+            <!-- Maintenance/Planning Layer -->
+            <rect x="550" y="100" width="400" height="200" rx="10" fill="#e8f4f8" stroke="#3498db" stroke-width="2"/>
+            <text x="750" y="130" text-anchor="middle" font-size="18" font-weight="bold" fill="#2980b9">Maintenance/Planning Layer</text>
+            
+            <!-- Maintenance Components -->
+            <rect x="570" y="150" width="360" height="40" rx="5" fill="#bde0fe" stroke="#2980b9" stroke-width="1"/>
+            <text x="750" y="175" text-anchor="middle" font-size="14" fill="#2c3e50">Fleet-wide Learning</text>
+            
+            <rect x="570" y="200" width="360" height="40" rx="5" fill="#bde0fe" stroke="#2980b9" stroke-width="1"/>
+            <text x="750" y="225" text-anchor="middle" font-size="14" fill="#2c3e50">Predictive Maintenance</text>
+            
+            <rect x="570" y="250" width="360" height="40" rx="5" fill="#bde0fe" stroke="#2980b9" stroke-width="1"/>
+            <text x="750" y="275" text-anchor="middle" font-size="14" fill="#2c3e50">Mission Planning</text>
+
+            <!-- Connection Arrows -->
+            <path d="M450 200 L550 200" stroke="#3498db" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+            <text x="500" y="190" text-anchor="middle" font-size="12" fill="#666">Knowledge Transfer</text>
+
+            <!-- Sensors Section -->
+            <rect x="50" y="350" width="900" height="100" rx="10" fill="#f0f7ff" stroke="#3498db" stroke-width="2"/>
+            <text x="500" y="380" text-anchor="middle" font-size="18" font-weight="bold" fill="#2980b9">Sensor Integration</text>
+            
+            <!-- Sensor Types -->
+            <rect x="70" y="400" width="200" height="40" rx="5" fill="#bde0fe" stroke="#2980b9" stroke-width="1"/>
+            <text x="170" y="425" text-anchor="middle" font-size="14" fill="#2c3e50">Imaging Sensors</text>
+            
+            <rect x="300" y="400" width="200" height="40" rx="5" fill="#bde0fe" stroke="#2980b9" stroke-width="1"/>
+            <text x="400" y="425" text-anchor="middle" font-size="14" fill="#2c3e50">Navigation Sensors</text>
+            
+            <rect x="530" y="400" width="200" height="40" rx="5" fill="#bde0fe" stroke="#2980b9" stroke-width="1"/>
+            <text x="630" y="425" text-anchor="middle" font-size="14" fill="#2c3e50">Environmental Sensors</text>
+            
+            <rect x="760" y="400" width="200" height="40" rx="5" fill="#bde0fe" stroke="#2980b9" stroke-width="1"/>
+            <text x="860" y="425" text-anchor="middle" font-size="14" fill="#2c3e50">Other Sensor Types</text>
+
+            <!-- Arrow Definition -->
+            <defs>
+                <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5"
+                    markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#3498db"/>
+                </marker>
+            </defs>
+
+            <!-- Connection Lines from Sensors to Edge Layer and Maintenance Layer -->
+            <!-- Imaging Sensors -->
+            <path d="M170 400 L170 300" stroke="#3498db" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+            <path d="M170 400 C170 350, 250 350, 250 100" stroke="#3498db" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+            <!-- Navigation Sensors -->
+            <path d="M400 400 L400 300" stroke="#3498db" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+            <path d="M400 400 C400 350, 750 350, 750 100" stroke="#3498db" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+            <!-- Environmental Sensors -->
+            <path d="M630 400 L630 300" stroke="#3498db" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+            <path d="M630 400 C630 350, 250 350, 250 100" stroke="#3498db" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+            <!-- Other Sensor Types -->
+            <path d="M860 400 L860 300" stroke="#3498db" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+            <path d="M860 400 C860 350, 750 350, 750 100" stroke="#3498db" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+        </svg>
+        <div class="caption">
+            Figure 1: Watchtower System Architecture showing the two core components (Edge Runtime and Maintenance/Planning layers) 
+            and their integration with various sensor types. The system uses Physics-Informed Neural Networks (PINNs) to provide 
+            real-time sensor health monitoring, feedback, and calibration capabilities.
+        </div>
+
+        <h2>Army Benefits</h2>
+        <svg viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background -->
+            <rect width="1000" height="400" fill="#ffffff"/>
+            
+            <!-- Title -->
+            <text x="500" y="40" text-anchor="middle" font-size="24" font-weight="bold" fill="#2c3e50">
+                Watchtower Benefits for Army Applications
+            </text>
+
+            <!-- Benefits Grid -->
+            <rect x="50" y="80" width="900" height="280" rx="10" fill="#f0f7ff" stroke="#3498db" stroke-width="2"/>
+            
+            <!-- Benefit Categories -->
+            <rect x="70" y="100" width="200" height="240" rx="5" fill="#e8f4f8" stroke="#2980b9" stroke-width="1"/>
+            <text x="170" y="130" text-anchor="middle" font-size="16" font-weight="bold" fill="#2c3e50">Autonomy Support</text>
+            <text x="170" y="160" text-anchor="middle" font-size="12" fill="#2c3e50">• Regulatory Compliance</text>
+            <text x="170" y="180" text-anchor="middle" font-size="12" fill="#2c3e50">• Trustworthy Sensor Health</text>
+            <text x="170" y="200" text-anchor="middle" font-size="12" fill="#2c3e50">• Real-time Integrity Feedback</text>
+            <text x="170" y="220" text-anchor="middle" font-size="12" fill="#2c3e50">• Contested Environment Operation</text>
+
+            <rect x="290" y="100" width="200" height="240" rx="5" fill="#e8f4f8" stroke="#2980b9" stroke-width="1"/>
+            <text x="390" y="130" text-anchor="middle" font-size="16" font-weight="bold" fill="#2c3e50">Sensor Integration</text>
+            <text x="390" y="160" text-anchor="middle" font-size="12" fill="#2c3e50">• Vendor-Agnostic Support</text>
+            <text x="390" y="180" text-anchor="middle" font-size="12" fill="#2c3e50">• MOSA Compliance</text>
+            <text x="390" y="200" text-anchor="middle" font-size="12" fill="#2c3e50">• Plug-and-Play Payloads</text>
+            <text x="390" y="220" text-anchor="middle" font-size="12" fill="#2c3e50">• Cross-Platform Compatibility</text>
+
+            <rect x="510" y="100" width="200" height="240" rx="5" fill="#e8f4f8" stroke="#2980b9" stroke-width="1"/>
+            <text x="610" y="130" text-anchor="middle" font-size="16" font-weight="bold" fill="#2c3e50">Maintenance</text>
+            <text x="610" y="160" text-anchor="middle" font-size="12" fill="#2c3e50">• Predictive Maintenance</text>
+            <text x="610" y="180" text-anchor="middle" font-size="12" fill="#2c3e50">• Fleet-wide Learning</text>
+            <text x="610" y="200" text-anchor="middle" font-size="12" fill="#2c3e50">• Reduced Downtime</text>
+            <text x="610" y="220" text-anchor="middle" font-size="12" fill="#2c3e50">• Cost-effective Operations</text>
+
+            <rect x="730" y="100" width="200" height="240" rx="5" fill="#e8f4f8" stroke="#2980b9" stroke-width="1"/>
+            <text x="830" y="130" text-anchor="middle" font-size="16" font-weight="bold" fill="#2c3e50">Technical Advantages</text>
+            <text x="830" y="160" text-anchor="middle" font-size="12" fill="#2c3e50">• Low SWaP Requirements</text>
+            <text x="830" y="180" text-anchor="middle" font-size="12" fill="#2c3e50">• Minimal Training Data</text>
+            <text x="830" y="200" text-anchor="middle" font-size="12" fill="#2c3e50">• Physics-Based Validation</text>
+            <text x="830" y="220" text-anchor="middle" font-size="12" fill="#2c3e50">• Rapid Integration</text>
+        </svg>
+        <div class="caption">
+            Figure 2: Key benefits of Watchtower for Army applications, highlighting advantages in autonomy support, 
+            sensor integration, maintenance, and technical capabilities.
+        </div>
+    </div>
+</body>
+</html> 
