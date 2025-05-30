@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Headcount Tracker</title>
+    <style>
+        body {
+            font-family: 'Work Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000000;
+            min-height: 100vh;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: rgba(20, 20, 30, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            padding: 25px;
+            padding-bottom: 50px;
+            max-width: 1100px;
+            width: 100%;
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .title {
+            font-size: 2.1rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            font-size: 1.1rem;
+            color: #a0a0a0;
+            font-weight: 400;
+        }
+        .headcount-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            background: rgba(30, 30, 40, 0.8);
+        }
+        .headcount-table th {
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            color: white;
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.13rem;
+        }
+        .headcount-table th:first-child {
+            width: 20%;
+        }
+        .headcount-table th:nth-child(6),
+        .headcount-table th:nth-child(11) {
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+        }
+        .headcount-table td {
+            padding: 10px;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+            font-size: 1.06rem;
+            text-align: right;
+            color: #e0e0e0;
+        }
+        .headcount-table tr:hover td {
+            background-color: rgba(99, 102, 241, 0.1);
+        }
+        .headcount-table tr:last-child td {
+            border-bottom: none;
+            font-weight: 700;
+            background: rgba(99, 102, 241, 0.2);
+            font-size: 1.2rem;
+            color: #fff;
+        }
+        .category-cell {
+            font-weight: 600;
+            color: #f0f0f0;
+            text-align: left;
+        }
+        .chart-container {
+            margin-top: 20px;
+            background: rgba(30, 30, 40, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .chart-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        canvas {
+            width: 100% !important;
+            max-width: 560px;
+            height: 180px !important;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Headcount Tracker</h1>
+            <p class="subtitle">Personnel by Category and Quarter (Q1–Q8, Y1, Y2)</p>
+        </div>
+        <table class="headcount-table">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Q1</th>
+                    <th>Q2</th>
+                    <th>Q3</th>
+                    <th>Q4</th>
+                    <th>Y1</th>
+                    <th>Q5</th>
+                    <th>Q6</th>
+                    <th>Q7</th>
+                    <th>Q8</th>
+                    <th>Y2</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="category-cell">Engineer</td>
+                    <td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>5</td><td>5</td><td>5</td><td>5</td><td>5</td>
+                </tr>
+                <tr>
+                    <td class="category-cell">Sales</td>
+                    <td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>2</td><td>2</td><td>3</td><td>3</td><td>3</td>
+                </tr>
+                <tr>
+                    <td class="category-cell">Admin</td>
+                    <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td>
+                </tr>
+                <tr>
+                    <td class="category-cell">Exec</td>
+                    <td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td>
+                </tr>
+                <tr>
+                    <td class="category-cell">Total</td>
+                    <td>4</td><td>4</td><td>4</td><td>4</td><td>4</td><td>10</td><td>10</td><td>11</td><td>11</td><td>11</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="chart-container">
+            <div class="chart-title">Total Headcount by Quarter</div>
+            <canvas id="headcountLineChart"></canvas>
+        </div>
+    </div>
+    <script>
+        const ctx = document.getElementById('headcountLineChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7', 'Q8'],
+                datasets: [{
+                    label: 'Total Headcount',
+                    data: [4, 4, 4, 4, 10, 10, 11, 11],
+                    borderColor: '#8b5cf6',
+                    backgroundColor: 'rgba(139, 92, 246, 0.2)',
+                    borderWidth: 3,
+                    pointBackgroundColor: '#fff',
+                    pointBorderColor: '#8b5cf6',
+                    pointRadius: 5,
+                    tension: 0.3,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: '#e0e0e0',
+                            font: { size: 14 }
+                        },
+                        grid: {
+                            color: 'rgba(99,102,241,0.1)'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#e0e0e0',
+                            font: { size: 14 }
+                        },
+                        grid: {
+                            color: 'rgba(99,102,241,0.1)'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html> 
