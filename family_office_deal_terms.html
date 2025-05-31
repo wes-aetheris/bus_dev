@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two-Stage Funding Structure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(ellipse at top right, #2d1a4a 0%, #000 80%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1400px;
+            background: rgba(20, 20, 30, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 35px 40px 35px 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .title {
+            font-size: 2.1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #bdbdbd;
+            font-weight: 400;
+        }
+
+        .stages-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+            margin-bottom: 30px;
+        }
+
+        .stage {
+            background: rgba(30, 30, 40, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border-left: 6px solid;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stage::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--stage-color), var(--stage-color-light));
+        }
+
+        .stage:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .stage-1 {
+            --stage-color: #8b5cf6;
+            --stage-color-light: #6366f1;
+            border-left-color: var(--stage-color);
+        }
+
+        .stage-2 {
+            --stage-color: #6366f1;
+            --stage-color-light: #8b5cf6;
+            border-left-color: var(--stage-color);
+        }
+
+        .stage-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .stage-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--stage-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-right: 15px;
+        }
+
+        .stage-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .stage-subtitle {
+            color: #bdbdbd;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .metrics {
+            list-style: none;
+        }
+
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #23234a;
+        }
+
+        .metric:last-child {
+            border-bottom: none;
+        }
+
+        .metric-label {
+            font-weight: 500;
+            color: #bdbdbd;
+        }
+
+        .metric-value {
+            font-weight: 700;
+            color: #fff;
+            font-size: 1.1rem;
+        }
+
+        .highlight {
+            color: #8b5cf6;
+        }
+
+        .benefits {
+            background: #231a3a;
+            border-radius: 15px;
+            padding: 21px;
+            margin-top: 14px;
+        }
+
+        .benefits-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .benefit {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            background: #32235a;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+        }
+
+        .benefit-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #8b5cf6;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-size: 11px;
+        }
+
+        .benefit span {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .timeline {
+            background: #231a3a;
+            border-radius: 15px;
+            padding: 18px;
+            margin-top: 14px;
+            text-align: center;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .timeline-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .timeline-item {
+            background: #32235a;
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-weight: 500;
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+        }
+
+        .timeline-arrow {
+            color: #a084f6;
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 1200px) {
+            .container {
+                padding: 20px 5px;
+            }
+            .title {
+                font-size: 1.5rem;
+            }
+            .subtitle {
+                font-size: 0.9rem;
+            }
+            .stages-container {
+                gap: 10px;
+            }
+            .benefits-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Exclusive Two-Stage Funding Structure</h1>
+            <p class="subtitle">Strategic Capital Deployment with Full Family Office Control</p>
+        </div>
+
+        <div class="stages-container">
+            <div class="stage stage-1">
+                <div class="stage-header">
+                    <div class="stage-number">1</div>
+                    <div>
+                        <div class="stage-title">Angel SAFE</div>
+                        <div class="stage-subtitle">Foundation Round</div>
+                    </div>
+                </div>
+                <ul class="metrics">
+                    <li class="metric">
+                        <span class="metric-label">Total Raise</span>
+                        <span class="metric-value highlight">$570K</span>
+                    </li>
+                    <li class="metric">
+                        <span class="metric-label">Pre-money Valuation</span>
+                        <span class="metric-value">$4.0M</span>
+                    </li>
+                    <li class="metric">
+                        <span class="metric-label">Runway</span>
+                        <span class="metric-value">12 months</span>
+                    </li>
+                    <li class="metric">
+                        <span class="metric-label">Exclusivity</span>
+                        <span class="metric-value highlight">Full Round</span>
+                    </li>
+                    <li class="metric">
+                        <span class="metric-label">Governance</span>
+                        <span class="metric-value">Observer Rights</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="stage stage-2">
+                <div class="stage-header">
+                    <div class="stage-number">2</div>
+                    <div>
+                        <div class="stage-title">Pre-Seed SAFE</div>
+                        <div class="stage-subtitle">Growth Follow-On</div>
+                    </div>
+                </div>
+                <ul class="metrics">
+                    <li class="metric">
+                        <span class="metric-label">Follow-on Raise</span>
+                        <span class="metric-value highlight">$1.8M</span>
+                    </li>
+                    <li class="metric">
+                        <span class="metric-label">Pre-money Val/Discount</span>
+                        <span class="metric-value">$8.5M/20%</span>
+                    </li>
+                    <li class="metric">
+                        <span class="metric-label">Release Trigger</span>
+                        <span class="metric-value">Tech Milestones</span>
+                    </li>
+                    <li class="metric">
+                        <span class="metric-label">Exclusivity/Lead Option</span>
+                        <span class="metric-value highlight">Available</span>
+                    </li>
+                    <li class="metric">
+                        <span class="metric-label">Runway</span>
+                        <span class="metric-value">12 months</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="timeline">
+            <h3 class="timeline-title">Total Capital Plan: 24-Month Runway</h3>
+            <div class="timeline-flow">
+                <div class="timeline-item">Stage 1: $570K</div>
+                <div class="timeline-arrow">→</div>
+                <div class="timeline-item">Tech Execution</div>
+                <div class="timeline-arrow">→</div>
+                <div class="timeline-item">Stage 2: $1.8M</div>
+                <div class="timeline-arrow">→</div>
+                <div class="timeline-item">Growth Phase</div>
+            </div>
+        </div>
+
+        <div class="benefits">
+            <h3 class="benefits-title">Strategic Advantages</h3>
+            <div class="benefits-list">
+                <div class="benefit">
+                    <div class="benefit-icon">✓</div>
+                    <span>Avoid writing small checks</span>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">✓</div>
+                    <span>Maximum family office influence</span>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">✓</div>
+                    <span>Structured de-risking progression</span>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">✓</div>
+                    <span>Milestone-based capital release</span>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">✓</div>
+                    <span>Exclusive round access</span>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">✓</div>
+                    <span>Complete 24-month capital plan</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
