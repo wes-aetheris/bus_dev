@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Milestones: Y1 & Y2</title>
+    <style>
+        body {
+            font-family: 'Work Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000000;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            max-width: 900px;
+            background: rgba(20, 20, 30, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px 40px 40px 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .title {
+            font-size: 2.1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            font-size: 1.1rem;
+            color: #bdbdbd;
+            font-weight: 400;
+        }
+        .milestone-boxes {
+            display: flex;
+            flex-direction: row;
+            gap: 48px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+        .milestone-box {
+            background: #231a3a;
+            border-radius: 18px;
+            padding: 36px 32px 36px 32px;
+            box-shadow: 0 8px 32px rgba(139, 92, 246, 0.10), 0 2px 8px rgba(0,0,0,0.10);
+            border: 2px solid #8b5cf6;
+            min-width: 320px;
+            max-width: 400px;
+            margin: 0 8px;
+            position: relative;
+        }
+        .milestone-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .milestone-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .milestone-item {
+            color: #bdbdbd;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        .milestone-check {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #8b5cf6;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-size: 13px;
+        }
+        @media (max-width: 900px) {
+            .milestone-boxes {
+                flex-direction: column;
+                gap: 32px;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Tech Milestones</h1>
+            <p class="subtitle">Key technical milestones for Year 1 and Year 2</p>
+        </div>
+        <div class="milestone-boxes">
+            <div class="milestone-box">
+                <div class="milestone-title">Year 1 Milestones</div>
+                <ul class="milestone-list">
+                    <li class="milestone-item"><span class="milestone-check">✓</span> Milestone 1 for Y1</li>
+                    <li class="milestone-item"><span class="milestone-check">✓</span> Milestone 2 for Y1</li>
+                    <li class="milestone-item"><span class="milestone-check">✓</span> Milestone 3 for Y1</li>
+                    <li class="milestone-item"><span class="milestone-check">✓</span> Milestone 4 for Y1</li>
+                </ul>
+            </div>
+            <div class="milestone-box">
+                <div class="milestone-title">Year 2 Milestones</div>
+                <ul class="milestone-list">
+                    <li class="milestone-item"><span class="milestone-check">✓</span> Milestone 1 for Y2</li>
+                    <li class="milestone-item"><span class="milestone-check">✓</span> Milestone 2 for Y2</li>
+                    <li class="milestone-item"><span class="milestone-check">✓</span> Milestone 3 for Y2</li>
+                    <li class="milestone-item"><span class="milestone-check">✓</span> Milestone 4 for Y2</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

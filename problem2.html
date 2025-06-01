@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The $10 Billion Problem (Polished)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: #000000;
+            color: white;
+            min-height: 100vh;
+            padding: 8px;
+            overflow-x: hidden;
+        }
+        .slide-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .problem-tag {
+            background: #6b46c1;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 16px;
+            font-size: 19px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 6px;
+        }
+        .main-title {
+            font-size: 58px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            line-height: 1.1;
+        }
+        .subtitle {
+            font-size: 28px;
+            color: #f3e8ff;
+            font-weight: 400;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.4;
+            text-shadow: 0 2px 8px #23234a44;
+        }
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 24px;
+            flex: 1;
+            align-items: flex-start;
+        }
+        .problem-section, .impact-section {
+            background: rgba(30, 30, 50, 0.98);
+            border-radius: 20px;
+            padding: 24px 36px 18px 36px;
+            box-shadow: 0 8px 32px rgba(139, 92, 246, 0.13), 0 2px 8px rgba(0,0,0,0.13);
+            border: 1.5px solid #8b5cf6;
+            min-width: 0;
+        }
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #a084f6;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-shadow: 0 2px 8px #23234a33;
+        }
+        .problem-item {
+            margin-bottom: 14px;
+            padding: 14px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            border-left: 4px solid #8b5cf6;
+            box-shadow: 0 2px 8px rgba(139, 92, 246, 0.07);
+        }
+        .problem-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .problem-description {
+            font-size: 22px;
+            color: #d1d5db;
+            line-height: 1.5;
+        }
+        .cost-highlight, .stat-number {
+            color: #fbbf24;
+            font-weight: 700;
+        }
+        .impact-section {
+            gap: 18px;
+        }
+        .impact-box {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.18) 0%, rgba(107, 70, 193, 0.18) 100%);
+            border-radius: 16px;
+            padding: 18px 20px;
+            border: 1.5px solid #a084f6;
+            box-shadow: 0 4px 16px rgba(139, 92, 246, 0.10);
+            margin-bottom: 20px;
+        }
+        .impact-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #a084f6;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 8px #23234a33;
+        }
+        .impact-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .stat-item {
+            font-size: 20px;
+            color: #e5e7eb;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .stat-lead {
+            display: inline-flex;
+            align-items: center;
+            white-space: nowrap;
+            margin-right: 4px;
+        }
+        .stat-text {
+            display: inline;
+        }
+        .stat-number {
+            color: #ffd700;
+            font-size: 1.15em;
+            text-shadow: 0 0 6px #fbbf2444;
+        }
+        .footer {
+            margin-top: 8px;
+            padding-top: 6px;
+            border-top: 1.5px solid #8b5cf6;
+        }
+        .sources {
+            font-size: 17px;
+            color: #bdbdbd;
+            line-height: 1.4;
+        }
+        .sources strong {
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .logo-container {
+            position: absolute;
+            bottom: 18px;
+            right: 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            filter: drop-shadow(0 0 8px #8b5cf6aa);
+        }
+        .logo-icon {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #8b5cf6 0%, #6b46c1 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 0 8px #8b5cf655;
+        }
+        .logo-text {
+            font-size: 15px;
+            font-weight: 600;
+            color: #a084f6;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px #23234a33;
+        }
+        .bullet {
+            color: #8b5cf6;
+            margin-right: 8px;
+        }
+        @media (max-width: 900px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .slide-container {
+                padding: 0 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <h1 class="main-title">The $10 Billion Problem We're Solving</h1>
+            <p class="subtitle">Organizations suffer from costly inefficiencies and mission failures due to silent sensor failures and degradation.</p>
+        </div>
+        <div class="content-grid">
+            <div class="problem-section">
+                <h2 class="section-title">The Hidden Problem</h2>
+                <div class="problem-item">
+                    <div class="problem-title">Silent Sensor Degradation</div>
+                    <div class="problem-description">Sensors fail without warning, providing incorrect data while appearing functional to system diagnostics<sup>[1]</sup></div>
+                </div>
+                <div class="problem-item">
+                    <div class="problem-title">Difficult-to-Diagnose Failures</div>
+                    <div class="problem-description"><span class="stat-number">75%</span> of autonomous system failures are software-related<sup>[2]</sup>, but sensor data quality issues often trigger these failures<sup>[3]</sup></div>
+                </div>
+                <div class="problem-item">
+                    <div class="problem-title">Altitude Misjudgments</div>
+                    <div class="problem-description">Sensor malfunctions cause drones to make incorrect altitude judgments, leading to crashes and mission failures<sup>[4]</sup></div>
+                </div>
+                <div class="problem-item">
+                    <div class="problem-title">Preventable Downtime</div>
+                    <div class="problem-description">
+                        <span class="stat-number">20%</span> of delay-causing maintenance actions could be avoided with proper sensor health monitoring<sup>[5]</sup>
+                    </div>
+                </div>
+            </div>
+            <div class="impact-section">
+                <div class="impact-box">
+                    <div class="impact-title">Drone Operations</div>
+                    <div class="impact-stats">
+                        <div class="stat-item">
+                            <span class="stat-lead">
+                                <span class="bullet">•</span>
+                                <span class="stat-number">100x</span>
+                            </span>
+                            <span class="stat-text">higher failure rate than manned aircraft<sup>[5]</sup></span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-lead">
+                                <span class="bullet">•</span>
+                                <span class="stat-number">50%</span>
+                            </span>
+                            <span class="stat-text">of mishaps from component failures<sup>[5]</sup></span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-lead">
+                                <span class="bullet">•</span>
+                                <span class="stat-number">1 per 1,000</span>
+                            </span>
+                            <span class="stat-text">flight hours failure rate<sup>[5]</sup></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="impact-box">
+                    <div class="impact-title">Autonomous Vehicles</div>
+                    <div class="impact-stats">
+                        <div class="stat-item">
+                            <span class="bullet">•</span>
+                            Disengagements from improper sensor readings
+                        </div>
+                        <div class="stat-item">
+                            <span class="bullet">•</span>
+                            Map and calibration data errors
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-lead">
+                                <span class="bullet">•</span>
+                                <span class="stat-number">75%</span>
+                            </span>
+                            <span class="stat-text">of "software" failures are sensor-related</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="impact-box">
+                    <div class="impact-title">Financial Impact</div>
+                    <div class="impact-stats">
+                        <div class="stat-item">
+                            <span class="stat-lead">
+                                <span class="bullet">•</span>
+                                <span class="stat-number">2-5x</span>
+                            </span>
+                            <span class="stat-text">higher unplanned maintenance costs<sup>[7]</sup></span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-lead">
+                                <span class="bullet">•</span>
+                                <span class="stat-number">$5M+</span>
+                            </span>
+                            <span class="stat-text">major system replacement costs<sup>[7]</sup></span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-lead">
+                                <span class="bullet">•</span>
+                                <span class="stat-number">34%</span>
+                            </span>
+                            <span class="stat-text">cost reduction possible with optimization<sup>[8]</sup></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="sources">
+                <strong>Sources:</strong><br>
+                [1] A Survey on Sensor Failures in Autonomous Vehicles: Challenges and Solutions, MDPI, 2024<br>
+                [2] Analysis of Autopilot Disengagements Occurring During Autonomous Vehicle Testing, ResearchGate, 2018<br>
+                [3] Multi-Sensor Fault Detection, Identification, Isolation and Health Forecasting for Autonomous Vehicles, PMC, 2021<br>
+                [4] Research on Drone Fault Detection Based on Failure Mode Databases, MDPI, 2023<br>
+                [5] A Technocritical Review of Drones Crash Risk Probabilistic Consequences, ResearchGate, 2015<br>
+                [6] Autonomous Vehicles: Disengagements, Accidents and Reaction Times, PMC, 2016<br>
+                [7] The Hidden Financial Toll of Aircraft Maintenance Mistakes, ePlaneAI, 2024<br>
+                [8] Maintenance of a Drone Fleet, BQR, 2024
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
