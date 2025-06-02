@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angel-Stage Funding Opportunity</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #000000 ;
+            color: white;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .main-title {
+            font-size: 36pt;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(45deg, #8b5cf6, #a855f7, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 2.3em;
+            color: #94a3b8;
+            font-weight: 300;
+        }
+
+        .rounds-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 36px;
+            margin-bottom: 48px;
+            align-items: stretch;
+        }
+
+        .round-card {
+            background: rgba(30, 41, 59, 0.8);
+            border: 2px solid;
+            border-radius: 24px;
+            padding: 38px 36px 38px 36px;
+            position: relative;
+            backdrop-filter: blur(10px);
+            font-size: 1.35em;
+            display: flex;
+            flex-direction: column;
+            min-height: 420px;
+        }
+
+        .angel-card {
+            border-image: linear-gradient(135deg, #8b5cf6, #a855f7) 1;
+        }
+
+        .preseed-card {
+            border-image: linear-gradient(135deg, #3b82f6, #6366f1) 1;
+            position: relative;
+        }
+
+        .optional-badge {
+            position: absolute;
+            top: -18px;
+            right: 32px;
+            background: linear-gradient(45deg, #f59e0b, #f97316);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 24px;
+            font-size: 1.15em;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+        }
+
+        .round-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        .round-number {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 18px;
+            font-size: 2em;
+        }
+
+        .angel-number {
+            background: linear-gradient(135deg, #8b5cf6, #a855f7);
+        }
+
+        .preseed-number {
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
+        }
+
+        .round-title {
+            font-size: 1.6em;
+            font-weight: 800;
+        }
+
+        .round-subtitle {
+            color: #94a3b8;
+            font-size: 1.15em;
+            margin-top: 7px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+            padding: 6px 0;
+        }
+
+        .detail-label {
+            color: #cbd5e1;
+            font-weight: 600;
+            font-size: 1.0em;
+        }
+
+        .detail-value {
+            font-weight: 700;
+            text-align: right;
+            font-size: 1.0em;
+        }
+
+        .highlight {
+            color: #a855f7;
+            font-weight: 800;
+        }
+
+        .capital-plan {
+            background: rgba(30, 41, 59, 0.6);
+            border-radius: 24px;
+            padding: 38px 36px;
+            margin-bottom: 48px;
+            text-align: center;
+            font-size: 1.25em;
+        }
+
+        .capital-title {
+            font-size: 1.8em;
+            font-weight: 800;
+            margin-bottom: 28px;
+            color: #e2e8f0;
+        }
+
+        .timeline {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .timeline-item {
+            background: rgba(139, 92, 246, 0.2);
+            padding: 15px 25px;
+            border-radius: 16px;
+            font-weight: 700;
+            border: 1.5px solid rgba(139, 92, 246, 0.3);
+            font-size: 1.0em;
+        }
+
+        .timeline-arrow {
+            color: #8b5cf6;
+            font-size: 2.1em;
+            font-weight: bold;
+        }
+
+        .advantages {
+            background: rgba(30, 41, 59, 0.6);
+            border-radius: 18px;
+            padding: 38px 36px;
+            font-size: 1.18em;
+        }
+
+        .advantages-title {
+            font-size: 1.8em;
+            font-weight: 800;
+            margin-bottom: 22px;
+            text-align: center;
+            color: #e2e8f0;
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
+        }
+
+        .advantage-item {
+            background: rgba(139, 92, 246, 0.15);
+            padding: 18px 22px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            border: 1.5px solid rgba(139, 92, 246, 0.2);
+            font-size: 1.13em;
+            font-weight: 600;
+        }
+
+        .checkmark {
+            color: #10b981;
+            margin-right: 16px;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .rounds-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-title {
+                font-size: 2em;
+            }
+            
+            .timeline {
+                flex-direction: column;
+            }
+            
+            .timeline-arrow {
+                transform: rotate(90deg);
+            }
+        }
+
+        .emphasis {
+            background: linear-gradient(45deg, #f59e0b, #f97316);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="main-title">Angel-Stage Funding Opportunity w/<span class="emphasis">Optional</span><br>Pre-Seed Exclusivity At Locked Valuation & Discount</h1>
+            <p class="subtitle">Strategic Capital Deployment with Full Family Office Control</p>
+        </div>
+
+        <div class="rounds-container">
+            <div class="round-card angel-card">
+                <div class="round-header">
+                    <div class="round-number angel-number">1</div>
+                    <div>
+                        <div class="round-title">Angel SAFE</div>
+                        <div class="round-subtitle">Foundation Round</div>
+                    </div>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Total Raise</span>
+                    <span class="detail-value highlight">$570K</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Pre-money Valuation</span>
+                    <span class="detail-value highlight">$5.0M</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Runway</span>
+                    <span class="detail-value">12 months</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Exclusivity</span>
+                    <span class="detail-value highlight">Full Round</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Governance</span>
+                    <span class="detail-value">Observer Rights</span>
+                </div>
+            </div>
+
+            <div class="round-card preseed-card">
+                <div class="optional-badge">OPTIONAL</div>
+                <div class="round-header">
+                    <div class="round-number preseed-number">2</div>
+                    <div>
+                        <div class="round-title">Pre-Seed SAFE</div>
+                        <div class="round-subtitle">Growth Follow-On</div>
+                    </div>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Follow-on Raise</span>
+                    <span class="detail-value highlight">$1.8M</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Pre-Seed Terms:<br>(Whichever is better for investor)</span>
+                    <span class="detail-value highlight">$9.5M Cap&nbsp;<br>-or-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>20% Discount</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Runway</span>
+                    <span class="detail-value">12 months</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Exclusivity/Lead Option</span>
+                    <span class="detail-value highlight">Available</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Release Trigger</span>
+                    <span class="detail-value">Tech/Pilot<br>Milestones</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="capital-plan">
+            <h2 class="capital-title">Total Capital Plan: 24-Month Runway</h2>
+            <div class="timeline">
+                <div class="timeline-item">Stage 1: $570K</div>
+                <div class="timeline-arrow">→</div>
+                <div class="timeline-item">Tech Execution</div>
+                <div class="timeline-arrow">→</div>
+                <div class="timeline-item">Stage 2: $1.8M</div>
+                <div class="timeline-arrow">→</div>
+                <div class="timeline-item">Growth Phase</div>
+            </div>
+        </div>
+
+        <div class="advantages">
+            <h2 class="advantages-title">Strategic Advantages</h2>
+            <div class="advantages-grid">
+                <div class="advantage-item">
+                    <span class="checkmark">✓</span>
+                    <span>Avoid writing small checks</span>
+                </div>
+                <div class="advantage-item">
+                    <span class="checkmark">✓</span>
+                    <span>Maximum family office influence</span>
+                </div>
+                <div class="advantage-item">
+                    <span class="checkmark">✓</span>
+                    <span>Structured<br>de-risking progression</span>
+                </div>
+                <div class="advantage-item">
+                    <span class="checkmark">✓</span>
+                    <span>Milestone-based capital release</span>
+                </div>
+                <div class="advantage-item">
+                    <span class="checkmark">✓</span>
+                    <span>Exclusive round access</span>
+                </div>
+                <div class="advantage-item">
+                    <span class="checkmark">✓</span>
+                    <span>Complete 24-month capital plan</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
