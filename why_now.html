@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Now? - Market Timing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2D1B69 0%, #11084A 50%, #0A0527 100%);
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 40px;
+            overflow: hidden;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #C8B6DB;
+            font-weight: 300;
+        }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            flex: 1;
+            align-items: center;
+        }
+
+        .reason-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            color: #333;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .reason-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .reason-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #6366F1;
+        }
+
+        .reason-number {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            width: 35px;
+            height: 35px;
+            background: #6366F1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: white;
+        }
+
+        .reason-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+            line-height: 1.3;
+            margin-top: 10px;
+        }
+
+        .reason-content {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .highlight {
+            color: #6366F1;
+            font-weight: 600;
+        }
+
+        .logo-area {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            opacity: 0.7;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 1200px) {
+            .reasons-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .title {
+                font-size: 2.8rem;
+            }
+            
+            .reason-card {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .reasons-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 class="title">Why Now?</h1>
+        <p class="subtitle">The Perfect Storm for Sensor Integrity Solutions</p>
+    </div>
+
+    <div class="reasons-grid">
+        <div class="reason-card">
+            <div class="reason-number">1</div>
+            <h3 class="reason-title">Massive Unaddressed Market Gap</h3>
+            <p class="reason-content">
+                <span class="highlight">330,000+ monthly AirData subscribers</span> have zero access to sensor integrity analytics—a critical blind spot in today's drone operations that demands immediate attention.
+            </p>
+        </div>
+
+        <div class="reason-card">
+            <div class="reason-number">2</div>
+            <h3 class="reason-title">Explosive Market Growth</h3>
+            <p class="reason-content">
+                FAA predicts <span class="highlight">1.9M commercial drones</span> in US service by 2029—nearly <span class="highlight">2x current levels</span>. Each drone needs reliable sensor integrity monitoring.
+            </p>
+        </div>
+
+        <div class="reason-card">
+            <div class="reason-number">3</div>
+            <h3 class="reason-title">AI Breakthrough Moment</h3>
+            <p class="reason-content">
+                <span class="highlight">Sensor-aware AI models</span> and physics-informed ML have just achieved real-time capabilities for detecting sensor degradation—technology that was computationally impossible until now.
+            </p>
+        </div>
+
+        <div class="reason-card">
+            <div class="reason-number">4</div>
+            <h3 class="reason-title">Regulatory Tailwinds</h3>
+            <p class="reason-content">
+                FAA ARC Report explicitly calls for <span class="highlight">"Security Assurance for Sensor Data Feeds"</span> standards. Be the first mover to set the bar and reap regulatory advantages.
+            </p>
+        </div>
+    </div>
+
+    <div class="logo-area">
+        <div class="logo-text">AETHERIS NP</div>
+    </div>
+</body>
+</html>
