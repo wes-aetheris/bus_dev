@@ -22,7 +22,7 @@
         }
         .header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
         .title {
             font-size: 3.5rem;
@@ -49,21 +49,22 @@
             height: 100%;
         }
         .reason-header {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: white;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             text-align: center;
             width: 100%;
-            min-height: 60px;
+            min-height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
+            line-height: 1.2;
         }
         .reason-card {
             background: #1a1a2e;
             border-radius: 15px;
-            padding: 30px;
+            padding: 25px;
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
@@ -72,12 +73,8 @@
             flex-direction: column;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             flex: 1;
+            height: 420px;
         }
-        /* Varied heights for visual hierarchy */
-        .reason-card.small { height: 250px; }
-        .reason-card.medium { height: 280px; }
-        .reason-card.large { height: 310px; }
-        .reason-card.tech { height: 340px; } /* Breakthrough tech gets most prominence */
         
         .reason-card:hover {
             transform: translateY(-8px);
@@ -92,8 +89,26 @@
             height: 4px;
             background: linear-gradient(90deg, #6366F1, #8B5CF6);
         }
+        
+        .reason-number {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #6366F1, #8B5CF6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: white;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+        
         .big-number {
-            font-size: 3.2rem;
+            font-size: 2.8rem;
             color: #6366F1;
             font-weight: 900;
             line-height: 1;
@@ -103,11 +118,20 @@
             display: block;
         }
         .reason-content {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: white;
             line-height: 1.4;
             flex: 1;
-            margin-top: 20px;
+            margin-top: 15px;
+        }
+        .reason-main-text {
+            margin-bottom: 15px;
+        }
+        .reason-sub-text {
+            font-size: 0.95rem;
+            color: #C4C4C4;
+            line-height: 1.3;
+            margin-top: 10px;
         }
         .highlight {
             color: #6366F1;
@@ -115,10 +139,12 @@
         }
         .placeholder {
             color: #10B981;
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-top: 15px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-top: auto;
+            padding-top: 15px;
             font-style: italic;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         /* Flow arrows between cards */
         .flow-arrow {
@@ -137,10 +163,12 @@
         /* Simple citations */
         .citations {
             position: absolute;
-            bottom: 20px;
+            bottom: 15px;
             left: 40px;
-            font-size: 0.9rem;
+            right: 40px;
+            font-size: 0.8rem;
             color: #666;
+            line-height: 1.3;
         }
         @media (max-width: 1200px) {
             .reasons-grid {
@@ -152,6 +180,7 @@
             }
             .reason-card {
                 height: auto !important;
+                min-height: 350px;
             }
             .flow-arrow {
                 display: none;
@@ -174,54 +203,73 @@
     <div class="reasons-grid">
         <div class="reason-column">
             <h2 class="reason-header">Massive Unmet Need</h2>
-            <div class="reason-card small">
+            <div class="reason-card">
+                <div class="reason-number">1</div>
                 <div class="flow-arrow">→</div>
                 <div class="big-number">330K+</div>
-                <p class="reason-content">
-                    Monthly AirData subscribers with <span class="highlight">zero sensor integrity analytics</span><sup>[1]</sup>
-                </p>
+                <div class="reason-content">
+                    <div class="reason-main-text">
+                        Monthly AirData subscribers with <span class="highlight">zero sensor integrity analytics<sup>[1]</sup></span>
+                    </div>
+                </div>
                 <div class="placeholder">Every drone relies on the integrity of its sensors</div>
             </div>
         </div>
         
         <div class="reason-column">
             <h2 class="reason-header">Market Explosion</h2>
-            <div class="reason-card medium">
+            <div class="reason-card">
+                <div class="reason-number">2</div>
                 <div class="flow-arrow">→</div>
                 <div class="big-number">1.2M/1.9M</div>
-                <p class="reason-content">
-                    US commercial/consumer drones by 2029<sup>[2]</sup><br>
-                    <span class="highlight">24% commercial segment growth over 2024</span>
-                </p>
+                <div class="reason-content">
+                    <div class="reason-main-text">
+                        US commercial/consumer drones by 2029<sup>[2]</sup>
+                    </div>
+                    <div class="reason-sub-text">
+                        <span class="highlight">24% commercial segment growth over 2024</span>
+                    </div>
+                </div>
                 <div class="placeholder">$100M+ US SOM by 2029</div>
             </div>
         </div>
         
         <div class="reason-column">
             <h2 class="reason-header">Technology Breakthrough</h2>
-            <div class="reason-card tech">
+            <div class="reason-card">
+                <div class="reason-number">3</div>
                 <div class="flow-arrow">→</div>
                 <div class="big-number">2020 → 2025</div>
-                <p class="reason-content">
-                    <span class="highlight">Physics-informed and other advanced AI models commercially viable</span><sup>[3,4]</sup><br><br>
-                    Lab models now production-ready
-                </p>
+                <div class="reason-content">
+                    <div class="reason-main-text">
+                        <span class="highlight">Physics-informed and other advanced AI models commercially viable<sup>[3,4]</sup></span>
+                    </div>
+                    <div class="reason-sub-text">
+                        Lab models now production-ready
+                    </div>
+                </div>
                 <div class="placeholder">Breakthrough models require as little as 1/10<sup>th</sup> the data, a fraction of the power, and are more accurate</div>
             </div>
         </div>
         
         <div class="reason-column">
             <h2 class="reason-header">Regulatory Catalyst</h2>
-            <div class="reason-card medium">
+            <div class="reason-card">
+                <div class="reason-number">4</div>
                 <div class="big-number">2026</div>
-                <p class="reason-content">
-                    <span class="highlight">FAA Part 108 BVLOS Requirements to be Published</span>
-                    <br><br>FAA Recommendations: Automated operations require sensor availability, assurance, and data stream security<sup>[5]</sup>
-                </p>
+                <div class="reason-content">
+                    <div class="reason-main-text">
+                        <span class="highlight">FAA Part 108 BVLOS Requirements to be Published</span>
+                    </div>
+                    <div class="reason-sub-text">
+                        FAA Recommendations: Automated operations require sensor availability, assurance, and data stream security<sup>[5]</sup>
+                    </div>
+                </div>
                 <div class="placeholder">Window to secure first mover advantage closing</div>
             </div>
         </div>
     </div>
+    
     <div class="citations">
         [1] AirData; https://www.commercialuavnews.com/supplier-directory/airdata-uav-inc, [2] FAA Forecast; https://www.faa.gov/data_research/aviation/aerospace_forecasts/2025-forecast-highlights.pdf,
          [3,4] ArXiv; https://arxiv.org/abs/2404.14455; https://arxiv.org/abs/2006.13380 
