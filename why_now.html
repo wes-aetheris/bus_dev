@@ -10,10 +10,9 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #2D1B69 0%, #11084A 50%, #0A0527 100%);
+            font-family: 'Work Sans', sans-serif;
+            background: #000000;
             color: white;
             height: 100vh;
             display: flex;
@@ -21,52 +20,69 @@
             padding: 40px;
             overflow: hidden;
         }
-
         .header {
             text-align: center;
             margin-bottom: 50px;
         }
-
         .title {
             font-size: 3.5rem;
             font-weight: 700;
             color: white;
             margin-bottom: 15px;
         }
-
         .subtitle {
-            font-size: 1.3rem;
-            color: #C8B6DB;
+            font-size: 1.7rem;
+            color: white;
             font-weight: 300;
         }
-
         .reasons-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 25px;
             flex: 1;
-            align-items: center;
+            align-items: flex-start;
         }
-
+        .reason-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+        }
+        .reason-header {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 30px;
+            text-align: center;
+            width: 100%;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
         .reason-card {
-            background: white;
+            background: #1a1a2e;
             border-radius: 15px;
-            padding: 25px;
+            padding: 30px;
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
-            height: 100%;
+            width: 100%;
             display: flex;
             flex-direction: column;
-            color: #333;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            flex: 1;
         }
-
+        /* Varied heights for visual hierarchy */
+        .reason-card.small { height: 250px; }
+        .reason-card.medium { height: 280px; }
+        .reason-card.large { height: 310px; }
+        .reason-card.tech { height: 340px; } /* Breakthrough tech gets most prominence */
+        
         .reason-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(99, 102, 241, 0.25);
         }
-
         .reason-card::before {
             content: '';
             position: absolute;
@@ -74,75 +90,71 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: #6366F1;
+            background: linear-gradient(90deg, #6366F1, #8B5CF6);
         }
-
-        .reason-number {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            width: 35px;
-            height: 35px;
-            background: #6366F1;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1rem;
-            color: white;
-        }
-
-        .reason-title {
-            font-size: 1.1rem;
-            font-weight: 600;
+        .big-number {
+            font-size: 3.2rem;
+            color: #6366F1;
+            font-weight: 900;
+            line-height: 1;
             margin-bottom: 15px;
-            color: #333;
-            line-height: 1.3;
-            margin-top: 10px;
+            text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
         }
-
         .reason-content {
-            font-size: 0.85rem;
-            color: #666;
-            line-height: 1.5;
+            font-size: 1.3rem;
+            color: white;
+            line-height: 1.4;
             flex: 1;
+            margin-top: 20px;
         }
-
         .highlight {
             color: #6366F1;
             font-weight: 600;
         }
-
-        .logo-area {
+        .placeholder {
+            color: #10B981;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 15px;
+            font-style: italic;
+        }
+        /* Flow arrows between cards */
+        .flow-arrow {
             position: absolute;
-            bottom: 30px;
-            right: 40px;
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6366F1;
+            font-size: 2rem;
             opacity: 0.7;
+            z-index: 10;
         }
-
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: white;
-            letter-spacing: 2px;
+        .reason-column:last-child .flow-arrow {
+            display: none;
         }
-
+        /* Simple citations */
+        .citations {
+            position: absolute;
+            bottom: 20px;
+            left: 40px;
+            font-size: 0.9rem;
+            color: #666;
+        }
         @media (max-width: 1200px) {
             .reasons-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
             }
-            
             .title {
                 font-size: 2.8rem;
             }
-            
             .reason-card {
-                padding: 20px;
+                height: auto !important;
+            }
+            .flow-arrow {
+                display: none;
             }
         }
-
         @media (max-width: 768px) {
             .reasons-grid {
                 grid-template-columns: 1fr;
@@ -154,45 +166,62 @@
 <body>
     <div class="header">
         <h1 class="title">Why Now?</h1>
-        <p class="subtitle">The Perfect Storm for Sensor Integrity Solutions</p>
+        <p class="subtitle">Four Forces Converging to Create Market Opportunity</p>
     </div>
-
+    
     <div class="reasons-grid">
-        <div class="reason-card">
-            <div class="reason-number">1</div>
-            <h3 class="reason-title">Massive Unaddressed Market Gap</h3>
-            <p class="reason-content">
-                <span class="highlight">330,000+ monthly AirData subscribers</span> have zero access to sensor integrity analytics—a critical blind spot in today's drone operations that demands immediate attention.
-            </p>
+        <div class="reason-column">
+            <h2 class="reason-header">Massive Unmet Need</h2>
+            <div class="reason-card small">
+                <div class="flow-arrow">→</div>
+                <div class="big-number">330K+</div>
+                <p class="reason-content">
+                    Monthly AirData subscribers with <span class="highlight">zero sensor integrity analytics</span><sup>[1]</sup>
+                </p>
+                <div class="placeholder">[Insert TAM data]</div>
+            </div>
         </div>
-
-        <div class="reason-card">
-            <div class="reason-number">2</div>
-            <h3 class="reason-title">Explosive Market Growth</h3>
-            <p class="reason-content">
-                FAA predicts <span class="highlight">1.9M commercial drones</span> in US service by 2029—nearly <span class="highlight">2x current levels</span>. Each drone needs reliable sensor integrity monitoring.
-            </p>
+        
+        <div class="reason-column">
+            <h2 class="reason-header">Market Explosion</h2>
+            <div class="reason-card medium">
+                <div class="flow-arrow">→</div>
+                <div class="big-number">1.2M</div>
+                <p class="reason-content">
+                    US commercial drones by 2029<sup>[2]</sup><br>
+                    <span class="highlight">24% increase over 2024</span>
+                </p>
+                <div class="placeholder">$144M US TAM by 2029</div>
+            </div>
         </div>
-
-        <div class="reason-card">
-            <div class="reason-number">3</div>
-            <h3 class="reason-title">AI Breakthrough Moment</h3>
-            <p class="reason-content">
-                <span class="highlight">Sensor-aware AI models</span> and physics-informed ML have just achieved real-time capabilities for detecting sensor degradation—technology that was computationally impossible until now.
-            </p>
+        
+        <div class="reason-column">
+            <h2 class="reason-header">Technology Breakthrough</h2>
+            <div class="reason-card tech">
+                <div class="flow-arrow">→</div>
+                <div class="big-number">2020 → 2025</div>
+                <p class="reason-content">
+                    <span class="highlight">Physics-informed AI models commercially viable</span><sup>[3]</sup><br><br>
+                    Lab models now production-ready
+                </p>
+                <div class="placeholder">[Insert timing advantage]</div>
+            </div>
         </div>
-
-        <div class="reason-card">
-            <div class="reason-number">4</div>
-            <h3 class="reason-title">Regulatory Tailwinds</h3>
-            <p class="reason-content">
-                FAA ARC Report explicitly calls for <span class="highlight">"Security Assurance for Sensor Data Feeds"</span> standards. Be the first mover to set the bar and reap regulatory advantages.
-            </p>
+        
+        <div class="reason-column">
+            <h2 class="reason-header">Regulatory Catalyst</h2>
+            <div class="reason-card medium">
+                <div class="big-number">1st Mover</div>
+                <p class="reason-content">
+                    "FAA Rec #23→ Security Assurance for Sensor Data Feeds: ...for highly automated systems in which the integrity and availability of automated reasoning and control features are more critical."<sup>[4,5]</sup>
+                </p>
+                <div class="placeholder">[Insert compliance timeline]</div>
+            </div>
         </div>
     </div>
-
-    <div class="logo-area">
-        <div class="logo-text">AETHERIS NP</div>
+    
+    <div class="citations">
+        [1] AirData [2] FAA Forecast [3] ArXiv 2020 [4,5] FAA Reports
     </div>
 </body>
 </html>
