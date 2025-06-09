@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem Slide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: #000000;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .slide-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .slide-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .slide-subtitle {
+            font-size: 20px;
+            font-weight: 300;
+            color: white;
+            max-width: 600px;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .problem-card {
+            background: #1a1a2e;
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(99, 102, 241, 0.25);
+        }
+
+        .problem-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #6366F1, #8B5CF6);
+        }
+
+        .card-number {
+            font-size: 72px;
+            font-weight: 900;
+            color: #6366F1;
+            line-height: 1;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+        }
+
+        .card-text {
+            font-size: 18px;
+            font-weight: 400;
+            color: white;
+            line-height: 1.4;
+            max-width: 200px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .slide-title {
+                font-size: 36px;
+            }
+            
+            .slide-subtitle {
+                font-size: 18px;
+            }
+            
+            .cards-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .problem-card {
+                padding: 30px 20px;
+            }
+            
+            .card-number {
+                font-size: 60px;
+            }
+            
+            .card-text {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-header">
+        <h1 class="slide-title">The Problem</h1>
+        <p class="slide-subtitle">Current market challenges that demand immediate attention</p>
+    </div>
+
+    <div class="cards-container">
+        <div class="problem-card">
+            <div class="card-number">$1M+</div>
+            <p class="card-text">Net Amazon cost from sensor failure drone crash May 2025</p>
+        </div>
+
+        <div class="problem-card">
+            <div class="card-number">$2B/yr</div>
+            <p class="card-text">Estimated DoD spend on sensor indicated faults w/no cause found during maintenance</p>
+        </div>
+
+        <div class="problem-card">
+            <div class="card-number">$80M+</div>
+            <p class="card-text">Cost of USAF sensor failure Global Hawk crash 2017</p>
+        </div>
+
+        <div class="problem-card">
+            <div class="card-number">15%</div>
+            <p class="card-text">% of sensor system faults<sup>*</sup> cannot be attributed to a cause during maintenance in manned aircraft</p>
+        </div>
+
+        <div class="problem-card">
+            <div class="card-number">50%+</div>
+            <p class="card-text">% of time UAS in urban areas w/o GPS/flying on sensors</p>
+        </div>
+
+        <div class="problem-card">
+            <div class="card-number">$20B+</div>
+            <p class="card-text">Direct costs of 737 Max Angle-of-Attack Sensor Failures</p>
+        </div>
+    </div>
+</body>
+</html>
