@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics-Informed Sensor Intelligence in Automotive</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #e5e5e5;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 0;
+        }
+        
+        .document {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background: #ffffff;
+            color: #1a1a1a;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .document::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #333333 0%, #666666 50%, #333333 100%);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #ffffff;
+            padding: 10mm 20mm 8mm 20mm;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 1px,
+                rgba(255, 255, 255, 0.02) 1px,
+                rgba(255, 255, 255, 0.02) 2px
+            );
+        }
+        
+        .title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 2px;
+            letter-spacing: -0.5px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            font-weight: 400;
+            color: #b8b8b8;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 0;
+        }
+        
+        .content {
+            padding: 15mm 20mm 15mm 20mm;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .card {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .card-content {
+            font-size: 13px;
+            line-height: 1.3;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 10px 0;
+        }
+        
+        .stat-item {
+            background: #f0f0f0;
+            padding: 8px;
+            border-radius: 4px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 16px;
+            font-weight: 700;
+            color: #6366F1;
+            margin-bottom: 2px;
+        }
+        
+        .stat-label {
+            font-size: 11px;
+            color: #666;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(120deg, #f5f5f5 0%, #e8e8e8 100%);
+            padding: 12px;
+            border-left: 4px solid #6366F1;
+            margin: 10px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .highlight-box p {
+            margin: 0;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+        ul.compact-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+        
+        ul.compact-list li {
+            margin-bottom: 4px;
+            padding-left: 15px;
+            position: relative;
+            font-size: 12px;
+            line-height: 1.3;
+        }
+        
+        ul.compact-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #6366F1;
+        }
+        
+        .section {
+            margin-bottom: 15px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #e0e0e0;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: #4a4a4a;
+        }
+        
+        .subsection {
+            margin-bottom: 12px;
+        }
+        
+        .subsection-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2d2d2d;
+            margin-bottom: 6px;
+        }
+        
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        li {
+            margin-bottom: 6px;
+            padding-left: 15px;
+            position: relative;
+            font-size: 13px;
+            line-height: 1.3;
+        }
+        
+        li::before {
+            content: '▪';
+            position: absolute;
+            left: 0;
+            color: #666666;
+            font-weight: bold;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #f5f5f5 0%, #e8e8e8 100%);
+            padding: 10px;
+            border-left: 4px solid #4a4a4a;
+            margin: 10px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .highlight p {
+            margin: 0;
+            font-weight: 500;
+            color: #2d2d2d;
+        }
+        
+        .financial-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 12px 0;
+        }
+        
+        .financial-card {
+            background: #f9f9f9;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .financial-card h4 {
+            font-size: 13px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+        
+        .citation {
+            color: #666666;
+            font-size: 11px;
+            vertical-align: super;
+            text-decoration: none;
+        }
+        
+        .references {
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .reference-item {
+            font-size: 10px;
+            line-height: 1.3;
+            margin-bottom: 4px;
+            color: #4a4a4a;
+            padding-left: 0;
+        }
+        
+        .reference-item::before {
+            display: none;
+        }
+        
+        .reference-number {
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+        
+        .separator {
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, #e0e0e0 50%, transparent 100%);
+            margin: 12px 0;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .document {
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+                min-height: auto;
+            }
+        }
+        
+        @page {
+            size: A4;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="document">
+        <div class="header">
+            <h1 class="title">Physics-Informed Sensor Intelligence in Automotive</h1>
+            <p class="subtitle">Transforming Sensor Economics Through Intelligent Monitoring</p>
+        </div>
+        
+        <div class="content">
+            <div class="grid-container">
+                <div class="card">
+                    <h3 class="card-title">Current Challenges</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">$45.9B</div>
+                            <div class="stat-label">2021 Warranty Claims<sup>[5]</sup></div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">17%</div>
+                            <div class="stat-label">2022-2023 Increase in Warranty Claims</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">$200-500</div>
+                            <div class="stat-label">Per Sensor Cost</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">$1,540</div>
+                            <div class="stat-label">ADAS Replacement Cost</div>
+                        </div>
+                    </div>
+                    <ul class="compact-list">
+                        <li><strong>Over-specification:</strong> Sensors designed for worst-case scenarios with excessive safety margins</li>
+                        <li><strong>Scheduled replacement:</strong> Fixed maintenance intervals based on statistical models rather than actual sensor condition</li>
+                        <li><strong>Multiple redundancy:</strong> High-trust applications deploy <strong>2-3x sensors</strong> for the same function, including <strong>one-out-of-two (1oo2) sensor architectures</strong><a href="#ref1" class="citation">[1]</a></li>
+                        <li><strong>No Fault Found (NFF):</strong> Research shows <strong>NFF events are "one of the major threats to overall reliability and customer satisfaction" in automotive</strong><a href="#ref2" class="citation">[2]</a></li>
+                        <li>Industry spends <strong>$50B annually on warranty claims</strong><a href="#ref7" class="citation">[7]</a></li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">Solution Overview</h3>
+                    <div class="highlight-box">
+                        <p><strong>Core Value:</strong> Replace/augment static design-centric reliability with <strong>dynamic, intelligent monitoring</strong> that understands sensor physics, predicts failures, and optimizes performance in real-time.</p>
+                    </div>
+                    <ul class="compact-list">
+                        <li><strong>Predictive Failure Detection:</strong> Identify degradation patterns before failure occurs</li>
+                        <li><strong>Real-Time Calibration:</strong> Maintain optimal sensor accuracy throughout lifecycle</li>
+                        <li><strong>Security Monitoring:</strong> Detect and mitigate spurious signals and cyber threats</li>
+                        <li><strong>Diagnostic Intelligence:</strong> Pinpoint root causes of sensor anomalies</li>
+                        <li><strong>Condition-Based Maintenance:</strong> Replace only when physics models indicate actual need</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">Technical Advantages</h3>
+                    <ul class="compact-list">
+                        <li><strong>Physics-based models</strong> vs. simple statistical approaches</li>
+                        <li><strong>Real-time adaptation</strong> to changing conditions</li>
+                        <li><strong>Multi-sensor fusion</strong> for enhanced reliability</li>
+                        <li><strong>Edge computing</strong> for low-latency response</li>
+                        <li><strong>Quality optimization</strong> by identifying manufacturing defects early</li>
+                        <li><strong>Supply chain resilience</strong> through better failure prediction</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">Business Impact</h3>
+                    <ul class="compact-list">
+                        <li><strong>Vehicle Operations:</strong> Reduction in unnecessary sensor replacements and diagnostic time</li>
+                        <li><strong>Enhanced Safety:</strong> Early fault detection and improved autonomy reliability</li>
+                        <li><strong>Manufacturing:</strong> Inventory reduction through demand-based procurement</li>
+                        <li><strong>Supply Chain:</strong> Streamlined logistics with predictive replacement scheduling</li>
+                        <li><strong>Revenue Streams:</strong> Software-as-a-Service and performance-based contracts</li>
+                        <li><strong>Platform Ecosystem:</strong> Connecting vehicles, suppliers, and service providers</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="references">
+                <h3>References</h3>
+                <div class="reference-item"><span class="reference-number">[1]</span> PMC. (2022). "Degradation Detection in a Redundant Sensor Architecture." Retrieved from https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9228164/</div>
+                <div class="reference-item"><span class="reference-number">[2]</span> SpringerLink. (2017). "Warranty Impacts from No Fault Found (NFF) and an Impact Avoidance Benchmarking Tool." Retrieved from https://link.springer.com/chapter/10.1007/978-3-319-49938-3_15</div>
+                <div class="reference-item"><span class="reference-number">[3]</span> Northeast Auto Service. (2024). "Car Sensor Repair Costs." Retrieved from https://www.autorepairindy.com/blog/tag/car-sensor-repair-costs/</div>
+                <div class="reference-item"><span class="reference-number">[4]</span> Kelley Blue Book. (2024). "What's Making Car Repair So Expensive? Sensors." Retrieved from https://www.kbb.com/car-news/whats-making-car-repair-so-expensive-sensors/</div>
+                <div class="reference-item"><span class="reference-number">[5]</span> Warranty Week. (2024). "Worldwide Auto Warranty Report." Retrieved from https://www.warrantyweek.com/archive/ww20241003.html</div>
+                
+                <div class="reference-item"><span class="reference-number">[?]</span> Warranty Week. (2024). "Motor Finance Online. (2023). "Engine management faults head up list of used car warranty claims." Retrieved from https://www.motorfinanceonline.com/news/engine-management-faults-head-up-list-of-used-car-warranty-claims/Worldwide Auto Warranty Report." Retrieved from https://www.warrantyweek.com/archive/ww20241003.html</div>
+                Motor Finance Online. (2023). "Engine management faults head up list of used car warranty claims." Retrieved from https://www.motorfinanceonline.com/news/engine-management-faults-head-up-list-of-used-car-warranty-claims/
+                <div class="reference-item"><span class="reference-number">[5]</span> Warranty Week. (2024). "Worldwide Auto Warranty Report." Retrieved from https://www.warrantyweek.com/archive/ww20241003.html</div>
+                
+                <div class="reference-item"><span class="reference-number">[7]</span> Predii. (2021). "But Nothing Was Actually Broken: No Fault Found Warranty Wastage." Retrieved from https://www.predii.com/post/but-nothing-was-actually-broken-no-fault-found-warranty-wastage</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
