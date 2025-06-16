@@ -76,6 +76,7 @@
             padding: 15px;
             border-radius: 12px;
             text-align: center;
+            min-height: 100px;
             position: relative;
             width: 100%;
         }
@@ -98,43 +99,44 @@
             padding: 15px;
             border-radius: 12px;
             text-align: center;
+            height: 100px;
             position: relative;
             box-shadow: 0 8px 32px rgba(16, 185, 129, 0.3);
             width: 100%;
         }
 
         .box-title {
-            font-size: 18px;
+            font-size: 14px;
             font-weight: 600;
             margin-bottom: 8px;
         }
 
         .box-subtitle {
-            font-size: 14px;
+            font-size: 12px;
             opacity: 0.9;
         }
 
         .channel-title {
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 600;
             color: #1f2937;
             margin-bottom: 3px;
         }
 
         .channel-subtitle {
-            font-size: 10px;
+            font-size: 12px;
             color: #374151;
         }
 
         .pricing-title {
-            font-size: 11px;
+            font-size: 14px;
             font-weight: 600;
             color: #fff;
             margin-bottom: 3px;
         }
 
         .pricing-detail {
-            font-size: 9px;
+            font-size: 14px;
             color: #fff;
         }
 
@@ -349,18 +351,16 @@
             <div class="left-flow">
                 <div class="blue-row">
                     <div class="start-box">
-                        <div class="box-title">🔧 Build Product</div>
-                        <div class="box-title">& App Layer</div>
-                        <div class="box-subtitle">Core platform development</div>
+                        <div class="box-title">Build Core Models <br>& App Layer</div>
+                        <div class="box-subtitle">Core development</div>
                     </div>
                     <div class="arrow right-arrow">→</div>
                     <div class="identify-box">
-                        <div class="box-title">🎯 Identify</div>
-                        <div class="box-title">Distribution Channels</div>
+                        <div class="box-title">Identify Distribution<br>Channels</div>
                         <div class="box-subtitle">Multi-channel approach</div>
                     </div>
+                    <div class="arrow right-arrow">→</div>
                 </div>
-                <div class="arrow right-arrow">→</div>
             </div>
             <div class="main-flow">
                 <div class="column">
@@ -378,16 +378,16 @@
                         <div class="channel-subtitle">AirData, etc.</div>
                     </div>
                     <div class="channel-box">
-                        <div class="phase-badge phase-2">P2</div>
-                        <div class="channel-icon">🏪</div>
-                        <div class="channel-title">Marketplace</div>
-                        <div class="channel-subtitle">Nvidia Jetson Store</div>
-                    </div>
-                    <div class="channel-box">
                         <div class="phase-badge">P1</div>
                         <div class="channel-icon">🔧</div>
                         <div class="channel-title">Self-Service</div>
                         <div class="channel-subtitle">Developers/SMB</div>
+                    </div>
+                    <div class="channel-box">
+                        <div class="phase-badge phase-2">P2</div>
+                        <div class="channel-icon">🏪</div>
+                        <div class="channel-title">Marketplace</div>
+                        <div class="channel-subtitle">Nvidia Jetson Store</div>
                     </div>
                     <div class="channel-box">
                         <div class="phase-badge phase-2">P2</div>
@@ -410,12 +410,12 @@
                         <div class="pricing-detail">70/30 split</div>
                     </div>
                     <div class="pricing-box">
-                        <div class="pricing-title">Platform Commission</div>
-                        <div class="pricing-detail">20-30% fee</div>
-                    </div>
-                    <div class="pricing-box">
                         <div class="pricing-title">Usage-Based</div>
                         <div class="pricing-detail">Freemium model</div>
+                    </div>
+                    <div class="pricing-box">
+                        <div class="pricing-title">Platform Commission</div>
+                        <div class="pricing-detail">20-30% fee</div>
                     </div>
                     <div class="pricing-box">
                         <div class="pricing-title">OEM Licensing</div>
@@ -429,31 +429,26 @@
                     <div class="column-title">Revenue Streams</div>
                     <div class="revenue-box">
                         <div class="market-size">$50M</div>
-                        <div class="revenue-icon">💰</div>
                         <div class="revenue-title">Revenue: Direct</div>
                         <div class="revenue-target">Year 3: $8M</div>
                     </div>
                     <div class="revenue-box">
                         <div class="market-size">$30M</div>
-                        <div class="revenue-icon">💰</div>
                         <div class="revenue-title">Revenue: Partner</div>
                         <div class="revenue-target">Year 3: $4M</div>
                     </div>
                     <div class="revenue-box">
-                        <div class="market-size">$20M</div>
-                        <div class="revenue-icon">💰</div>
-                        <div class="revenue-title">Revenue: Platform</div>
-                        <div class="revenue-target">Year 3: $2M</div>
-                    </div>
-                    <div class="revenue-box">
                         <div class="market-size">$40M</div>
-                        <div class="revenue-icon">💰</div>
                         <div class="revenue-title">Revenue: Self-Service</div>
                         <div class="revenue-target">Year 3: $3M</div>
                     </div>
                     <div class="revenue-box">
+                        <div class="market-size">$20M</div>
+                        <div class="revenue-title">Revenue: Platform</div>
+                        <div class="revenue-target">Year 3: $2M</div>
+                    </div>
+                    <div class="revenue-box">
                         <div class="market-size">$60M</div>
-                        <div class="revenue-icon">💰</div>
                         <div class="revenue-title">Revenue: OEM</div>
                         <div class="revenue-target">Year 3: $5M</div>
                     </div>
@@ -501,9 +496,9 @@
             <div class="allocation-item">
                 <div class="allocation-title">Partnerships</div>
                 <div class="allocation-bar">
-                    <div class="allocation-fill" style="width: 20%;"></div>
+                    <div class="allocation-fill" style="width: 50%;"></div>
                 </div>
-                <div class="allocation-percentage">20% Resources</div>
+                <div class="allocation-percentage">50% Resources</div>
             </div>
             <div class="allocation-item">
                 <div class="allocation-title">OEM/Platform</div>
