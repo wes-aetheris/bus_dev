@@ -17,7 +17,7 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
             color: #e5e5e5;
-            line-height: 1.6;
+            line-height: 1.75;
             min-height: 100vh;
             padding: 0;
         }
@@ -46,7 +46,7 @@
         .header {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             color: #ffffff;
-            padding: 10mm 20mm 8mm 20mm;
+            padding: 3mm 20mm 7mm 20mm;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -68,8 +68,17 @@
             );
         }
         
+        .logo {
+            position: absolute;
+            top: 3mm;
+            right: 7mm;
+            bottom:5mm;
+            height: 100px;
+            width: auto;
+        }
+        
         .title {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 700;
             margin-bottom: 2px;
             letter-spacing: -0.5px;
@@ -87,14 +96,14 @@
         }
         
         .content {
-            padding: 15mm 20mm 15mm 20mm;
+            padding: 5mm 10mm 5mm 10mm;
         }
         
         .grid-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-bottom: 15px;
+            gap: 5px;
+            margin-bottom: 5px;
         }
         
         .card {
@@ -105,24 +114,24 @@
         }
         
         .card-title {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
             color: #1a1a1a;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             padding-bottom: 4px;
             border-bottom: 2px solid #e0e0e0;
         }
         
         .card-content {
-            font-size: 13px;
-            line-height: 1.3;
+            font-size: 11px;
+            line-height: 1.0;
         }
         
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 10px;
-            margin: 10px 0;
+            margin: 5px 0;
         }
         
         .stat-item {
@@ -133,7 +142,7 @@
         }
         
         .stat-value {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 700;
             color: #6366F1;
             margin-bottom: 2px;
@@ -154,7 +163,7 @@
         
         .highlight-box p {
             margin: 0;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 500;
         }
         
@@ -168,7 +177,7 @@
             margin-bottom: 4px;
             padding-left: 15px;
             position: relative;
-            font-size: 12px;
+            font-size: 11px;
             line-height: 1.3;
         }
         
@@ -184,7 +193,7 @@
         }
         
         .section-title {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
             color: #1a1a1a;
             margin-bottom: 10px;
@@ -208,7 +217,7 @@
         }
         
         .subsection-title {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             color: #2d2d2d;
             margin-bottom: 6px;
@@ -284,7 +293,7 @@
         }
         
         .reference-item {
-            font-size: 10px;
+            font-size: 8px;
             line-height: 1.3;
             margin-bottom: 4px;
             color: #4a4a4a;
@@ -318,17 +327,51 @@
                 width: 100%;
                 min-height: auto;
             }
+            .header {
+                background: #000 !important;
+                color: #fff !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
         }
         
         @page {
             size: A4;
             margin: 0;
         }
+        
+        .contact-card {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 30px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .contact-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+
+        .contact-title {
+            font-size: 12px;
+            color: #4a4a4a;
+            margin-bottom: 4px;
+        }
+
+        .contact-info {
+            font-size: 11px;
+            color: #666666;
+            margin-bottom: 2px;
+        }
     </style>
 </head>
 <body>
     <div class="document">
         <div class="header">
+            <img src="Aetheris Logo.png" alt="Aethetis Logo" class="logo">
             <h1 class="title">Physics-Informed Sensor Intelligence in Automotive</h1>
             <p class="subtitle">Transforming Sensor Economics Through Intelligent Monitoring</p>
         </div>
@@ -339,52 +382,58 @@
                     <h3 class="card-title">Current Challenges</h3>
                     <div class="stats-grid">
                         <div class="stat-item">
-                            <div class="stat-value">$45.9B</div>
-                            <div class="stat-label">2021 Warranty Claims<sup>[5]</sup></div>
+                            <div class="stat-value">$50B+</div>
+                            <div class="stat-label">Automotive Warranty Claims Annually<sup>[6][7][8]</sup></div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-value">17%</div>
-                            <div class="stat-label">2022-2023 Increase in Warranty Claims</div>
+                            <div class="stat-value">#1 & #3</div>
+                            <div class="stat-label">Most Common Warranty Claims Sensor-based<sup>[7]</sup></div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-value">$200-500</div>
-                            <div class="stat-label">Per Sensor Cost</div>
+                            <div class="stat-label">Per Sensor Cost<sup>[3]</sup></div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-value">$1,540</div>
-                            <div class="stat-label">ADAS Replacement Cost</div>
+                            <div class="stat-value">$1,067</div>
+                            <div class="stat-label">Avg. Side Mirror Replacement Cost Due to ADAS Sensors<sup>[4]</sup></div>
                         </div>
                     </div>
                     <ul class="compact-list">
-                        <li><strong>Over-specification:</strong> Sensors designed for worst-case scenarios with excessive safety margins</li>
-                        <li><strong>Scheduled replacement:</strong> Fixed maintenance intervals based on statistical models rather than actual sensor condition</li>
-                        <li><strong>Multiple redundancy:</strong> High-trust applications deploy <strong>2-3x sensors</strong> for the same function, including <strong>one-out-of-two (1oo2) sensor architectures</strong><a href="#ref1" class="citation">[1]</a></li>
-                        <li><strong>No Fault Found (NFF):</strong> Research shows <strong>NFF events are "one of the major threats to overall reliability and customer satisfaction" in automotive</strong><a href="#ref2" class="citation">[2]</a></li>
-                        <li>Industry spends <strong>$50B annually on warranty claims</strong><a href="#ref7" class="citation">[7]</a></li>
+                        <li><strong>Design-centric Over-engineering:</strong> Sensors designed for worst-case scenarios with excessive safety margins drive unnecessary costs</li>
+                        <li><strong>Schedule-driven Replacement:</strong> Fixed maintenance intervals based on statistical failure models rather than actual sensor condition create premature replacement waste</li>
+                        <li><strong>Multiple redundancy:</strong> Many high-trust applications deploy <strong>2x sensors</strong> for the same function, including <strong>one-out-of-two (1oo2) sensor architectures</strong><a href="#ref1" class="citation">[1]</a></li>
+                        <li><strong>No Fault Found (NFF):</strong> Research shows <strong>NFF events are "one of the major threats to overall reliability and customer satisfaction" in automotive</strong><a href="#ref2" class="citation">[2]</a> and are often sensor-caused</li>
+                        <li>Industry spends <strong>$50B annually on warranty claims which are largely composed of sensor failures and replacements</strong><a href="#ref7" class="citation">[6][7]</a></li>
                     </ul>
                 </div>
 
                 <div class="card">
                     <h3 class="card-title">Solution Overview</h3>
                     <div class="highlight-box">
-                        <p><strong>Core Value:</strong> Replace/augment static design-centric reliability with <strong>dynamic, intelligent monitoring</strong> that understands sensor physics, predicts failures, and optimizes performance in real-time.</p>
+                        <p><strong>Solution Framework Core Value Proposition:</strong> Transform static design-centric reliability into dynamic, physics-informed monitoring that predicts failures and optimizes performance in real-time.</p>
                     </div>
                     <ul class="compact-list">
-                        <li><strong>Predictive Failure Detection:</strong> Identify degradation patterns before failure occurs</li>
-                        <li><strong>Real-Time Calibration:</strong> Maintain optimal sensor accuracy throughout lifecycle</li>
-                        <li><strong>Security Monitoring:</strong> Detect and mitigate spurious signals and cyber threats</li>
-                        <li><strong>Diagnostic Intelligence:</strong> Pinpoint root causes of sensor anomalies</li>
-                        <li><strong>Condition-Based Maintenance:</strong> Replace only when physics models indicate actual need</li>
+                        <li><strong>Predictive Failure Analytics:</strong> Identify degradation patterns before failure occurs</li>
+                        <li><strong>Continuous Calibration:</strong> Maintain optimal sensor accuracy throughout lifecycle</li>
+                        <li><strong>Cybersecurity Monitoring:</strong> Detect and mitigate spurious signals and cyber threats</li>
+                        <li><strong>Root Cause Intelligence:</strong> Pinpoint precise failure mechanisms and sensor anomalies</li>
+                        <li><strong>Condition-Based Maintenance:</strong> Replace only when physics models indicate actual replacement is needed</li>
                     </ul>
+                    <div class="contact-card" style="margin-top:18px;">
+                        <div class="contact-name">Wes Farriss</div>
+                        <div class="contact-title">CEO/Founder, Aetheris NP</div>
+                        <div class="contact-info">wes@aetherisnp.com</div>
+                        <div class="contact-info">330.608.3014</div>
+                    </div>
                 </div>
 
                 <div class="card">
                     <h3 class="card-title">Technical Advantages</h3>
                     <ul class="compact-list">
-                        <li><strong>Physics-based models</strong> vs. simple statistical approaches</li>
-                        <li><strong>Real-time adaptation</strong> to changing conditions</li>
-                        <li><strong>Multi-sensor fusion</strong> for enhanced reliability</li>
-                        <li><strong>Edge computing</strong> for low-latency response</li>
+                        <li><strong>Physics-based models</strong> vs. traditional statistical approaches</li>
+                        <li><strong>Real-time environmental adaptation</strong> and dynamic response</li>
+                        <li><strong>Physics-based cross-sensor monitoring</strong> for enhanced reliability</li>
+                        <li><strong>Edge compute optimized</strong> for low-latency tasks </li>
                         <li><strong>Quality optimization</strong> by identifying manufacturing defects early</li>
                         <li><strong>Supply chain resilience</strong> through better failure prediction</li>
                     </ul>
@@ -393,11 +442,11 @@
                 <div class="card">
                     <h3 class="card-title">Business Impact</h3>
                     <ul class="compact-list">
-                        <li><strong>Vehicle Operations:</strong> Reduction in unnecessary sensor replacements and diagnostic time</li>
+                        <li><strong>Vehicle Operations:</strong> Reduction in unnecessary sensor replacements, emergency maintenance-related costs, and diagnostic time</li>
                         <li><strong>Enhanced Safety:</strong> Early fault detection and improved autonomy reliability</li>
                         <li><strong>Manufacturing:</strong> Inventory reduction through demand-based procurement</li>
                         <li><strong>Supply Chain:</strong> Streamlined logistics with predictive replacement scheduling</li>
-                        <li><strong>Revenue Streams:</strong> Software-as-a-Service and performance-based contracts</li>
+                        <li><strong>Pass Through Revenue Streams:</strong> Software-as-a-Service and performance-based contracts</li>
                         <li><strong>Platform Ecosystem:</strong> Connecting vehicles, suppliers, and service providers</li>
                     </ul>
                 </div>
@@ -405,17 +454,16 @@
 
             <div class="references">
                 <h3>References</h3>
-                <div class="reference-item"><span class="reference-number">[1]</span> PMC. (2022). "Degradation Detection in a Redundant Sensor Architecture." Retrieved from https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9228164/</div>
-                <div class="reference-item"><span class="reference-number">[2]</span> SpringerLink. (2017). "Warranty Impacts from No Fault Found (NFF) and an Impact Avoidance Benchmarking Tool." Retrieved from https://link.springer.com/chapter/10.1007/978-3-319-49938-3_15</div>
-                <div class="reference-item"><span class="reference-number">[3]</span> Northeast Auto Service. (2024). "Car Sensor Repair Costs." Retrieved from https://www.autorepairindy.com/blog/tag/car-sensor-repair-costs/</div>
-                <div class="reference-item"><span class="reference-number">[4]</span> Kelley Blue Book. (2024). "What's Making Car Repair So Expensive? Sensors." Retrieved from https://www.kbb.com/car-news/whats-making-car-repair-so-expensive-sensors/</div>
-                <div class="reference-item"><span class="reference-number">[5]</span> Warranty Week. (2024). "Worldwide Auto Warranty Report." Retrieved from https://www.warrantyweek.com/archive/ww20241003.html</div>
-                
-                <div class="reference-item"><span class="reference-number">[?]</span> Warranty Week. (2024). "Motor Finance Online. (2023). "Engine management faults head up list of used car warranty claims." Retrieved from https://www.motorfinanceonline.com/news/engine-management-faults-head-up-list-of-used-car-warranty-claims/Worldwide Auto Warranty Report." Retrieved from https://www.warrantyweek.com/archive/ww20241003.html</div>
-                Motor Finance Online. (2023). "Engine management faults head up list of used car warranty claims." Retrieved from https://www.motorfinanceonline.com/news/engine-management-faults-head-up-list-of-used-car-warranty-claims/
-                <div class="reference-item"><span class="reference-number">[5]</span> Warranty Week. (2024). "Worldwide Auto Warranty Report." Retrieved from https://www.warrantyweek.com/archive/ww20241003.html</div>
-                
-                <div class="reference-item"><span class="reference-number">[7]</span> Predii. (2021). "But Nothing Was Actually Broken: No Fault Found Warranty Wastage." Retrieved from https://www.predii.com/post/but-nothing-was-actually-broken-no-fault-found-warranty-wastage</div>
+                <div class="reference-item">
+                    <span class="reference-number">[1]</span> PMC. (2022). "Degradation Detection in a Redundant Sensor Architecture." Retrieved from https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9228164/,
+                    <span class="reference-number">[2]</span> SpringerLink. (2017). "Warranty Impacts from No Fault Found (NFF) and an Impact Avoidance Benchmarking Tool." Retrieved from https://link.springer.com/chapter/10.1007/978-3-319-49938-3_15,
+                    <span class="reference-number">[3]</span> Northeast Auto Service. (2024). "Car Sensor Repair Costs." Retrieved from https://www.autorepairindy.com/blog/tag/car-sensor-repair-costs/,
+                    <span class="reference-number">[4]</span> Kelley Blue Book. (2024). "What's Making Car Repair So Expensive? Sensors." Retrieved from https://www.kbb.com/car-news/whats-making-car-repair-so-expensive-sensors/,
+                    <span class="reference-number">[5]</span> Warranty Week. (2024). "Worldwide Auto Warranty Report." Retrieved from https://www.warrantyweek.com/archive/ww20241003.html,
+                    <span class="reference-number">[6]</span> Motor Finance Online. (2023). "Engine management faults head up list of used car warranty claims." Retrieved from https://www.motorfinanceonline.com/news/engine-management-faults-head-up-list-of-used-car-warranty-claims/,
+                    <span class="reference-number">[7]</span> Consumer Affairs. (2024). "Auto Warranty Statistics 2024." Retrieved from https://www.consumeraffairs.com/automotive/auto-warranty-statistics.html,
+                    <span class="reference-number">[8]</span> Predii. (2021). "But Nothing Was Actually Broken: No Fault Found Warranty Wastage." Retrieved from https://www.predii.com/post/but-nothing-was-actually-broken-no-fault-found-warranty-wastage
+                </div>
             </div>
         </div>
     </div>
