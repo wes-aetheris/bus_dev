@@ -14,7 +14,7 @@
 
         body {
             font-family: 'Work Sans', sans-serif;
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            background: #000000;
             color: white;
             padding: 40px;
             min-height: 100vh;
@@ -55,28 +55,30 @@
 
         .start-box {
             background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            padding: 30px;
+            padding: 15px;
             border-radius: 16px;
             text-align: center;
+            height: 80px;
             min-width: 200px;
             box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
         }
 
         .identify-box {
             background: linear-gradient(135deg, #1e40af, #1e3a8a);
-            padding: 30px;
+            padding: 15px;
             border-radius: 16px;
             text-align: center;
+            height: 80px;
             min-width: 200px;
             box-shadow: 0 8px 32px rgba(30, 64, 175, 0.3);
         }
 
         .channel-box {
             background: linear-gradient(135deg, #fbbf24, #f59e0b);
-            padding: 15px;
+            padding: 5px;
             border-radius: 12px;
             text-align: center;
-            min-height: 100px;
+            height: 80px;
             position: relative;
             width: 100%;
         }
@@ -88,7 +90,7 @@
             border-radius: 10px;
             text-align: center;
             width: 100%;
-            min-height: 100px;
+            height: 80px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -96,12 +98,12 @@
 
         .revenue-box {
             background: linear-gradient(135deg, #10b981, #059669);
-            padding: 15px;
+            padding: 5px;
             border-radius: 12px;
             text-align: center;
-            height: 100px;
+            height: 80px;
             position: relative;
-            box-shadow: 0 8px 32px rgba(16, 185, 129, 0.3);
+            box-shadow: 20 8px 32px rgba(16, 185, 129, 0.3);
             width: 100%;
         }
 
@@ -141,32 +143,37 @@
         }
 
         .revenue-title {
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 600;
             margin-bottom: 3px;
         }
 
         .revenue-target {
-            font-size: 10px;
-            opacity: 0.9;
+            font-size: 14px;
+            opacity: 1.0;
             margin-bottom: 3px;
         }
 
-        .arrow {
-            font-size: 24px;
+        .arrow, .right-arrow, .left-arrow, .flow-arrow {
+            display: flex;
+            align-items: center;
+            height: 80px;
+            font-size: 32px;
             color: #60a5fa;
+            font-weight: 900;
+            text-shadow: 0 0 2px #60a5fa, 0 0 2px #60a5fa;
         }
 
         .channels-section {
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .main-flow {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 40px;
-            margin: 40px 0;
+            gap: 10px;
+            margin: 20px 0;
         }
 
         .column {
@@ -193,7 +200,7 @@
 
         .channel-icon {
             font-size: 20px;
-            margin-bottom: 6px;
+            margin-bottom: 3px;
         }
 
         .phase-badge {
@@ -223,6 +230,9 @@
             border-radius: 12px;
             padding: 20px;
             margin-top: 30px;
+            width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .partnerships-title {
@@ -264,6 +274,9 @@
             border-radius: 12px;
             padding: 20px;
             margin-top: 20px;
+            width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .allocation-item {
@@ -314,15 +327,16 @@
         }
 
         .blue-row {
+            margin-top: 60px;
             display: flex;
-            flex-direction: row;
             align-items: center;
-            gap: 18px;
         }
 
         .left-arrow {
             font-size: 32px;
             color: #60a5fa;
+            align-self: center;
+            margin-top: 0;
             margin: 0 0;
         }
 
@@ -330,6 +344,7 @@
             font-size: 32px;
             color: #60a5fa;
             margin-top: 18px;
+            align-self: center;
         }
 
         @media (max-width: 1200px) {
@@ -337,6 +352,61 @@
                 flex-direction: column;
                 gap: 30px;
             }
+        }
+
+        .legend-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 24px;
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            border-radius: 10px;
+            padding: 14px 24px;
+            margin: 20px auto 24px auto;
+            max-width: 800px;
+        }
+        .legend-badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #fff;
+            width: 80px;
+            margin-right: 8px;
+        }
+        .legend-phase1 {
+            background: #ef4444;
+        }
+        .legend-phase2 {
+            background: #f97316;
+        }
+        .legend-phase3 {
+            background: #0ea5e9;
+        }
+        .legend-label {
+            font-size: 13px;
+            color: #cbd5e1;
+        }
+
+        .market-size {
+            display: inline-block;
+            background: #3b82f6;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 2px 10px;
+            border-radius: 8px;
+            margin-bottom: 4px;
+        }
+
+        .phase-arr {
+            margin-top: 4px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            align-items: flex-start;
         }
     </style>
 </head>
@@ -348,52 +418,54 @@
         </div>
 
         <div class="main-align-container">
-            <div class="left-flow">
-                <div class="blue-row">
+            <div class="main-flow">
+                <div class="column">
                     <div class="start-box">
                         <div class="box-title">Build Core Models <br>& App Layer</div>
                         <div class="box-subtitle">Core development</div>
                     </div>
-                    <div class="arrow right-arrow">→</div>
+                </div>
+                    <div class="flow-arrow">→</div>
+                <div class="column">
                     <div class="identify-box">
                         <div class="box-title">Identify Distribution<br>Channels</div>
                         <div class="box-subtitle">Multi-channel approach</div>
                     </div>
-                    <div class="arrow right-arrow">→</div>
                 </div>
-            </div>
-            <div class="main-flow">
+                    <div class="flow-arrow">→</div>
+                </div>
+            
                 <div class="column">
                     <div class="column-title">Distribution Channels</div>
                     <div class="channel-box">
-                        <div class="phase-badge">P1</div>
+                        <div class="phase-badge">Phase I Kick-Off</div>
                         <div class="channel-icon">👥</div>
                         <div class="channel-title">Direct Sales</div>
                         <div class="channel-subtitle">Enterprise Focus</div>
                     </div>
                     <div class="channel-box">
-                        <div class="phase-badge">P1</div>
+                        <div class="phase-badge">Phase I Kick-Off</div>
                         <div class="channel-icon">🤝</div>
                         <div class="channel-title">Partner/Reseller</div>
                         <div class="channel-subtitle">AirData, etc.</div>
                     </div>
                     <div class="channel-box">
-                        <div class="phase-badge">P1</div>
+                        <div class="phase-badge phase-2">Phase II Kick-Off</div>
+                        <div class="channel-icon">🏭</div>
+                        <div class="channel-title">OEM Sales</div>
+                        <div class="channel-subtitle">Hardware Partners</div>
+                    </div>
+                    <div class="channel-box">
+                        <div class="phase-badge legend-phase3">Phase III Kick-Off</div>
                         <div class="channel-icon">🔧</div>
                         <div class="channel-title">Self-Service</div>
                         <div class="channel-subtitle">Developers/SMB</div>
                     </div>
                     <div class="channel-box">
-                        <div class="phase-badge phase-2">P2</div>
+                        <div class="phase-badge legend-phase3">Phase III Kick-Off</div>
                         <div class="channel-icon">🏪</div>
                         <div class="channel-title">Marketplace</div>
                         <div class="channel-subtitle">Nvidia Jetson Store</div>
-                    </div>
-                    <div class="channel-box">
-                        <div class="phase-badge phase-2">P2</div>
-                        <div class="channel-icon">🏭</div>
-                        <div class="channel-title">OEM Sales</div>
-                        <div class="channel-subtitle">Hardware Partners</div>
                     </div>
                 </div>
 
@@ -410,16 +482,16 @@
                         <div class="pricing-detail">70/30 split</div>
                     </div>
                     <div class="pricing-box">
+                        <div class="pricing-title">OEM Licensing</div>
+                        <div class="pricing-detail">Per-unit fees</div>
+                    </div>
+                    <div class="pricing-box">
                         <div class="pricing-title">Usage-Based</div>
                         <div class="pricing-detail">Freemium model</div>
                     </div>
                     <div class="pricing-box">
                         <div class="pricing-title">Platform Commission</div>
                         <div class="pricing-detail">20-30% fee</div>
-                    </div>
-                    <div class="pricing-box">
-                        <div class="pricing-title">OEM Licensing</div>
-                        <div class="pricing-detail">Per-unit fees</div>
                     </div>
                 </div>
 
@@ -428,14 +500,19 @@
                 <div class="column">
                     <div class="column-title">Revenue Streams</div>
                     <div class="revenue-box">
-                        <div class="market-size">$50M</div>
-                        <div class="revenue-title">Revenue: Direct</div>
-                        <div class="revenue-target">Year 3: $8M</div>
+                        <div class="market-size">$250k ARR</div>
+                        <div class="revenue-title">Direct Sales</div>
+                        <div class="revenue-target">MVP+12 mo. ARR</div>
                     </div>
                     <div class="revenue-box">
-                        <div class="market-size">$30M</div>
-                        <div class="revenue-title">Revenue: Partner</div>
-                        <div class="revenue-target">Year 3: $4M</div>
+                        <div class="market-size">$60M</div>
+                        <div class="revenue-title">Partner Revenue</div>
+                        <div class="revenue-target">MVP+12 mo. ARR: $500k</div>
+                    </div>
+                    <div class="revenue-box">
+                        <div class="market-size">$60M</div>
+                        <div class="revenue-title">Revenue: OEM</div>
+                        <div class="revenue-target">Year 3: $5M</div>
                     </div>
                     <div class="revenue-box">
                         <div class="market-size">$40M</div>
@@ -446,11 +523,6 @@
                         <div class="market-size">$20M</div>
                         <div class="revenue-title">Revenue: Platform</div>
                         <div class="revenue-target">Year 3: $2M</div>
-                    </div>
-                    <div class="revenue-box">
-                        <div class="market-size">$60M</div>
-                        <div class="revenue-title">Revenue: OEM</div>
-                        <div class="revenue-target">Year 3: $5M</div>
                     </div>
                 </div>
             </div>
@@ -507,6 +579,15 @@
                 </div>
                 <div class="allocation-percentage">10% Resources</div>
             </div>
+        </div>
+
+        <div class="legend-container">
+            <span class="legend-badge legend-phase1">Phase I</span>
+            <span class="legend-label">Phase I: MVP+12 months</span>
+            <span class="legend-badge legend-phase2">Phase II</span>
+            <span class="legend-label">Phase II: MVP+24 months</span>
+            <span class="legend-badge legend-phase3">Phase III</span>
+            <span class="legend-label">Phase III: MVP+36 months</span>
         </div>
     </div>
 </body>
