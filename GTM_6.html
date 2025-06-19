@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go-to-Market Strategy</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #000000;
+            color: white;
+            margin: 0;
+            padding: 40px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+        
+        .left-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .phase-card {
+            background: rgba(40, 40, 40, 0.8);
+            border-radius: 16px;
+            padding: 24px;
+            border-left: 4px solid transparent;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+        
+        .phase-card.phase-1 {
+            border-left-color: #ff6b35;
+        }
+        
+        .phase-card.phase-2 {
+            border-left-color: #4a9eff;
+        }
+        
+        .phase-card.phase-3 {
+            border-left-color: #9d4edd;
+        }
+        
+        .phase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .phase-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: white;
+        }
+        
+        .phase-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .phase-badge.phase-1 {
+            background: rgba(255, 107, 53, 0.2);
+            color: #ff6b35;
+            border: 1px solid #ff6b35;
+        }
+        
+        .phase-badge.phase-2 {
+            background: rgba(74, 158, 255, 0.2);
+            color: #4a9eff;
+            border: 1px solid #4a9eff;
+        }
+        
+        .phase-badge.phase-3 {
+            background: rgba(157, 78, 221, 0.2);
+            color: #9d4edd;
+            border: 1px solid #9d4edd;
+        }
+        
+        .metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .metric {
+            font-size: 14px;
+            color: #b0b0b0;
+        }
+        
+        .metric strong {
+            color: white;
+            font-weight: 600;
+        }
+        
+        .arr-section {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .arr-label {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .arr-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: #00ff88;
+        }
+        
+        .arr-growth {
+            font-size: 11px;
+            color: #00ff88;
+            margin-left: 8px;
+        }
+        
+        .right-panel {
+            background: rgba(40, 40, 40, 0.8);
+            border-radius: 16px;
+            padding: 16px 32px 32px;
+            backdrop-filter: blur(10px);
+            height: fit-content;
+        }
+        
+        .chart-panel {
+            background: rgba(40, 40, 40, 0.8);
+            border-radius: 16px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            height: fit-content;
+        }
+        
+        .market-title {
+            font-size: 32px;
+            font-weight: 700;
+            background: #00d4ff;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0 0 10px 0;
+        }
+        
+        .market-metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .market-metric:last-child {
+            border-bottom: none;
+        }
+        
+        .metric-label {
+            font-size: 16px;
+            color: #e0e0e0;
+        }
+        
+        .metric-value {
+            font-size: 18px;
+            font-weight: 600;
+            color: #00ff88;
+        }
+        
+        .arr-progression {
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .progression-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .progression-timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .timeline-phase {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .timeline-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .timeline-badge.phase-1 {
+            background: rgba(255, 107, 53, 0.2);
+            color: #ff6b35;
+        }
+        
+        .timeline-badge.phase-2 {
+            background: rgba(74, 158, 255, 0.2);
+            color: #4a9eff;
+        }
+        
+        .timeline-badge.phase-3 {
+            background: rgba(156, 39, 176, 0.15);
+            color: #9c27b0;
+        }
+        
+        .timeline-arr {
+            font-size: 16px;
+            font-weight: 700;
+            color: #00ff88;
+        }
+        
+        .timeline-channels {
+            font-size: 10px;
+            color: #888;
+            margin-top: 4px;
+        }
+        
+        .arr-chart {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            margin: 80px 0 30px 0;
+            height: 400px;
+            padding: 0 10px;
+        }
+        
+        .chart-phase {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            max-width: 80px;
+        }
+        
+        .phase-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .arr-bar {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            width: 50px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .bar-segment {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            margin-bottom: 2px;
+            position: relative;
+        }
+        
+        .bar-segment.direct-partner {
+            background: linear-gradient(135deg, #00ff88, #00d4aa);
+        }
+        
+        .bar-segment.oem {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+        }
+        
+        .bar-segment.self-service {
+            background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+        }
+        
+        .segment-label {
+            font-size: 10px;
+            font-weight: 600;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .phase-desc {
+            font-size: 11px;
+            color: #888;
+            text-align: center;
+            margin-top: 8px;
+        }
+        
+        .chart-legend {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: #ccc;
+        }
+        
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+        }
+        
+        .legend-color.direct-partner {
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+        }
+        
+        .legend-color.oem {
+            background: linear-gradient(135deg, #4a9eff, #6bb6ff);
+        }
+        
+        .total-arr {
+            font-size: 11px;
+            font-weight: 600;
+            color: #00ff88;
+            margin-top: 6px;
+            text-align: center;
+        }
+        
+        .footnote {
+            font-size: 11px;
+            color: #666;
+            margin-top: 16px;
+            font-style: italic;
+        }
+
+        .footnotes {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        .footnotes p {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <div class="phase-card phase-1">
+                <div class="phase-header">
+                    <span class="phase-title">Direct + Partner Sales</span>
+                    <span class="phase-badge phase-1">Phase I Launch</span>
+                </div>
+                <div class="metrics">
+                    <div class="metric"><strong>$15-35</strong>/drone/month</div>
+                    <div class="metric"><strong>65%</strong> final channel mix</div>
+                    <div class="metric"><strong>60-75%</strong> net margin</div>
+                    <div class="metric"><strong>3-18mo</strong> sales cycle</div>
+                </div>
+                <div class="arr-section">
+                    <span class="arr-label">Phase I ARR (MVP+ 24 months)</span>
+                    <div>
+                        <span class="arr-value">$1M</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phase-card phase-2">
+                <div class="phase-header">
+                    <span class="phase-title">OEM Integration</span>
+                    <span class="phase-badge phase-2">Phase II Launch</span>
+                </div>
+                <div class="metrics">
+                    <div class="metric"><strong>$5-15</strong>/drone/month</div>
+                    <div class="metric"><strong>25%</strong> final channel mix</div>
+                    <div class="metric"><strong>70-80%</strong> net margin</div>
+                    <div class="metric"><strong>18-36mo</strong> sales cycle</div>
+                </div>
+                <div class="arr-section">
+                    <span class="arr-label">Phase II ARR (MVP+ 48 months)</span>
+                    <div>
+                        <span class="arr-value">$8M</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phase-card phase-3">
+                <div class="phase-header">
+                    <span class="phase-title">Self-Service + Marketplace</span>
+                    <span class="phase-badge phase-3">Phase III Launch</span>
+                </div>
+                <div class="metrics">
+                    <div class="metric"><strong>$19.95-99</strong>/drone/month</div>
+                    <div class="metric"><strong>10%</strong> final channel mix</div>
+                    <div class="metric"><strong>80-85%</strong> net margin</div>
+                    <div class="metric"><strong>1-6mo</strong> sales cycle</div>
+                </div>
+                <div class="arr-section">
+                    <span class="arr-label">Phase III ARR (MVP+ 72 months)</span>
+                    <div>
+                        <span class="arr-value">$72M</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <h2 class="market-title">Market Opportunity</h2>
+            
+            <div class="market-metric">
+                <span class="metric-label">US Commercial Drones (2029)</span>
+                <span class="metric-value">1.2M<sup>[1]</sup></span>
+            </div>
+            
+            <div class="market-metric">
+                <span class="metric-label">Base Price Point</span>
+                <span class="metric-value">$19.95/month</span>
+            </div>
+            
+            <div class="market-metric">
+                <span class="metric-label">10% Penetration</span>
+                <span class="metric-value">120K drones</span>
+            </div>
+            
+            <div class="market-metric">
+                <span class="metric-label">Conservative ARR</span>
+                <span class="metric-value">$29M</span>
+            </div>
+            
+            <div class="market-metric">
+                <span class="metric-label">25% Penetration</span>
+                <span class="metric-value">300K drones</span>
+            </div>
+            
+            <div class="market-metric">
+                <span class="metric-label">Target ARR</span>
+                <span class="metric-value">$72M</span>
+            </div>
+
+            
+            
+            <div class="footnote">
+                * Each phase builds upon previous channels. ARR is cumulative across all active distribution channels.
+            </div>
+        </div>
+
+        <div class="chart-panel">
+            <div class="progression-title">ARR Growth by Channel</div>
+            
+            <div class="arr-chart">
+                <div class="chart-phase">
+                    <div class="phase-label">Year 1</div>
+                    <div class="arr-bar">
+                        <div class="bar-segment direct-partner" style="height: 15px;">
+                            <span class="segment-label">$0.3M</span>
+                        </div>
+                    </div>
+                    <div class="phase-desc">MVP <br>Launch</div>
+                    <div class="total-arr">$0.3M Total<br>(base)</div>
+                </div>
+                
+                <div class="chart-phase">
+                    <div class="phase-label">Year 2</div>
+                    <div class="arr-bar">
+                        <div class="bar-segment direct-partner" style="height: 30px;">
+                            <span class="segment-label">$1M</span>
+                        </div>
+                    </div>
+                    <div class="phase-desc">Phase I <br>Complete</div>
+                    <div class="total-arr">$1M Total<br>(+233% YoY)</div>
+                </div>
+                
+                <div class="chart-phase">
+                    <div class="phase-label">Year 3</div>
+                    <div class="arr-bar">
+                        <div class="bar-segment direct-partner" style="height: 45px;">
+                            <span class="segment-label">$2.5M</span>
+                        </div>
+                        <div class="bar-segment oem" style="height: 20px;">
+                            <span class="segment-label">$0.5M</span>
+                        </div>
+                    </div>
+                    <div class="phase-desc">OEM <br>Launch</div>
+                    <div class="total-arr">$3M Total<br>(+200% YoY)</div>
+                </div>
+                
+                <div class="chart-phase">
+                    <div class="phase-label">Year 4</div>
+                    <div class="arr-bar">
+                        <div class="bar-segment direct-partner" style="height: 65px;">
+                            <span class="segment-label">$5.2M</span>
+                        </div>
+                        <div class="bar-segment oem" style="height: 35px;">
+                            <span class="segment-label">$2.8M</span>
+                        </div>
+                    </div>
+                    <div class="phase-desc">Phase II <br>Complete</div>
+                    <div class="total-arr">$8M Total<br>(+167% YoY)</div>
+                </div>
+                
+                <div class="chart-phase">
+                    <div class="phase-label">Year 5</div>
+                    <div class="arr-bar">
+                        <div class="bar-segment direct-partner" style="height: 120px;">
+                            <span class="segment-label">$15M</span>
+                        </div>
+                        <div class="bar-segment oem" style="height: 60px;">
+                            <span class="segment-label">$7.5M</span>
+                        </div>
+                        <div class="bar-segment self-service" style="height: 15px;">
+                            <span class="segment-label">$2.5M</span>
+                        </div>
+                    </div>
+                    <div class="phase-desc">Self-Service Launch</div>
+                    <div class="total-arr">$25M Total<br>(+213% YoY)</div>
+                </div>
+                
+                <div class="chart-phase">
+                    <div class="phase-label">Year 6</div>
+                    <div class="arr-bar">
+                        <div class="bar-segment direct-partner" style="height: 234px;">
+                            <span class="segment-label">$46.8M</span>
+                        </div>
+                        <div class="bar-segment oem" style="height: 90px;">
+                            <span class="segment-label">$18M</span>
+                        </div>
+                        <div class="bar-segment self-service" style="height: 36px;">
+                            <span class="segment-label">$7.2M</span>
+                        </div>
+                    </div>
+                    <div class="phase-desc">Phase III Complete</div>
+                    <div class="total-arr">$72M Total<br>(+188% YoY)</div>
+                </div>
+            </div>
+            
+            <div class="chart-legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: linear-gradient(135deg, #00ff88, #00d4aa);"></div>
+                    <span>Direct + Partner Sales</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: linear-gradient(135deg, #ffd700, #ffed4e);"></div>
+                    <span>OEM Integration</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: linear-gradient(135deg, #ff6b9d, #ff8fab);"></div>
+                    <span>Self-Service + Marketplace</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footnotes">
+            <p>[1] FAA; https://www.faa.gov/data_research/aviation/aerospace_forecasts/FY-2025-2045-Full-Forecast-Document-and-Tables.pdf</p>
+        </div>
+    </div>
+</body>
+</html>
