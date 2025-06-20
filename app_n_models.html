@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics-Informed Sensor Models</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-bottom: 40px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .diagram-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .center-hub {
+            position: relative;
+            width: 100%;
+            height: 900px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .core-circle {
+            width: 220px;
+            height: 220px;
+            background: linear-gradient(135deg, #ff9a00 0%, #ffcd00 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(255, 154, 0, 0.3);
+            position: relative;
+            z-index: 10;
+            border: 4px solid white;
+            transition: all 0.3s ease;
+        }
+
+        .core-text {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            line-height: 1.3;
+        }
+
+        .application-node {
+            position: absolute;
+            width: 180px;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border: 2px solid white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+        }
+
+        .application-node:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+            z-index: 15;
+        }
+
+        .application-node h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .application-node p {
+            font-size: 0.75rem;
+            opacity: 0.85;
+            line-height: 1.3;
+        }
+
+        /* Positioned in a hexagonal pattern around the center */
+        .predictive {
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            color: white;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .self-calibrating {
+            background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+            color: white;
+            top: 200px;
+            right: 60px;
+        }
+
+        .authentication {
+            background: linear-gradient(135deg, #e84393 0%, #d63031 100%);
+            color: white;
+            bottom: 200px;
+            right: 60px;
+        }
+
+        .threat-context {
+            background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
+            color: white;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .environmental {
+            background: linear-gradient(135deg, #55a3ff 0%, #003d82 100%);
+            color: white;
+            bottom: 200px;
+            left: 60px;
+        }
+
+        .autonomy {
+            background: linear-gradient(135deg, #00cec9 0%, #00b894 100%);
+            color: white;
+            top: 200px;
+            left: 60px;
+        }
+
+        .connection-line {
+            position: absolute;
+            background: linear-gradient(45deg, rgba(116, 185, 255, 0.3), rgba(116, 185, 255, 0.1));
+            height: 2px;
+            z-index: 1;
+            border-radius: 1px;
+            opacity: 0.6;
+        }
+
+        /* Connection lines from center to each node */
+        .line-1 { width: 120px; top: 140px; left: 50%; transform: translateX(-50%) rotate(-90deg); }
+        .line-2 { width: 120px; top: 200px; right: 120px; transform: rotate(-30deg); }
+        .line-3 { width: 120px; bottom: 200px; right: 120px; transform: rotate(30deg); }
+        .line-4 { width: 120px; bottom: 140px; left: 50%; transform: translateX(-50%) rotate(90deg); }
+        .line-5 { width: 120px; bottom: 200px; left: 120px; transform: rotate(-30deg); }
+        .line-6 { width: 120px; top: 200px; left: 120px; transform: rotate(30deg); }
+
+        .details-panel {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            max-height: none;
+        }
+
+        .details-panel h2 {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid #74b9ff;
+            padding-bottom: 10px;
+        }
+
+        .model-category {
+            margin-bottom: 25px;
+        }
+
+        .category-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #ddd6fe 0%, #c7d2fe 100%);
+        }
+
+        .model-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            margin-bottom: 6px;
+            background: rgba(116, 185, 255, 0.1);
+            border-radius: 8px;
+            border-left: 4px solid #74b9ff;
+            transition: all 0.2s ease;
+        }
+
+        .model-item:hover {
+            background: rgba(116, 185, 255, 0.2);
+            transform: translateX(5px);
+        }
+
+        .model-name {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #2c3e50;
+            flex: 1;
+            line-height: 1.3;
+        }
+
+        .model-app {
+            font-size: 0.75rem;
+            color: #74b9ff;
+            font-weight: 500;
+            background: rgba(116, 185, 255, 0.2);
+            padding: 4px 8px;
+            border-radius: 12px;
+            white-space: nowrap;
+            margin-left: 8px;
+        }
+
+        .stats-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 20px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 1200px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .center-hub {
+                height: 500px;
+            }
+            
+            .application-node {
+                position: relative;
+                width: auto;
+                margin: 10px;
+                top: auto !important;
+                left: auto !important;
+                right: auto !important;
+                bottom: auto !important;
+                transform: none !important;
+                display: inline-block;
+                vertical-align: top;
+            }
+            
+            .connection-line {
+                display: none;
+            }
+            
+            .center-hub {
+                flex-direction: column;
+                height: auto;
+                padding: 20px;
+            }
+            
+            .applications-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 15px;
+                width: 100%;
+                margin-top: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Physics-Informed Sensor Models</h1>
+            <p>Advanced AI-driven sensor technologies for next-generation applications</p>
+        </div>
+
+        <div class="main-content">
+            <div class="diagram-section">
+                <div class="center-hub">
+                    <!-- Connection lines -->
+                    <div class="connection-line line-1"></div>
+                    <div class="connection-line line-2"></div>
+                    <div class="connection-line line-3"></div>
+                    <div class="connection-line line-4"></div>
+                    <div class="connection-line line-5"></div>
+                    <div class="connection-line line-6"></div>
+
+                    <div class="core-circle">
+                        <div class="core-text">
+                            Core Physics-Informed<br>
+                            Sensor Models
+                        </div>
+                    </div>
+
+                    <div class="application-node predictive">
+                        <h3>Predictive Maintenance & Fleet Management</h3>
+                        <p>Monitor aging and failure signals to prevent downtime</p>
+                    </div>
+
+                    <div class="application-node self-calibrating">
+                        <h3>Self-Calibrating Systems</h3>
+                        <p>In situ calibration using sensor behavior metrics</p>
+                    </div>
+
+                    <div class="application-node authentication">
+                        <h3>Sensor Authentication & Anti-Spoofing</h3>
+                        <p>Prevent spoofing with signal fingerprint validation</p>
+                    </div>
+
+                    <div class="application-node threat-context">
+                        <h3>Signal & Threat Context Awareness</h3>
+                        <p>Identify anomalies from RF, EM, or environmental threats</p>
+                    </div>
+
+                    <div class="application-node environmental">
+                        <h3>Environmental Context Awareness</h3>
+                        <p>Correlate environment with sensor performance limits</p>
+                    </div>
+
+                    <div class="application-node autonomy">
+                        <h3>Sensor Health-Aware Autonomy</h3>
+                        <p>Real-time fidelity feedback to autonomy systems</p>
+                    </div>
+
+                    <!-- Mobile layout -->
+                    <div class="applications-grid" style="display: none;">
+                        <div class="application-node predictive">
+                            <h3>Predictive Maintenance</h3>
+                            <p>Monitor aging and failure signals</p>
+                        </div>
+                        <div class="application-node self-calibrating">
+                            <h3>Self-Calibrating Systems</h3>
+                            <p>In situ calibration using sensor metrics</p>
+                        </div>
+                        <div class="application-node authentication">
+                            <h3>Authentication & Anti-Spoofing</h3>
+                            <p>Signal fingerprint validation</p>
+                        </div>
+                        <div class="application-node threat-context">
+                            <h3>Threat Context Awareness</h3>
+                            <p>Identify environmental anomalies</p>
+                        </div>
+                        <div class="application-node environmental">
+                            <h3>Environmental Awareness</h3>
+                            <p>Performance limit correlation</p>
+                        </div>
+                        <div class="application-node autonomy">
+                            <h3>Health-Aware Autonomy</h3>
+                            <p>Real-time fidelity feedback</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="details-panel">
+                <h2>Supporting Model Types</h2>
+                
+                <div class="model-category">
+                    <div class="category-title">Predictive Maintenance</div>
+                    <div class="model-item">
+                        <span class="model-name">Time-Temp-Humidity-Fatigue Correlation</span>
+                        <span class="model-app">Predictive</span>
+                    </div>
+                    <div class="model-item">
+                        <span class="model-name">Thermal Stress & Vibration Coupling</span>
+                        <span class="model-app">Predictive</span>
+                    </div>
+                    <div class="model-item">
+                        <span class="model-name">Failure Onset PINNs</span>
+                        <span class="model-app">Predictive</span>
+                    </div>
+                    <div class="model-item">
+                        <span class="model-name">Bayesian Early Warning Classifiers</span>
+                        <span class="model-app">Predictive</span>
+                    </div>
+                </div>
+
+                <div class="model-category">
+                    <div class="category-title">Self-Calibrating Systems</div>
+                    <div class="model-item">
+                        <span class="model-name">MTF & Scene Statistics Estimators</span>
+                        <span class="model-app">Calibration</span>
+                    </div>
+                    <div class="model-item">
+                        <span class="model-name">Flat/Dark Frame Regression Models</span>
+                        <span class="model-app">Calibration</span>
+                    </div>
+                    <div class="model-item">
+                        <span class="model-name">Cross-Sensor Consistency Scoring</span>
+                        <span class="model-app">Calibration</span>
+                    </div>
+                    <div class="model-item">
+                        <span class="model-name">FPN & PRNU Compensation</span>
+                        <span class="model-app">Calibration</span>
+                    </div>
+                </div>
+
+                <div class="model-category">
+                    <div class="category-title">Authentication & Security</div>
+                    <div class="model-item">
+                        <span class="model-name">Noise Signature Classifiers</span>
+                        <span class="model-app">Security</span>
+                    </div>
+                    <div class="model-item">
+                        <span class="model-name">Temporal Fingerprint Consistency</span>
+                        <span class="model-app">Security</span>
+                    </div>
+                    <div class="model-item">
+                        <span class="model-name">Adversarial Signal Anomaly Models</span>
+                        <span class="model-app">Security</span>
+                    </div>
+                </div>
+
+                <div class="model-category">
+                    <div class="category-title">Environmental & Context</div>
+                    <div class="model-item">
+                        <span class="model-name">RF & Optical Anomaly Detection</span>
+                        <span class="model-app">Context</span>
+                    </div>
+                    <div class="model-item">
+                        <span class="model-name">Thermal/Radiometric Behavior Models</span>
+                        <span class="model-app">Environmental</span>
+                    </div>
+                    <div class="model-item">
+                        <span class="model-name">Visibility-Accuracy Correlation</span>
+                        <span class="model-app">Environmental</span>
+                    </div>
+                </div>
+
+                <div class="model-category">
+                    <div class="category-title">Autonomy Feedback</div>
+                    <div class="model-item">
+                        <span class="model-name">Live Sensor Confidence Scoring</span>
+                        <span class="model-app">Autonomy</span>
+                    </div>
+                    <div class="model-item">
+                        <span class="model-name">Fidelity-Weighted Interfaces</span>
+                        <span class="model-app">Autonomy</span>
+                    </div>
+                    <div class="model-item">
+                        <span class="model-name">Predictive Sensor Planning Aids</span>
+                        <span class="model-app">Autonomy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Enhanced interactivity
+        const nodes = document.querySelectorAll('.application-node');
+        const coreCircle = document.querySelector('.core-circle');
+        const connectionLines = document.querySelectorAll('.connection-line');
+
+        nodes.forEach((node, index) => {
+            node.addEventListener('mouseenter', () => {
+                coreCircle.style.transform = 'scale(1.05)';
+                coreCircle.style.boxShadow = '0 20px 40px rgba(255, 154, 0, 0.4)';
+                
+                // Highlight corresponding connection line
+                if (connectionLines[index]) {
+                    connectionLines[index].style.opacity = '1';
+                    connectionLines[index].style.background = 'linear-gradient(45deg, rgba(116, 185, 255, 0.8), rgba(116, 185, 255, 0.4))';
+                }
+            });
+
+            node.addEventListener('mouseleave', () => {
+                coreCircle.style.transform = 'scale(1)';
+                coreCircle.style.boxShadow = '0 15px 30px rgba(255, 154, 0, 0.3)';
+                
+                // Reset connection line
+                if (connectionLines[index]) {
+                    connectionLines[index].style.opacity = '0.6';
+                    connectionLines[index].style.background = 'linear-gradient(45deg, rgba(116, 185, 255, 0.3), rgba(116, 185, 255, 0.1))';
+                }
+            });
+        });
+
+        // Responsive layout handling
+        function handleResponsive() {
+            const centerHub = document.querySelector('.center-hub');
+            const applicationsGrid = document.querySelector('.applications-grid');
+            const normalNodes = document.querySelectorAll('.center-hub > .application-node');
+            
+            if (window.innerWidth <= 1200) {
+                applicationsGrid.style.display = 'grid';
+                normalNodes.forEach(node => node.style.display = 'none');
+            } else {
+                applicationsGrid.style.display = 'none';
+                normalNodes.forEach(node => node.style.display = 'block');
+            }
+        }
+
+        window.addEventListener('resize', handleResponsive);
+        handleResponsive(); // Initial call
+    </script>
+</body>
+</html>
