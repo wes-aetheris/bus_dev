@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem Slide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: #000000;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        .slide-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+        .slide-title {
+            font-size: 44px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 14px;
+            letter-spacing: -1px;
+        }
+        .slide-subtitle {
+            font-size: 19px;
+            font-weight: 300;
+            color: #bdbdbd;
+            max-width: 600px;
+        }
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 48px;
+            max-width: 1100px;
+            width: 100%;
+        }
+        .problem-card {
+            background: none;
+            border-radius: 18px;
+            padding: 32px 0 18px 0;
+            text-align: center;
+            position: relative;
+            box-shadow: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 140px;
+            transition: transform 0.2s;
+        }
+        .problem-card:hover {
+            transform: translateY(-6px) scale(1.03);
+        }
+        .card-number {
+            font-size: 3.1rem;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 18px;
+            letter-spacing: -1px;
+            position: relative;
+            z-index: 2;
+        }
+        .card-number.accent1,
+        .card-number.accent2,
+        .card-number.accent3,
+        .card-number.accent4,
+        .card-number.accent5,
+        .card-number.accent6 {
+            color: #fff;
+            text-shadow: none;
+        }
+        .card-underline {
+            width: 38px;
+            height: 4px;
+            border-radius: 2px;
+            margin: 0 auto 18px auto;
+            margin-top: -10px;
+        }
+        .card-underline.accent1 { background: #8b5cf6; }
+        .card-underline.accent2 { background: #8b5cf6; }
+        .card-underline.accent3 { background: #8b5cf6; }
+        .card-underline.accent4 { background: #8b5cf6; }
+        .card-underline.accent5 { background: #8b5cf6; }
+        .card-underline.accent6 { background: #8b5cf6; }
+        .card-text {
+            font-size: 1.08rem;
+            font-weight: 400;
+            color: #bdbdbd;
+            line-height: 1.5;
+            max-width: 220px;
+            margin: 0 auto;
+        }
+        @media (max-width: 768px) {
+            .slide-title {
+                font-size: 32px;
+            }
+            .slide-subtitle {
+                font-size: 16px;
+            }
+            .cards-container {
+                grid-template-columns: 1fr;
+                gap: 22px;
+            }
+            .problem-card {
+                padding: 22px 0 12px 0;
+            }
+            .card-number {
+                font-size: 2.2rem;
+            }
+            .card-text {
+                font-size: 0.98rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-header">
+        <h1 class="slide-title">The Problem</h1>
+        <p class="slide-subtitle">Current market challenges that demand immediate attention</p>
+    </div>
+    <div class="cards-container">
+        <div class="problem-card">
+            <div class="card-number accent1">$1M+</div>
+            <div class="card-underline accent1"></div>
+            <p class="card-text">Net Amazon cost from sensor failure drone crash May 2025</p>
+        </div>
+        <div class="problem-card">
+            <div class="card-number accent2">$2B/yr</div>
+            <div class="card-underline accent2"></div>
+            <p class="card-text">Estimated DoD spend on sensor indicated faults with no cause found during maintenance</p>
+        </div>
+        <div class="problem-card">
+            <div class="card-number accent3">$80M+</div>
+            <div class="card-underline accent3"></div>
+            <p class="card-text">Cost of USAF sensor failure Global Hawk crash 2017</p>
+        </div>
+        <div class="problem-card">
+            <div class="card-number accent4">15%</div>
+            <div class="card-underline accent4"></div>
+            <p class="card-text">of sensor system faults* cannot be attributed to a cause during maintenance in manned aircraft</p>
+        </div>
+        <div class="problem-card">
+            <div class="card-number accent5">50%+</div>
+            <div class="card-underline accent5"></div>
+            <p class="card-text">of time UAS in urban areas without GPS, flying on sensors</p>
+        </div>
+        <div class="problem-card">
+            <div class="card-number accent6">$20B+</div>
+            <div class="card-underline accent6"></div>
+            <p class="card-text">Direct costs of 737 Max Angle-of-Attack sensor failures</p>
+        </div>
+    </div>
+</body>
+</html> 

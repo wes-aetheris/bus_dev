@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why the Drone Market?</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: #000000;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: transparent;
+            border-radius: 20px;
+            box-shadow: none;
+            overflow: visible;
+            backdrop-filter: none;
+        }
+
+        .header {
+            background: none;
+            color: #fff;
+            padding: 0 0 40px 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.2rem;
+            color: #bdbdfc;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: none;
+            color: #fff;
+            border-radius: 18px;
+            overflow: hidden;
+        }
+
+        .comparison-table th, .comparison-table td {
+            border-radius: 0;
+        }
+
+        .comparison-table th:first-child {
+            border-top-left-radius: 18px;
+        }
+
+        .comparison-table th:last-child {
+            border-top-right-radius: 18px;
+        }
+
+        .comparison-table tr:last-child td:first-child {
+            border-bottom-left-radius: 18px;
+        }
+
+        .comparison-table tr:last-child td:last-child {
+            border-bottom-right-radius: 18px;
+        }
+
+        .comparison-table th {
+            background: linear-gradient(90deg, #8b5cf6 0%, #6366f1 100%);
+            color: #fff;
+            padding: 20px 15px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-right: none;
+        }
+
+        .comparison-table th:first-child {
+            text-align: left;
+            background: none;
+            min-width: 250px;
+            color: #fff;
+        }
+
+        .comparison-table td {
+            padding: 20px 15px;
+            text-align: center;
+            border-bottom: 1px solid rgba(99,102,241,0.12);
+            border-right: none;
+            position: relative;
+            transition: all 0.3s ease;
+            background: rgba(30,30,40,0.92);
+            color: #fff;
+            font-size: 0.95rem;
+        }
+
+        .comparison-table th:first-child, .comparison-table td:first-child {
+            background: #232347;
+            color: #fff;
+            text-shadow: 0 1px 6px rgba(0,0,0,0.18);
+            border-left: 4px solid #8b5cf6;
+        }
+
+        .comparison-table td:first-child {
+            text-align: left;
+            font-weight: 700;
+            color: #fff;
+            background: rgba(99,102,241,0.18);
+            font-size: 0.9rem;
+            text-shadow: 0 1px 6px rgba(0,0,0,0.18);
+        }
+
+        .comparison-table tr:hover td {
+            background-color: rgba(99,102,241,0.10);
+            transform: scale(1.01);
+        }
+
+        .comparison-table tr:hover td:first-child {
+            background: rgba(99,102,241,0.13);
+        }
+
+        .checkmark {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .checkmark.positive {
+            background: linear-gradient(135deg, #2ecc71 0%, #00ffae 100%);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+        }
+
+        .checkmark.negative {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .checkmark.neutral {
+            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+        }
+
+        .checkmark:hover {
+            transform: scale(1.1);
+        }
+
+        .drone-column, .comparison-table th.drone-column {
+            background: rgba(249, 232, 2, 0.541) !important;
+            color: #fff !important;
+            font-weight: 800 !important;
+            border-left: none !important;
+            border-right: none !important;
+            position: relative;
+            z-index: 1;
+        }
+        .comparison-table th.drone-column::after {
+            content: '';
+            font-size: 1.2em;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            .comparison-table th,
+            .comparison-table td {
+                padding: 15px 10px;
+                font-size: 0.98rem;
+            }
+            .checkmark {
+                width: 25px;
+                height: 25px;
+                font-size: 16px;
+            }
+        }
+
+        .footer {
+            background: none;
+            color: #bdbdfc;
+            text-align: center;
+            padding: 32px 0 0 0;
+            font-style: italic;
+            opacity: 1;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Why Drones?</h1>
+        </div>
+        
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Business Considerations</th>
+                    <th class="drone-column">Drones</th>
+                    <th>Manned Aircraft</th>
+                    <th>Automotive/<br>Autonomous<br>Vehicles</th>
+                    <th>Robotics</th>
+                    <th>Urban Air Mobility</th>
+                    <th>Unmanned<br>Space<br>Vehicles</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Current Market Size<br>(Higher)</td>
+                    <td class="drone-column"><span class="checkmark positive">✓</span></td>
+                    <td><span class="checkmark positive">✓</span></td>
+                    <td><span class="checkmark positive">✓</span></td>
+                    <td><span class="checkmark negative">✗</span></td>
+                    <td><span class="checkmark negative">✗</span></td>
+                    <td><span class="checkmark positive">✓</span></td>
+                </tr>
+                <tr>
+                    <td>Time to Market<br>(Faster)</td>
+                    <td class="drone-column"><span class="checkmark positive">✓</span></td>
+                    <td><span class="checkmark negative">✗</span></td>
+                    <td><span class="checkmark negative">✗</span></td>
+                    <td><span class="checkmark positive">✓</span></td>
+                    <td><span class="checkmark negative">✗</span></td>
+                    <td><span class="checkmark negative">✗</span></td>
+                </tr>
+                <tr>
+                    <td>Regulatory Risk<br>(Lower)</td>
+                    <td class="drone-column"><span class="checkmark neutral">~</span></td>
+                    <td><span class="checkmark negative">✗</span></td>
+                    <td><span class="checkmark negative">✗</span></td>
+                    <td><span class="checkmark neutral">~</span></td>
+                    <td><span class="checkmark negative">✗</span></td>
+                    <td><span class="checkmark negative">✗</span></td>
+                </tr>
+                <tr>
+                    <td>Development Cost<br>(Lower)</td>
+                    <td class="drone-column"><span class="checkmark positive">✓</span></td>
+                    <td><span class="checkmark negative">✗</span></td>
+                    <td><span class="checkmark negative">✗</span></td>
+                    <td><span class="checkmark positive">✓</span></td>
+                    <td><span class="checkmark negative">✗</span></td>
+                    <td><span class="checkmark negative">✗</span></td>
+                </tr>
+                <tr>
+                    <td>Incumbent Blockers<br>(Fewer)</td>
+                    <td class="drone-column"><span class="checkmark positive">✓</span></td>
+                    <td><span class="checkmark negative">✗</span></td>
+                    <td><span class="checkmark negative">✗</span></td>
+                    <td><span class="checkmark positive">✓</span></td>
+                    <td><span class="checkmark negative">✗</span></td>
+                    <td><span class="checkmark negative">✗</span></td>
+                </tr>
+                <tr>
+                    <td>Defense Adoption of<br>Commercial Tech<br>(Smoother)</td>
+                    <td class="drone-column"><span class="checkmark positive">✓</span></td>
+                    <td><span class="checkmark positive">✓</span></td>
+                    <td><span class="checkmark negative">✗</span></td>
+                    <td><span class="checkmark negative">✗</span></td>
+                    <td><span class="checkmark neutral">~</span></td>
+                    <td><span class="checkmark positive">✓</span></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="footer">
+            Drones: The only market with size, speed, and scalability
+        </div>
+    </div>
+</body>
+</html>

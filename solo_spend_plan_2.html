@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angel Raise Ask Slide</title>
+    <style>
+        body {
+            font-family: 'Work Sans', sans-serif;
+            margin: 0;
+            padding: 40px;
+            background: #000000;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            max-width: 900px;
+            width: 100%;
+        }
+        
+        .card {
+            background: rgba(20,20,30,0.95);
+            border-radius: 18px;
+            padding: 50px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.45);
+            border: 1.5px solid #6366f1;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #3498db;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        
+        .number {
+            width: 60px;
+            height: 60px;
+            background: #9b59b6;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-right: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .title-section {
+            flex: 1;
+        }
+        
+        .main-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: white;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #bdc3c7;
+            margin: 5px 0 0 0;
+            font-weight: 300;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(189, 195, 199, 0.3);
+            transition: background 0.2s;
+        }
+        
+        .metric:last-child {
+            border-bottom: 1px solid rgba(189, 195, 199, 0.3);
+        }
+        
+        .metric:hover {
+            background: rgba(99,102,241,0.08);
+        }
+        
+        .metric-label {
+            font-size: 18px;
+            color: #ecf0f1;
+            font-weight: 500;
+        }
+        
+        .metric-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2ecc71;
+        }
+        
+        .metric-value.highlight {
+            font-size: 28px;
+            color: #e74c3c;
+            background: linear-gradient(90deg, #e74c3c, #f59e42);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .metric-value.secondary {
+            color: #2ecc71;
+        }
+        
+        .metric-value.success {
+            color: #2ecc71;
+        }
+        
+        .single-column {
+            grid-column: 1 / -1;
+        }
+        
+        .use-of-funds {
+            margin-top: 30px;
+            padding: 25px;
+            background: rgba(52, 73, 94, 0.3);
+            border-radius: 8px;
+            border-left: 3px solid #2ecc71;
+        }
+        
+        .use-title, .milestone-title {
+            background: #2ecc71;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 18px;
+        }
+        
+        .fund-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            color: #ffffff;
+            font-size: 16px;
+            transition: background 0.2s;
+        }
+        
+        .fund-item:hover {
+            background: rgba(99,102,241,0.08);
+        }
+        
+        .fund-amount {
+            color: #9b59b6;
+            font-weight: 600;
+        }
+        
+        .milestone-section {
+            margin-top: 30px;
+            padding: 25px;
+            background: rgba(52, 73, 94, 0.3);
+            border-radius: 8px;
+            border-left: 3px solid #2ecc71;
+        }
+        
+        .milestone-list {
+            color: #ffffff;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+        
+        .milestone-list strong {
+            color: #ffffff;
+            font-size: 15px;
+        }
+        
+        .milestone-list em {
+            color: #9b59b6;
+            font-style: normal;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <div class="title-section">
+                    <h1 class="main-title">Foundation Round</h1>
+                    <p class="subtitle">SAFE Issuance</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <div>
+                    <div class="metric" style="flex-direction: column; align-items: flex-start; padding: 32px 0 32px 0; border-bottom: none;">
+                        <span class="metric-label" style="font-size: 2.5rem; font-weight: 800; color: #fff; margin-bottom: 8px; letter-spacing: 1px;">Total Raise</span>
+                        <span class="metric-value highlight" style="font-size: 3.75rem; font-weight: 900; color: #e74c3c;">$235K</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="metric">
+                        <span class="metric-label">Runway</span>
+                        <span class="metric-value success">12 months</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Valuation Cap</span>
+                        <span class="metric-value secondary">$4.0M</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Full Round Equity Stake</span>
+                        <span class="metric-value success">6%</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Follow-On Round Discount</span>
+                        <span class="metric-value success">20%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px;">
+                <div class="use-of-funds">
+                    <div class="use-title">Use of Funds</div>
+                    <div class="fund-item">
+                        <span>Founder Survival</span>
+                        <span class="fund-amount">$117K</span>
+                    </div>
+                    <div class="fund-item">
+                        <span>Data Contractors</span>
+                        <span class="fund-amount">$55K</span>
+                    </div>
+                    <div class="fund-item">
+                        <span>IP Protection/Legal</span>
+                        <span class="fund-amount">$15K</span>
+                    </div>
+                    <div class="fund-item">
+                        <span>Travel/Relationship Development</span>
+                        <span class="fund-amount">$17K</span>
+                    </div>
+                    <div class="fund-item">
+                        <span>Technical Infrastructure</span>
+                        <span class="fund-amount">$5K</span>
+                    </div>
+                    <div class="fund-item">
+                        <span>Business Operations</span>
+                        <span class="fund-amount">$12K</span>
+                    </div>
+                    <div class="fund-item">
+                        <span>Contingency (6%)</span>
+                        <span class="fund-amount">$14K</span>
+                    </div>
+                </div>
+                
+                <div class="milestone-section">
+                    <div class="milestone-title">Impact of Your Investment</div>
+                    <div class="milestone-list">
+                        <strong>Technical</strong><br>
+                        • Data Pipeline & Sensor Model Integration <em>(Q1)</em><br>
+                        • Physics-Informed MTF Analysis <em>(Q2)</em><br>
+                        • Degradation Modeling & Detection <em>(Q3)</em><br>
+                        • Real-World Validation & Customer Demo <em>(Q4)</em><br><br>
+                        
+                        <strong>Business</strong><br>
+                        • Secure First Funded Pilot Commitment <em>(Q1)</em><br>
+                        • Secure Distribution Partnership <em>(Q2)</em><br>
+                        • Secure Second Funded Pilot Commitment <em>(Q3)</em><br>
+                        • Secure Pre-Seed Funding <em>(Q4)</em>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

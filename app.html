@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hub and Spoke Sensor Model</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #0D1117;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #C9D1D9;
+        }
+
+        .container {
+            position: relative;
+            width: 900px;
+            height: 900px;
+            background: #161B22;
+            border-radius: 20px;
+            box-shadow: 0 0 40px rgba(138, 92, 245, 0.15);
+            border: 1px solid #30363D;
+            overflow: hidden;
+        }
+
+        .hub {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 220px;
+            height: 220px;
+            background: linear-gradient(145deg, #8A5CF5, #6D28D9);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(138, 92, 245, 0.3);
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            z-index: 10;
+        }
+
+        .hub h2 {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 1.2;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .spoke {
+            position: absolute;
+            width: 200px;
+            padding: 25px;
+            border-radius: 15px;
+            color: #C9D1D9;
+            background: #21262D;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid #30363D;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .spoke:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(138, 92, 245, 0.2);
+            border-color: #8A5CF5;
+        }
+
+        .spoke h3 {
+            margin: 0 0 12px 0;
+            font-size: 18px;
+            font-weight: 600;
+            color: #F0F6FC;
+            line-height: 1.2;
+        }
+
+        .spoke p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.4;
+            opacity: 0.9;
+        }
+
+        /* Position 6 spokes evenly around the circle - 60 degrees apart */
+        .spoke1 {
+            top: 38px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(145deg, #3B82F6, #2563EB);
+        }
+
+        .spoke2 {
+            top: 144px;
+            right: 40px;
+            background: linear-gradient(145deg, #10B981, #059669);
+        }
+
+        .spoke3 {
+            bottom: 144px;
+            right: 40px;
+            background: linear-gradient(145deg, #EC4899, #DB2777);
+        }
+
+        .spoke4 {
+            bottom: 38px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(145deg, #0F766E, #134E4A); /* Deep Teal */
+        }
+
+        .spoke5 {
+            bottom: 144px;
+            left: 40px;
+            background: linear-gradient(145deg, #64748B, #475569);
+        }
+
+        .spoke6 {
+            top: 144px;
+            left: 40px;
+            background: linear-gradient(145deg, #6366F1, #4F46E5);
+        }
+
+        /* Connection lines */
+        .connection {
+            position: absolute;
+            background: linear-gradient(90deg, #4F46E5, #A78BFA);
+            height: 4px;
+            transform-origin: center;
+            opacity: 0.9;
+            z-index: 1;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(138, 92, 245, 0.5);
+        }
+
+        .conn1 {
+            top: 310px;
+            left: 50%;
+            width: 144px;
+            transform: translateX(-50%) rotate(-90deg);
+        }
+
+        .conn2 {
+            top: 355px;
+            left: 494px;
+            width: 144px;
+            transform: rotate(-30deg);
+        }
+
+        .conn3 {
+            top: 545px;
+            left: 494px;
+            width: 144px;
+            transform: rotate(30deg);
+        }
+
+        .conn4 {
+            bottom: 310px;
+            left: 50%;
+            width: 144px;
+            transform: translateX(-50%) rotate(90deg);
+        }
+
+        .conn5 {
+            top: 545px;
+            left: 286px;
+            width: 144px;
+            transform: rotate(150deg);
+        }
+
+        .conn6 {
+            top: 355px;
+            left: 286px;
+            width: 144px;
+            transform: rotate(-150deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Connection lines -->
+        <div class="connection conn1"></div>
+        <div class="connection conn2"></div>
+        <div class="connection conn3"></div>
+        <div class="connection conn4"></div>
+        <div class="connection conn5"></div>
+        <div class="connection conn6"></div>
+
+        <!-- Hub -->
+        <div class="hub">
+            <h2>Core Physics-Informed Sensor Models</h2>
+        </div>
+
+        <!-- Spokes -->
+        <div class="spoke spoke1">
+            <h3>Predictive Maintenance & Fleet Management</h3>
+            <p>Monitor aging and failure signals to prevent downtime</p>
+        </div>
+
+        <div class="spoke spoke2">
+            <h3>Self-Calibrating Systems</h3>
+            <p>In situ calibration using sensor behavior metrics</p>
+        </div>
+
+        <div class="spoke spoke3">
+            <h3>Sensor Authentication & Anti-Spoofing</h3>
+            <p>Prevent spoofing with signal fingerprint validation</p>
+        </div>
+
+        <div class="spoke spoke4">
+            <h3>Sensor Variation-Aware Autonomy</h3>
+            <p>Real-time fidelity feedback to autonomy systems</p>
+        </div>
+
+        <div class="spoke spoke5">
+            <h3>Environmental Context Awareness</h3>
+            <p>Correlate environment with sensor performance limits</p>
+        </div>
+
+        <div class="spoke spoke6">
+            <h3>Signal & Threat Context Awareness</h3>
+            <p>Identify anomalies from RF, EM, or environmental threats</p>
+        </div>
+    </div>
+</body>
+</html>

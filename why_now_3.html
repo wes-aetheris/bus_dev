@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commercial Drone Space - WHY NOW?</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #000000;
+            color: white;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        
+        .container {
+            padding: 2rem 3rem;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .why-now-badge {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            padding: 0.75rem 2rem;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 8px 32px rgba(99, 102, 241, 0.4);
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #e5e7eb;
+        }
+        
+        .main-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .main-title h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #ffffff, #a855f7, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #9ca3af;
+            font-weight: 400;
+        }
+        
+        .forces-container {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Hexagonal force containers */
+        .force {
+            position: relative;
+            padding: 2.5rem;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+        
+        .force::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg-gradient);
+            border: 2px solid var(--border-color);
+            border-radius: 20px;
+            transform: rotate(0deg);
+            transition: all 0.4s ease;
+            z-index: 1;
+        }
+        
+        .force::after {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            right: 4px;
+            bottom: 4px;
+            background: var(--inner-gradient);
+            border-radius: 16px;
+            z-index: 2;
+        }
+        
+        .force-content {
+            position: relative;
+            z-index: 3;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .force:hover::before {
+            transform: rotate(2deg) scale(1.02);
+            box-shadow: 0 20px 60px var(--shadow-color);
+        }
+        
+        .force:hover {
+            transform: translateY(-8px);
+        }
+        
+        /* Color schemes */
+        .regulatory {
+            --bg-gradient: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.1));
+            --inner-gradient: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(6, 78, 59, 0.1));
+            --border-color: rgba(16, 185, 129, 0.4);
+            --shadow-color: rgba(16, 185, 129, 0.3);
+            --accent: #10b981;
+        }
+        
+        .technology {
+            --bg-gradient: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(29, 78, 216, 0.1));
+            --inner-gradient: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(30, 58, 138, 0.1));
+            --border-color: rgba(59, 130, 246, 0.4);
+            --shadow-color: rgba(59, 130, 246, 0.3);
+            --accent: #3b82f6;
+        }
+        
+        .demand {
+            --bg-gradient: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(217, 119, 6, 0.1));
+            --inner-gradient: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(146, 64, 14, 0.1));
+            --border-color: rgba(245, 158, 11, 0.4);
+            --shadow-color: rgba(245, 158, 11, 0.3);
+            --accent: #f59e0b;
+        }
+        
+        .market {
+            --bg-gradient: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(220, 38, 38, 0.1));
+            --inner-gradient: linear-gradient(135deg, rgba(239, 68, 68, 0.08), rgba(153, 27, 27, 0.1));
+            --border-color: rgba(239, 68, 68, 0.4);
+            --shadow-color: rgba(239, 68, 68, 0.3);
+            --accent: #ef4444;
+        }
+        
+        .force-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent), rgba(255, 255, 255, 0.1));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .force-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            line-height: 1.3;
+        }
+        
+        .metric {
+            font-size: 2.4rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            color: white;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            line-height: 1;
+        }
+        
+        .metric-label {
+            font-size: 0.85rem;
+            color: #a1a1aa;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        
+        .description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #e4e4e7;
+            font-weight: 400;
+            flex: 1;
+        }
+        
+        @media (max-width: 1024px) {
+            .forces-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .main-title h1 {
+                font-size: 2.8rem;
+            }
+            
+            .force {
+                min-height: 240px;
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="why-now-badge">WHY NOW?</div>
+            <div class="logo">AETHERIS NP</div>
+        </div>
+        
+        <div class="main-title">
+            <h1>THREE CONVERGING FORCES</h1>
+            <p class="subtitle">Creating the perfect storm for commercial drone adoption</p>
+        </div>
+        
+        <div class="forces-container">
+            <div class="force regulatory">
+                <div class="force-content">
+                    <div class="force-icon"></div>
+                    <div class="force-title">Regulatory<br>Catalyst</div>
+                    <div class="metric">2026</div>
+                    <div class="metric-label">FAA Part 108 BVLOS</div>
+                    <div class="description">Requirements to be published enabling automated operations with enhanced safety protocols</div>
+                </div>
+            </div>
+            
+            <div class="force technology">
+                <div class="force-content">
+                    <div class="force-icon"></div>
+                    <div class="force-title">Technology<br>Breakthrough</div>
+                    <div class="metric">2020 → 2025</div>
+                    <div class="metric-label">Physics-informed AI</div>
+                    <div class="description">Advanced models now production-ready for autonomous flight operations</div>
+                </div>
+            </div>
+            
+            <div class="force market">
+                <div class="force-content">
+                    <div class="force-icon"></div>
+                    <div class="force-title">Market<br>Explosion</div>
+                    <div class="metric">1.2M/1.9M</div>
+                    <div class="metric-label">US Commercial/Consumer</div>
+                    <div class="description">$160M+ US SOM by 2029 with explosive growth trajectory</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
