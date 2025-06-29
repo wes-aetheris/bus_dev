@@ -32,14 +32,40 @@
             margin-bottom: 8px;
         }
         .comparison-table {
-            width: 100%;
+            width: 700px;
             border-collapse: separate;
             border-spacing: 0;
             background: none;
             color: #fff;
             border-radius: 14px;
             overflow: hidden;
-            font-size: 0.782rem;
+            font-size: 0.95rem;
+            position: relative;
+        }
+        .comparison-table::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 6px;
+            height: 100%;
+            background: #8b5cf6;
+            border-radius: 6px 0 0 6px;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .comparison-table th,
+        .comparison-table td {
+            font-size: 0.95rem;
+        }
+        .comparison-table th:first-child,
+        .comparison-table td:first-child {
+            border-left: none;
+            position: relative;
+        }
+        .comparison-table th:first-child::before,
+        .comparison-table td:first-child::before {
+            display: none !important;
         }
         .comparison-table th {
             background: linear-gradient(90deg, #8b5cf6 0%, #6366f1 100%);
@@ -47,17 +73,17 @@
             padding: 10px 4px;
             text-align: center;
             font-weight: 700;
-            font-size: 0.7em;
-            text-transform: uppercase;
             letter-spacing: 0.5px;
             border-right: none;
+            font-size: 0.8075rem;
         }
         .comparison-table th:first-child {
+            padding-left: 22px;
+            padding-right: 16px;
             text-align: left;
             background: #232347 !important;
             min-width: 120px;
             color: #fff !important;
-            font-size: 0.7em;
             font-weight: 800;
         }
         .comparison-table td {
@@ -67,16 +93,6 @@
             border-right: none;
             background: rgba(30,30,40,0.92);
             color: #fff;
-            font-size: 0.8075rem;
-        }
-        .comparison-table td:first-child {
-            text-align: left;
-            font-weight: 700;
-            color: #fff;
-            background: #232347;
-            font-size: 0.8585rem;
-            text-shadow: 0 1px 6px rgba(0,0,0,0.18);
-            border-left: 4px solid #8b5cf6;
         }
         .comparison-table tr:hover td {
             background-color: rgba(99,102,241,0.10);
@@ -156,7 +172,7 @@
                     <td><span class="checkmark positive">✓</span></td>
                     <td><span class="checkmark positive">✓</span></td>
                     <td><span class="checkmark negative">✗</span></td>
-                    <td><span class="checkmark negative">✗</span></td>
+                    <td><span class="checkmark neutral">~</span></td>
                     <td><span class="checkmark positive">✓</span></td>
                 </tr>
                 <tr>
@@ -183,7 +199,7 @@
                     <td><span class="checkmark negative">✗</span></td>
                     <td><span class="checkmark negative">✗</span></td>
                     <td><span class="checkmark positive">✓</span></td>
-                    <td><span class="checkmark negative">✗</span></td>
+                    <td><span class="checkmark neutral">~</span></td>
                     <td><span class="checkmark negative">✗</span></td>
                 </tr>
                 <tr>
@@ -192,13 +208,13 @@
                     <td><span class="checkmark negative">✗</span></td>
                     <td><span class="checkmark negative">✗</span></td>
                     <td><span class="checkmark positive">✓</span></td>
-                    <td><span class="checkmark negative">✗</span></td>
+                    <td><span class="checkmark positive">✓</span></td>
                     <td><span class="checkmark negative">✗</span></td>
                 </tr>
                 <tr>
                     <td>Defense Adoption of<br>Commercial Tech<br>(Smoother)</td>
                     <td class="drone-column"><span class="checkmark positive">✓</span></td>
-                    <td><span class="checkmark positive">✓</span></td>
+                    <td><span class="checkmark neutral">~</span></td>
                     <td><span class="checkmark negative">✗</span></td>
                     <td><span class="checkmark negative">✗</span></td>
                     <td><span class="checkmark neutral">~</span></td>

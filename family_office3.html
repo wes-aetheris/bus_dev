@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foundation Round - Family Office Deal</title>
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+            background: radial-gradient(ellipse at 60% 40%, #2d2250 60%, #000 100%);
+            color: #fff;
+            position: relative;
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+            background-image: linear-gradient(rgba(120, 80, 200, 0.13) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(120, 80, 200, 0.13) 1px, transparent 1px);
+            background-size: 220px 220px;
+            z-index: 0;
+        }
+        .the-ask-btn {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            background: #7c6ee6;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.3em;
+            border: none;
+            border-radius: 28px;
+            padding: 14px 60px;
+            box-shadow: 0 4px 24px rgba(120, 80, 200, 0.18);
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+        .contact-card {
+            position: absolute;
+            top: 40px;
+            right: 60px;
+            background: rgba(30, 41, 59, 0.98);
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(120, 80, 200, 0.13);
+            padding: 18px 32px 18px 18px;
+            display: flex;
+            align-items: center;
+            z-index: 2;
+        }
+        .contact-photo {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 18px;
+            border: 3px solid #fff;
+            background: #222;
+        }
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2em;
+        }
+        .contact-info .contact-label {
+            color: #b6c2d6;
+            font-size: 1em;
+            font-weight: 600;
+        }
+        .contact-info .contact-name {
+            font-size: 1.15em;
+            font-weight: 800;
+            color: #fff;
+        }
+        .contact-info .contact-email {
+            color: #7c6ee6;
+            font-size: 1em;
+            text-decoration: underline;
+        }
+        .contact-info .contact-phone {
+            color: #b6c2d6;
+            font-size: 1em;
+        }
+        .main-center-card {
+            position: absolute;
+            left: 50%;
+            top: 110px;
+            transform: translateX(-50%);
+            background: #181b23;
+            border-radius: 36px;
+            box-shadow: 0 8px 40px 0 rgba(0,0,0,0.45);
+            padding: 48px 60px 36px 60px;
+            min-width: 420px;
+            min-height: 340px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1;
+        }
+        .main-center-card h2 {
+            font-size: 2.5em;
+            font-weight: 800;
+            margin-bottom: 0.2em;
+        }
+        .main-center-card .subtitle {
+            color: #b6c2d6;
+            font-size: 1.1em;
+            margin-bottom: 1.5em;
+        }
+        .main-center-card .total-raise-label {
+            font-size: 2em;
+            font-weight: 700;
+            margin-top: 1.2em;
+            margin-bottom: 0.2em;
+        }
+        .main-center-card .total-raise {
+            font-size: 3.2em;
+            font-weight: 900;
+            margin: 0.2em 0 0.2em 0;
+            background: linear-gradient(90deg, #ff5e3a, #ffb347 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .bottom-cards {
+            position: absolute;
+            left: 50%;
+            bottom: 60px;
+            transform: translateX(-50%);
+            width: 90vw;
+            max-width: 1500px;
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            z-index: 1;
+        }
+        .card {
+            background: #232733;
+            border-radius: 32px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+            padding: 38px 36px 38px 36px;
+            min-width: 340px;
+            min-height: 340px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        .card h3 {
+            font-size: 1.4em;
+            font-weight: 800;
+            margin-bottom: 1.2em;
+        }
+        .funds-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7em;
+        }
+        .fund-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.18em;
+        }
+        .fund-label {
+            color: #4ade80;
+            font-weight: 700;
+        }
+        .fund-value {
+            color: #d8b4fe;
+            font-weight: 700;
+        }
+        .runway-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.1em;
+            margin-top: 0.5em;
+        }
+        .runway-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.25em;
+        }
+        .runway-label {
+            color: #b6c2d6;
+        }
+        .runway-value {
+            font-weight: 800;
+            color: #4ade80;
+            font-size: 1.1em;
+        }
+        .runway-value.stake {
+            color: #fff;
+        }
+        .runway-value.discount {
+            color: #a855f7;
+        }
+        .impact-section {
+            margin-bottom: 1.1em;
+        }
+        .impact-section .impact-title {
+            color: #4ade80;
+            font-weight: 800;
+            margin-bottom: 0.3em;
+            font-size: 1.15em;
+        }
+        .impact-section ul {
+            margin: 0 0 0 1.2em;
+            padding: 0;
+            color: #d8b4fe;
+            font-size: 1.08em;
+        }
+        .impact-section ul li {
+            margin-bottom: 0.3em;
+        }
+        .impact-section ul li .q {
+            color: #a855f7;
+            font-weight: 700;
+        }
+        .logo {
+            position: absolute;
+            right: 60px;
+            bottom: 40px;
+            width: 110px;
+            opacity: 0.95;
+        }
+        @media (max-width: 1200px) {
+            .bottom-cards {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+                position: static;
+                transform: none;
+                width: 100vw;
+            }
+            .main-center-card {
+                position: static;
+                transform: none;
+                margin: 40px auto 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="the-ask-btn">THE ASK</button>
+    <div class="contact-card">
+        <img class="contact-photo" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Contact Photo">
+        <div class="contact-info">
+            <span class="contact-label">Contact:</span>
+            <span class="contact-name">Wes Farriss<br>Founder/CEO</span>
+            <a class="contact-email" href="mailto:wes@aetherisnp.com">wes@aetherisnp.com</a>
+            <span class="contact-phone">(+1) 330.608.3014</span>
+        </div>
+    </div>
+    <div class="main-center-card">
+        <h2>Foundation Round</h2>
+        <div class="subtitle">SAFE Issuance</div>
+        <div class="total-raise-label">Total Raise</div>
+        <div class="total-raise">$235K</div>
+    </div>
+    <div class="bottom-cards">
+        <div class="card">
+            <h3 style="color:#4ade80;">Use of Funds</h3>
+            <div class="funds-list">
+                <div class="fund-row"><span class="fund-label">Founder Survival</span><span class="fund-value">$117K</span></div>
+                <div class="fund-row"><span class="fund-label">Data Contractors</span><span class="fund-value">$55K</span></div>
+                <div class="fund-row"><span class="fund-label">IP Protection/Legal</span><span class="fund-value">$15K</span></div>
+                <div class="fund-row"><span class="fund-label">Travel/Relationship Development</span><span class="fund-value">$17K</span></div>
+                <div class="fund-row"><span class="fund-label">Technical Infrastructure</span><span class="fund-value">$5K</span></div>
+                <div class="fund-row"><span class="fund-label">Business Operations</span><span class="fund-value">$12K</span></div>
+                <div class="fund-row"><span class="fund-label">Contingency (6%)</span><span class="fund-value">$14K</span></div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="runway-list">
+                <div class="runway-row"><span class="runway-label">Runway</span><span class="runway-value">12 months</span></div>
+                <div class="runway-row"><span class="runway-label">Valuation Cap</span><span class="runway-value">$4.0M</span></div>
+                <div class="runway-row"><span class="runway-label">Full Round Equity Stake</span><span class="runway-value stake">6%</span></div>
+                <div class="runway-row"><span class="runway-label">Follow-On Round Discount</span><span class="runway-value discount">20%</span></div>
+            </div>
+        </div>
+        <div class="card">
+            <h3 style="color:#4ade80;">Impact of Your Investment</h3>
+            <div class="impact-section">
+                <div class="impact-title">Technical</div>
+                <ul>
+                    <li>Data Pipeline &amp; Sensor Model Integration <span class="q">(Q1)</span></li>
+                    <li>Physics-Informed MTF Analysis <span class="q">(Q2)</span></li>
+                    <li>Degradation Modeling &amp; Detection <span class="q">(Q3)</span></li>
+                    <li>Real-World Validation &amp; Customer Demo <span class="q">(Q4)</span></li>
+                </ul>
+            </div>
+            <div class="impact-section">
+                <div class="impact-title">Business</div>
+                <ul>
+                    <li>Secure First Funded Pilot Commitment <span class="q">(Q1)</span></li>
+                    <li>Secure Distribution Partnership <span class="q">(Q2)</span></li>
+                    <li>Secure Second Funded Pilot Commitment <span class="q">(Q3)</span></li>
+                    <li>Secure Pre-Seed Funding <span class="q">(Q4)</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <img class="logo" src="https://i.imgur.com/4M7IWwP.png" alt="Aetheris NP Logo">
+</body>
+</html> 
