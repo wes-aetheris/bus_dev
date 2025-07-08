@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:///./watchtower.db
+      - WEBSOCKET_PORT=8001
+      - JWT_SECRET=watchtower_secret_key_2024
+      - PHYSICS_MODELS_ENABLED=true
+    volumes:
+      - ./data:/app/data
+      - ./notebooks:/app/notebooks
+    networks:
+      - watchtower-network
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+      - NEXT_PUBLIC_WEBSOCKET_URL=ws://localhost:8001
+    depends_on:
+      - backend
+    networks:
+      - watchtower-network
+
+  streamlit:
+    build: ./streamlit
+    ports:
+      - "8501:8501"
+    environment:
+      - DATABASE_URL=sqlite:///./watchtower.db
+      - API_URL=http://backend:8000
+    volumes:
+      - ./data:/app/data
+      - ./notebooks:/app/notebooks
+    depends_on:
+      - backend
+    networks:
+      - watchtower-network
+
+  jupyter:
+    build: ./notebooks
+    ports:
+      - "8888:8888"
+    environment:
+      - JUPYTER_TOKEN=watchtower
+    volumes:
+      - ./data:/app/data
+      - ./notebooks:/app/notebooks
+    depends_on:
+      - backend
+    networks:
+      - watchtower-network
+
+networks:
+  watchtower-network:
+    driver: bridge
+
+volumes:
+  data: 

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem Slide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: #000000;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        .slide-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+        .slide-title {
+            font-size: 44px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 14px;
+            letter-spacing: -1px;
+        }
+        .slide-subtitle {
+            font-size: 19px;
+            font-weight: 300;
+            color: #bdbdbd;
+            max-width: 600px;
+        }
+        .cards-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 32px;
+            max-width: 1100px;
+            width: 100%;
+        }
+        .problem-card {
+            background: #181820;
+            border-radius: 18px;
+            padding: 44px 28px 28px 28px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.18);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 320px;
+            min-height: 280px;
+            width: 320px;
+            height: 280px;
+            transition: transform 0.2s;
+        }
+        .problem-card:hover {
+            transform: translateY(-6px) scale(1.03);
+        }
+        .card-number {
+            font-size: 3.1rem;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 18px;
+            letter-spacing: -1px;
+            position: relative;
+            z-index: 2;
+        }
+        .card-number.accent1,
+        .card-number.accent2,
+        .card-number.accent3,
+        .card-number.accent4,
+        .card-number.accent5,
+        .card-number.accent6 {
+            color: #fff;
+            text-shadow: none;
+        }
+        
+        .card-number.accent1 {
+            font-size: 9.3rem;
+        }
+        .card-underline {
+            width: 38px;
+            height: 4px;
+            border-radius: 2px;
+            margin: 0 auto 18px auto;
+            margin-top: -10px;
+        }
+        .card-underline.accent1 { background: #8b5cf6; }
+        .card-underline.accent2 { background: #8b5cf6; }
+        .card-underline.accent3 { background: #8b5cf6; }
+        .card-underline.accent4 { background: #8b5cf6; }
+        .card-underline.accent5 { background: #8b5cf6; }
+        .card-underline.accent6 { background: #8b5cf6; }
+        .card-text {
+            font-size: 1.08rem;
+            font-weight: 400;
+            color: #bdbdbd;
+            line-height: 1.5;
+            max-width: 220px;
+            margin: 0 auto;
+        }
+        
+        .references {
+            margin-top: 60px;
+            padding: 30px;
+            max-width: 1100px;
+            width: 100%;
+        }
+        
+        .references h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .reference-list {
+            color: #bdbdbd;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            padding-left: 0;
+            word-break: break-word;
+            white-space: normal;
+        }
+        
+        @media (max-width: 768px) {
+            .slide-title {
+                font-size: 32px;
+            }
+            .slide-subtitle {
+                font-size: 16px;
+            }
+            .cards-container {
+                grid-template-columns: 1fr;
+                gap: 22px;
+            }
+            .problem-card {
+                padding: 22px 0 12px 0;
+            }
+            .card-number {
+                font-size: 2.2rem;
+            }
+            .card-text {
+                font-size: 0.98rem;
+            }
+            .references {
+                margin-top: 40px;
+                padding: 20px;
+            }
+            .references h3 {
+                font-size: 1.3rem;
+            }
+            .reference-list {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-header">
+        <h1 class="slide-title">The Problem</h1>
+        <p class="slide-subtitle">Current market challenges that demand immediate attention</p>
+    </div>
+    <div class="cards-container" style="display: flex; flex-direction: column; align-items: center; gap: 32px; max-width: 1100px; width: 100%;">
+        <div style="display: flex; justify-content: center; gap: 48px; width: 100%; max-width: 900px;">
+            <div class="problem-card">
+                <div class="card-underline accent1"></div>
+                <p class="card-text">Number of noise pattern fingerprints exhibited by sensors<sup>[1]</sup></p>
+            </div>
+            <div class="problem-card">
+                <div class="card-number accent2">$2B/yr</div>
+                <div class="card-underline accent2"></div>
+                <p class="card-text">DoD spending on unexplained sensor faults<sup>[2]</sup></p>
+            </div>
+            <div class="problem-card">
+                <div class="card-number accent3">$80M</div>
+                <div class="card-underline accent3"></div>
+                <p class="card-text">Cost of Global Hawk crash due to INS sensor failure<sup>[3]</sup></p>
+            </div>
+        </div>
+        <div style="display: flex; justify-content: center; gap: 48px; width: 100%; max-width: 600px;">
+            <div class="problem-card">
+                <div class="card-number accent4">$100M</div>
+                <div class="card-underline accent4"></div>
+                <p class="card-text">Annual revenue lost during imaging sensor-specific maintenance downtime<sup>[4]</sup></p>
+            </div>
+            <div class="problem-card">
+                <div class="card-number accent5">30-50%</div>
+                <div class="card-underline accent5"></div>
+                <p class="card-text">Percentage of time drones operate without functional GPS in cities<sup>[5]</sup></p>
+            </div>
+        </div>
+    </div>
+    <div class="references">
+        <h3>References</h3>
+        <p class="reference-list">
+            <sup>[1]</sup> Conservative estimate based on MK27 Amazon drone cost ($146k/drone = ~$300k; https://www.businessinsider.com/amazon-prime-air-drone-delivery-cost-63-per-package-2025-2022-4) + NTSB Investigation costs ($200k) + >2-months of paused delivery operations & software updates ($3M) + Regulatory & Compliance costs ($500k); Does not include any insurance-related costs or reputation damage-related expenses. https://nypost.com/2025/05/16/business/amazon-delivery-drones-crashed-after-company-removed-safety-sensor/; <br>
+            <sup>[2]</sup>https://ncms.app.box.com/s/lu3r3momjpnplrkm4b73opam90xj7qs;<br>
+            <sup>[3]</sup>https://www.airandspaceforces.com/PDF/AircraftAccidentReports/Documents/2018/06212017_RQ4_Calif.pdf;<br>
+            <sup>[4]</sup>Conservative estimated cost of just downtime based on 5% of US commercial drone fleet (1.2M drones in CY 2029-FAA; https://www.faa.gov/data_research/aviation/aerospace_forecasts/FY-2025-2045-Full-Forecast-Document-and-Tables.pdf) being sent for depot level sensor maintenace annually which doesn't require hardware adjustments or replacement - significantly lower than the 25% overall failure rate documented for sophisticated UAV systems (https://www.mdpi.com/1424-8220/18/9/3171); assumes $1000 per day revenue loss (https://aerialnorthwest.com/oregon-aerial-drone-flight-blog/the-2023-airspace-of-drone-piloting-and-earnings.html) and avg 5-day turn around time (https://thedronerepair.com/how-it-works/).<br> 
+            <sup>[5]</sup> https://www.assureuas.org/wp-content/uploads/2021/06/A45_Task7_Final_Report_v5_FINAL.pdf
+        </p>
+    </div>
+</body>
+</html> 
