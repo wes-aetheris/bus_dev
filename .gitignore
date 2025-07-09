@@ -3,3 +3,6 @@
 *.jpg
 *.png
 *.pdf
+*.pyc
+# Ignore node_modules completely
+node_modules/

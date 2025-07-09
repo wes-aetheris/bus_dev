@@ -1,138 +1,255 @@
-# Watchtower Drone Operator Dashboard
+# Watchtower Drone Sensor Dashboard
 
-A comprehensive physics-informed sensor monitoring system for drone operations, featuring real-time sensor health monitoring, predictive maintenance, and cross-sensor correlation analysis.
+A comprehensive full-stack dashboard for drone operators to monitor sensor data, plan missions, and analyze flight performance.
 
-## 🚁 Features
+## 🚁 Project Overview
 
-### Core Functionality
-- **Real-time sensor health monitoring** with physics-informed degradation models
-- **CSV data upload and processing** with automated validation
-- **Cross-sensor correlation analysis** for comprehensive system health
-- **Predictive maintenance alerts** with multiple severity levels
-- **Professional drone operator interface** with dark military/aviation theme
-- **Jupyter notebook integration** for advanced data analysis
-- **WebSocket real-time updates** for live monitoring
-- **Export functionality** (CSV, JSON, PDF) for reporting
+Watchtower is a complete drone sensor dashboard system with multiple interfaces:
 
-### Physics Models Implemented
-- **Thermal Camera**: Arrhenius degradation (dark current doubling every 6-8°C)
-- **GPS**: EMI correlation and signal degradation analysis
-- **IMU**: Vibration-induced bias drift modeling
-- **Environmental Correlation**: Temperature, humidity, vibration, EMI effects
+- **Next.js Frontend**: Modern web dashboard with real-time data visualization
+- **FastAPI Backend**: RESTful API with WebSocket support for real-time updates
+- **Streamlit Alternative**: Rapid prototyping and data exploration interface
+- **Jupyter Integration**: Advanced analytics and research capabilities
 
-### UI Components
-- Dark military/aviation theme (dark blues, amber alerts, green status)
-- Real-time sensor health gauges (0-100% with color coding)
-- Degradation timeline charts with physics-based predictions
-- Cross-sensor correlation matrix heatmap
-- Alert system with multiple severity levels
-- Mission status bar (altitude, speed, battery, flight time)
-- Responsive design for multiple screen sizes
+## 🏗️ Architecture
 
-## 🛠 Tech Stack
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Frontend      │    │   Backend       │    │   Streamlit     │
+│   (Next.js)     │◄──►│   (FastAPI)     │◄──►│   (Dashboard)   │
+│   Port: 3000    │    │   Port: 8000    │    │   Port: 8501    │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+         │                       │                       │
+         │                       │                       │
+         └───────────────────────┼───────────────────────┘
+                                 │
+                    ┌─────────────────┐
+                    │   Jupyter       │
+                    │   (Analytics)   │
+                    │   Port: 8888    │
+                    └─────────────────┘
+```
 
-- **Backend**: FastAPI + Python with physics-based sensor modeling
-- **Frontend**: Next.js 14 + TypeScript + Tailwind CSS + Recharts
-- **Alternative**: Streamlit dashboard for rapid prototyping
-- **Database**: SQLite with SQLAlchemy
-- **Real-time**: WebSocket connections
-- **Containerization**: Docker + docker-compose
+## 📊 Dashboard Tabs
+
+1. **Pre-Flight**: Sensor calibration, system checks, weather conditions
+2. **Post-Flight**: Flight analysis, data collection summary, anomaly detection
+3. **Mission Planning**: Route optimization, weather forecasting, no-fly zones
+4. **Maintenance**: Component health monitoring, maintenance schedules
+5. **Environment & Context**: Environmental conditions, air quality, terrain data
+6. **Camera Sensor Profile**: Camera settings, image analysis, recording modes
+7. **Operational Flight**: Real-time flight monitoring, mission progress
 
 ## 🚀 Quick Start
 
+### Prerequisites
+
+- Docker and Docker Compose
+- Node.js 18+ (for local development)
+- Python 3.11+ (for local development)
+
 ### Using Docker (Recommended)
-```bash
-cd dashboards
-docker-compose up --build
-```
 
-### Manual Setup
-```bash
-# Backend
-cd backend
-pip install -r requirements.txt
-uvicorn main:app --reload
+1. **Clone and navigate to the project**:
+   ```bash
+   cd dashboards
+   ```
 
-# Frontend
-cd frontend
-npm install
-npm run dev
+2. **Start all services**:
+   ```bash
+   docker-compose up --build
+   ```
 
-# Streamlit Alternative
-cd streamlit
-pip install -r requirements.txt
-streamlit run app.py
-```
+3. **Access the applications**:
+   - Frontend Dashboard: http://localhost:3000
+   - Backend API: http://localhost:8000
+   - Streamlit Dashboard: http://localhost:8501
+   - Jupyter Lab: http://localhost:8888 (token: watchtower)
+
+### Local Development
+
+1. **Backend Setup**:
+   ```bash
+   cd backend
+   pip install -r requirements.txt
+   uvicorn main:app --reload --host 0.0.0.0 --port 8000
+   ```
+
+2. **Frontend Setup**:
+   ```bash
+   cd frontend
+   npm install
+   npm run dev
+   ```
+
+3. **Streamlit Setup**:
+   ```bash
+   cd streamlit
+   pip install -r requirements.txt
+   streamlit run app.py
+   ```
 
 ## 📁 Project Structure
 
 ```
 dashboards/
-├── backend/                 # FastAPI backend with physics models
-├── frontend/               # Next.js dashboard
-├── streamlit/              # Streamlit alternative
-├── data/                   # Sample data and CSV files
-├── notebooks/              # Jupyter notebooks for analysis
-├── docker-compose.yml      # Container orchestration
-└── README.md              # This file
+├── backend/                 # FastAPI backend
+│   ├── main.py             # Main application
+│   ├── models/             # Pydantic models
+│   ├── services/           # Business logic
+│   ├── api/                # API endpoints
+│   └── utils/              # Utility functions
+├── frontend/               # Next.js frontend
+│   ├── src/
+│   │   ├── components/     # React components
+│   │   ├── pages/          # Next.js pages
+│   │   ├── stores/         # Zustand state management
+│   │   └── hooks/          # Custom React hooks
+│   └── public/             # Static assets
+├── streamlit/              # Streamlit dashboard
+│   ├── app.py              # Main Streamlit app
+│   └── requirements.txt    # Python dependencies
+├── notebooks/              # Jupyter integration
+│   ├── sensor_analysis.ipynb  # Analysis notebook
+│   └── ace_tools.py        # Helper utilities
+├── data/                   # Sample data
+│   └── sample_sensor_data.csv
+└── docker-compose.yml      # Multi-service orchestration
 ```
 
-## 🔧 Configuration
+## 🔧 API Endpoints
 
-### Environment Variables
-- `DATABASE_URL`: SQLite database path
-- `WEBSOCKET_PORT`: WebSocket server port
-- `JWT_SECRET`: Authentication secret
-- `PHYSICS_MODELS_ENABLED`: Enable physics-based modeling
+### Core Endpoints
+- `GET /` - Health check
+- `GET /health` - System status
+- `GET /api/dashboard/tabs` - Available dashboard tabs
 
-### Sample Data
-The system includes realistic sample data with physics-based sensor degradation patterns:
-- Thermal camera degradation over time
-- GPS signal quality variations
-- IMU bias drift patterns
-- Environmental correlation data
+### Sensor Data
+- `GET /api/sensors/status` - Current sensor status
+- `POST /api/sensors/upload` - Upload sensor data
+- `POST /api/sensors/upload/csv` - Upload CSV data
+- `GET /api/sensors/data/{sensor_id}` - Get sensor data
+- `GET /api/sensors/anomalies` - Get detected anomalies
+- `GET /api/sensors/physics-metrics` - Physics calculations
 
-## 📊 Dashboard Features
+### Dashboard Data
+- `GET /api/dashboard/{tab_id}` - Get tab-specific data
+- `GET /api/dashboard/pre-flight` - Pre-flight data
+- `GET /api/dashboard/post-flight` - Post-flight data
+- `GET /api/dashboard/mission-planning` - Mission planning data
+- `GET /api/dashboard/maintenance` - Maintenance data
+- `GET /api/dashboard/environment` - Environment data
+- `GET /api/dashboard/camera-profile` - Camera profile data
+- `GET /api/dashboard/operational-flight` - Operational flight data
+
+### WebSocket Endpoints
+- `WS /ws/sensor-data` - Real-time sensor data
+- `WS /ws/alerts` - Real-time alerts
+- `WS /ws/flight-status` - Real-time flight status
+
+## 📈 Features
 
 ### Real-time Monitoring
-- Live sensor health gauges
-- Mission status indicators
-- Alert notifications
-- WebSocket updates
+- Live sensor data streaming via WebSockets
+- Real-time alert system
+- Live flight status updates
 
 ### Data Analysis
+- Anomaly detection using statistical methods
+- Physics-based calculations (velocity, acceleration)
+- Performance metrics and KPIs
+
+### Visualization
+- Interactive flight path maps
+- Time series charts
+- Performance dashboards
+- Anomaly visualization
+
+### Data Management
 - CSV upload and processing
-- Cross-sensor correlation analysis
-- Predictive maintenance modeling
-- Export capabilities
+- Sensor data validation
+- Data export capabilities
 
-### Physics Models
-- Arrhenius degradation for thermal sensors
-- EMI correlation for GPS systems
-- Vibration modeling for IMU
-- Environmental factor integration
+## 🔍 Usage Examples
 
-## 🎯 Use Cases
+### Upload Sensor Data
+```python
+import requests
 
-1. **Drone Fleet Management**: Monitor multiple drones simultaneously
-2. **Predictive Maintenance**: Identify sensor degradation before failure
-3. **Mission Planning**: Assess sensor health before deployment
-4. **Data Analysis**: Export and analyze historical sensor data
-5. **Training**: Use for operator training and system familiarization
+# Upload sensor data
+data = {
+    "mission_id": "mission_001",
+    "sensor_readings": [
+        {
+            "sensor_id": "gps",
+            "sensor_type": "gps",
+            "timestamp": "2024-01-01T12:00:00Z",
+            "value": {"latitude": 40.7128, "longitude": -74.0060}
+        }
+    ]
+}
 
-## 🔒 Security
+response = requests.post("http://localhost:8000/api/sensors/upload", json=data)
+```
 
-- JWT-based authentication
-- Input validation and sanitization
-- CORS configuration
-- Rate limiting on API endpoints
+### Jupyter Analysis
+```python
+from ace_tools import SensorDataProcessor, generate_sample_data
 
-## 📈 Performance
+# Load and analyze data
+processor = SensorDataProcessor()
+data = generate_sample_data(1000)
+processor.load_data(data)
 
-- Real-time WebSocket updates
-- Optimized database queries
-- Caching for static data
-- Efficient physics model calculations
+# Detect anomalies
+anomalies = processor.detect_anomalies(['altitude', 'roll', 'pitch'])
+
+# Calculate metrics
+metrics = processor.calculate_flight_metrics()
+```
+
+## 🧪 Testing
+
+### Backend Tests
+```bash
+cd backend
+python -m pytest tests/
+```
+
+### Frontend Tests
+```bash
+cd frontend
+npm test
+```
+
+### Integration Tests
+```bash
+# Test API endpoints
+curl http://localhost:8000/health
+curl http://localhost:8000/api/sensors/status
+```
+
+## 🚨 Troubleshooting
+
+### Common Issues
+
+1. **Port conflicts**: Ensure ports 3000, 8000, 8501, 8888 are available
+2. **Docker build failures**: Check Docker logs with `docker-compose logs`
+3. **API connection errors**: Verify backend is running on port 8000
+4. **Frontend build issues**: Clear node_modules and reinstall dependencies
+
+### Health Checks
+- Backend: http://localhost:8000/health
+- Frontend: http://localhost:3000
+- Streamlit: http://localhost:8501/_stcore/health
+- Jupyter: http://localhost:8888/api/status
+
+## 📚 Documentation
+
+- [API Documentation](http://localhost:8000/docs) - Interactive API docs
+- [Project Summary](PROJECT_SUMMARY.md) - Detailed project overview
+- [Setup Guide](SETUP.md) - Detailed setup instructions
+- [Troubleshooting](TROUBLESHOOTING.md) - Common issues and solutions
 
 ## 🤝 Contributing
 
@@ -144,8 +261,15 @@ The system includes realistic sample data with physics-based sensor degradation 
 
 ## 📄 License
 
-This project is part of the Watchtower physics-informed sensor monitoring system.
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🆘 Support
+
+For support and questions:
+- Create an issue in the repository
+- Check the troubleshooting guide
+- Review the API documentation
 
 ---
 
-**Watchtower**: Physics-Informed Sensor Monitoring for Drone Operations 
+**Watchtower Dashboard** - Empowering drone operators with comprehensive sensor monitoring and analysis capabilities.

@@ -1,285 +1,391 @@
-# Watchtower Drone Sensor Dashboard - Complete Project Setup
+# Watchtower Drone Sensor Dashboard - Product Requirements Document (PRD)
 
-## Project Overview
-Create a full-stack drone operator dashboard for **Watchtower** - a physics-informed sensor monitoring system. The dashboard should showcase real-time sensor health monitoring, cross-sensor correlation analysis, and predictive maintenance capabilities for drone sensors.
+## 📋 Executive Summary
 
-## Tech Stack Requirements
+The Watchtower Drone Sensor Dashboard is a comprehensive full-stack application designed to provide drone operators with real-time monitoring, data analysis, and mission planning capabilities. The system integrates multiple technologies to create a complete solution for modern drone operations.
 
-### Backend (Python)
-- **FastAPI** for REST API and WebSocket support
-- **Pandas** for data processing and CSV handling
-- **NumPy** for physics-based calculations
-- **Pydantic** for data validation
-- **SQLAlchemy** for database operations (SQLite for development)
-- **Asyncio** for real-time data streaming
+## 🎯 Product Vision
 
-### Frontend (React/TypeScript)
-- **Next.js 14** with TypeScript
-- **Tailwind CSS** for styling
-- **Recharts** for sensor visualizations
-- **Lucide React** for icons
-- **Socket.io-client** for real-time updates
-- **React Hook Form** for data upload forms
-- **Zustand** for state management
+**Vision Statement**: To empower drone operators with comprehensive sensor monitoring and analysis capabilities through an intuitive, real-time dashboard system.
 
-### Additional Tools
-- **Docker** for containerization
-- **Jupyter notebooks** for data analysis integration
-- **Streamlit** as alternative dashboard option
+**Mission**: Provide a unified platform for drone sensor data management, mission planning, and operational monitoring that enhances safety, efficiency, and decision-making in drone operations.
 
-## Project Structure
-```
-watchtower-dashboard/
-├── backend/
-│   ├── app/
-│   │   ├── __init__.py
-│   │   ├── main.py
-│   │   ├── models/
-│   │   │   ├── __init__.py
-│   │   │   ├── sensor_data.py
-│   │   │   └── alerts.py
-│   │   ├── services/
-│   │   │   ├── __init__.py
-│   │   │   ├── physics_engine.py
-│   │   │   ├── data_processor.py
-│   │   │   └── alert_generator.py
-│   │   ├── api/
-│   │   │   ├── __init__.py
-│   │   │   ├── sensors.py
-│   │   │   ├── dashboard.py
-│   │   │   └── websocket.py
-│   │   └── utils/
-│   │       ├── __init__.py
-│   │       ├── csv_handler.py
-│   │       └── physics_models.py
-│   ├── data/
-│   │   ├── sample_data.csv
-│   │   └── templates/
-│   ├── notebooks/
-│   │   ├── data_analysis.ipynb
-│   │   └── sensor_modeling.ipynb
-│   ├── requirements.txt
-│   └── Dockerfile
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── dashboard/
-│   │   │   │   ├── SensorHealthGauge.tsx
-│   │   │   │   ├── CorrelationMatrix.tsx
-│   │   │   │   ├── DegradationChart.tsx
-│   │   │   │   ├── AlertBanner.tsx
-│   │   │   │   ├── MissionStatus.tsx
-│   │   │   │   └── EnvironmentalPanel.tsx
-│   │   │   ├── data/
-│   │   │   │   ├── CSVUploader.tsx
-│   │   │   │   └── DataControls.tsx
-│   │   │   └── layout/
-│   │   │       ├── Header.tsx
-│   │   │       ├── Sidebar.tsx
-│   │   │       └── Layout.tsx
-│   │   ├── hooks/
-│   │   │   ├── useWebSocket.ts
-│   │   │   ├── useSensorData.ts
-│   │   │   └── useAlerts.ts
-│   │   ├── stores/
-│   │   │   ├── dashboardStore.ts
-│   │   │   └── alertStore.ts
-│   │   ├── types/
-│   │   │   ├── sensor.ts
-│   │   │   └── dashboard.ts
-│   │   ├── utils/
-│   │   │   ├── api.ts
-│   │   │   └── physics.ts
-│   │   ├── pages/
-│   │   │   ├── index.tsx
-│   │   │   ├── dashboard.tsx
-│   │   │   └── api/
-│   │   └── styles/
-│   │       └── globals.css
-│   ├── package.json
-│   ├── tailwind.config.js
-│   ├── next.config.js
-│   └── Dockerfile
-├── streamlit-app/
-│   ├── streamlit_dashboard.py
-│   ├── components/
-│   │   ├── sensor_widgets.py
-│   │   └── charts.py
-│   └── requirements.txt
-├── docker-compose.yml
-├── .env.example
-└── README.md
-```
+## 🏗️ Product Architecture
 
-## Core Features to Implement
+### Core Components
 
-### 1. Backend API (FastAPI)
-```python
-# Key endpoints needed:
-- GET /api/sensors/health - Current sensor health status
-- POST /api/data/upload - CSV file upload
-- GET /api/data/historical - Historical sensor data
-- GET /api/alerts/current - Current alerts
-- GET /api/physics/predictions - Predictive maintenance
-- WebSocket /ws/realtime - Real-time sensor updates
-```
+1. **Backend API (FastAPI)**
+   - RESTful API with WebSocket support
+   - Real-time data processing and validation
+   - Sensor data management and analytics
+   - Physics-based calculations and anomaly detection
 
-### 2. Physics-Informed Models
-Implement the physics equations from the technical documents:
-- **Thermal Camera**: Arrhenius degradation (dark current doubling every 6-8°C)
-- **GPS**: EMI correlation and signal degradation
-- **IMU**: Vibration-induced bias drift
-- **Cross-sensor correlation**: Environmental factor analysis
+2. **Frontend Dashboard (Next.js)**
+   - Modern React-based user interface
+   - Real-time data visualization
+   - Tab-based navigation system
+   - Responsive design for multiple devices
 
-### 3. Frontend Dashboard Components
-- **Real-time sensor health gauges** (0-100% with color coding)
-- **Degradation timeline charts** showing physics-based predictions
-- **Cross-sensor correlation matrix** heatmap
-- **Alert system** with critical/warning/info levels
-- **Environmental context panel** (temperature, humidity, vibration, EMI)
-- **Mission status bar** (altitude, speed, battery, flight time)
-- **Predictive maintenance recommendations**
+3. **Streamlit Alternative**
+   - Rapid prototyping and data exploration
+   - Interactive visualizations
+   - Easy deployment and sharing
 
-### 4. Data Management
-- **CSV upload and validation**
-- **Real-time data streaming**
-- **Historical data storage and retrieval**
-- **Data export functionality**
-- **Jupyter notebook integration**
+4. **Jupyter Integration**
+   - Advanced analytics and research capabilities
+   - Custom data processing workflows
+   - Export and reporting features
 
-### 5. Styling Requirements
-- **Dark theme** with drone operator aesthetics
-- **Military/aviation color scheme**: Dark blues, amber alerts, green status indicators
-- **Responsive design** for different screen sizes
-- **Animated elements**: Pulsing alerts, smooth chart updates
-- **Professional typography** and spacing
+## 📊 Feature Requirements
 
-## Physics-Based Data Generation
-Implement realistic sensor degradation patterns:
+### 1. Pre-Flight Tab
 
-### Thermal Camera Degradation
-```python
-# Arrhenius relationship for dark current
-dark_current = I_0 * exp(-E_g / (2*k*T))
-# Health degrades as dark current increases
-thermal_health = 100 - (dark_current_ratio - 1) * scaling_factor
-```
+#### Functional Requirements
+- **Sensor Status Monitoring**
+  - Real-time status display for GPS, IMU, Camera, Barometer
+  - Calibration status indicators
+  - Connection quality metrics
+  - Last update timestamps
 
-### GPS EMI Correlation
-```python
-# GPS health affected by EMI levels
-gps_health = base_health - emi_correlation_factor * emi_strength
-```
+- **System Health Checks**
+  - Battery level monitoring
+  - Propeller and motor status
+  - Frame integrity checks
+  - Component health scores
 
-### Environmental Context
-- Temperature cycling effects on all sensors
-- Vibration impact on IMU drift
-- Humidity effects on optical sensors
-- EMI interference patterns
+- **Weather Integration**
+  - Current weather conditions
+  - Wind speed and direction
+  - Temperature and humidity
+  - Visibility and precipitation
 
-## Real-Time Features
-- **WebSocket connections** for live data updates
-- **Streaming alerts** based on threshold crossings
-- **Live correlation analysis** between sensors
-- **Real-time physics model updates**
+#### Non-Functional Requirements
+- **Performance**: Status updates within 1 second
+- **Reliability**: 99.9% uptime for critical systems
+- **Usability**: Intuitive status indicators with color coding
 
-## Sample Data Requirements
-Create realistic CSV templates with:
-- Timestamp column (ISO format)
-- Sensor health percentages (0-100)
-- Environmental data (temperature, humidity, vibration, EMI)
-- Mission telemetry (altitude, speed, battery)
-- Physics parameters (dark current, bias stability, etc.)
+### 2. Post-Flight Tab
 
-## UI/UX Requirements
-- **Professional drone operator interface**
-- **Intuitive navigation** between dashboard views
-- **Clear visual hierarchy** for alerts and status
-- **Contextual help** and tooltips
-- **Keyboard shortcuts** for common actions
-- **Print-friendly** maintenance reports
+#### Functional Requirements
+- **Flight Summary**
+  - Duration and distance metrics
+  - Maximum altitude and speed
+  - Battery consumption analysis
+  - Flight efficiency scores
 
-## Integration Points
-- **Jupyter notebook** data analysis workflows
-- **CSV file** drag-and-drop upload
-- **REST API** for external system integration
-- **WebSocket** real-time data feeds
-- **Export capabilities** (CSV, JSON, PDF reports)
+- **Data Collection**
+  - Total records collected
+  - Sensors utilized during flight
+  - Data size and quality metrics
+  - Export capabilities
 
-## Development Priorities
-1. **Backend API with physics models**
-2. **React dashboard with core components**
-3. **WebSocket real-time updates**
-4. **CSV upload and data management**
-5. **Streamlit alternative interface**
-6. **Jupyter notebook integration**
-7. **Docker containerization**
-8. **Documentation and examples**
+- **Anomaly Detection**
+  - Automated anomaly identification
+  - Severity classification
+  - Timestamp and location tracking
+  - Resolution recommendations
 
-## Environment Variables
-```env
-# Backend
-DATABASE_URL=sqlite:///./watchtower.db
-CORS_ORIGINS=http://localhost:3000,http://localhost:8501
-DEBUG=true
+#### Non-Functional Requirements
+- **Data Processing**: Handle up to 10,000 records per flight
+- **Analysis Speed**: Complete analysis within 30 seconds
+- **Storage**: Efficient data compression and storage
 
-# Frontend
-NEXT_PUBLIC_API_URL=http://localhost:8000
-NEXT_PUBLIC_WS_URL=ws://localhost:8000/ws
+### 3. Mission Planning Tab
 
-# Streamlit
-STREAMLIT_SERVER_PORT=8501
-```
+#### Functional Requirements
+- **Route Optimization**
+  - Interactive waypoint planning
+  - Distance and time calculations
+  - Obstacle avoidance
+  - Fuel/battery requirements
 
-## Key Dependencies
+- **Weather Forecasting**
+  - 24-hour weather predictions
+  - Wind speed and direction forecasts
+  - Temperature and humidity trends
+  - Flight condition assessments
 
-### Backend (requirements.txt)
-```txt
-fastapi==0.104.1
-uvicorn==0.24.0
-pandas==2.1.4
-numpy==1.24.3
-pydantic==2.5.0
-sqlalchemy==2.0.23
-python-multipart==0.0.6
-python-socketio==5.10.0
-plotly==5.17.0
-scipy==1.11.4
-```
+- **No-Fly Zones**
+  - Restricted area mapping
+  - Safety zone definitions
+  - Regulatory compliance checking
+  - Dynamic zone updates
 
-### Frontend (package.json key deps)
-```json
-{
-  "dependencies": {
-    "next": "14.0.4",
-    "react": "18.2.0",
-    "typescript": "5.3.3",
-    "tailwindcss": "3.3.6",
-    "recharts": "2.8.0",
-    "lucide-react": "0.294.0",
-    "socket.io-client": "4.7.4",
-    "zustand": "4.4.7",
-    "react-hook-form": "7.48.2"
-  }
-}
-```
+#### Non-Functional Requirements
+- **Planning Speed**: Route generation within 5 seconds
+- **Accuracy**: Weather forecasts with 90% accuracy
+- **Compliance**: Real-time regulatory updates
 
-## Success Criteria
-- ✅ Real-time sensor monitoring with physics-based health calculations
-- ✅ CSV file upload and processing
-- ✅ Cross-sensor correlation analysis
-- ✅ Predictive maintenance alerts
-- ✅ Professional drone operator interface
-- ✅ Jupyter notebook integration
-- ✅ Responsive design across devices
-- ✅ Real-time WebSocket updates
-- ✅ Export functionality for reports
-- ✅ Docker containerization
+### 4. Maintenance Tab
 
-## Additional Notes
-- Use **Watchtower branding** (shield/tower icon, amber/blue color scheme)
-- Include **physics equations** in tooltips and help text
-- Implement **realistic failure scenarios** for demo purposes
-- Add **confidence metrics** for all predictions
-- Create **sample mission scenarios** for testing
-- Document **API endpoints** for external integration
+#### Functional Requirements
+- **Component Health Monitoring**
+  - Real-time health scores
+  - Predictive maintenance alerts
+  - Component lifecycle tracking
+  - Performance degradation analysis
+
+- **Maintenance Scheduling**
+  - Automated maintenance reminders
+  - Service history tracking
+  - Technician assignment
+  - Parts inventory management
+
+- **Service Records**
+  - Detailed maintenance logs
+  - Cost tracking
+  - Performance improvements
+  - Warranty management
+
+#### Non-Functional Requirements
+- **Predictive Accuracy**: 95% accuracy in failure prediction
+- **Response Time**: Maintenance alerts within 1 minute
+- **Data Retention**: 5-year maintenance history
+
+### 5. Environment & Context Tab
+
+#### Functional Requirements
+- **Current Conditions**
+  - Real-time environmental data
+  - Air quality monitoring
+  - Terrain information
+  - Obstacle detection
+
+- **Air Quality Analysis**
+  - PM2.5 and PM10 levels
+  - CO2 and VOC monitoring
+  - Air quality indices
+  - Health impact assessments
+
+- **Terrain Data**
+  - Elevation mapping
+  - Terrain type classification
+  - Obstacle identification
+  - Landing zone analysis
+
+#### Non-Functional Requirements
+- **Data Accuracy**: Environmental sensors with ±2% accuracy
+- **Update Frequency**: Real-time updates every 30 seconds
+- **Coverage**: Support for multiple environmental sensors
+
+### 6. Camera Sensor Profile Tab
+
+#### Functional Requirements
+- **Camera Settings**
+  - Resolution and frame rate configuration
+  - ISO and shutter speed settings
+  - Aperture and focus controls
+  - White balance and color profiles
+
+- **Image Analysis**
+  - Sharpness and exposure assessment
+  - Color accuracy evaluation
+  - Noise level analysis
+  - Quality scoring
+
+- **Recording Modes**
+  - Photo and video configurations
+  - Timelapse settings
+  - Storage management
+  - Format optimization
+
+#### Non-Functional Requirements
+- **Image Quality**: Support for 4K resolution
+- **Processing Speed**: Real-time image analysis
+- **Storage Efficiency**: Optimized compression algorithms
+
+### 7. Operational Flight Tab
+
+#### Functional Requirements
+- **Real-time Monitoring**
+  - Live flight status updates
+  - Current position and altitude
+  - Speed and heading information
+  - Battery and signal strength
+
+- **Mission Progress**
+  - Waypoint completion tracking
+  - Estimated time of arrival
+  - Distance remaining
+  - Mission status indicators
+
+- **Alert System**
+  - Real-time notifications
+  - Critical event alerts
+  - Safety warnings
+  - Emergency procedures
+
+#### Non-Functional Requirements
+- **Latency**: Real-time updates within 500ms
+- **Reliability**: 99.99% uptime during critical operations
+- **Safety**: Redundant communication systems
+
+## 🔧 Technical Requirements
+
+### Backend Requirements
+
+#### API Design
+- **RESTful Endpoints**: Standard HTTP methods and status codes
+- **WebSocket Support**: Real-time data streaming
+- **Data Validation**: Pydantic models for request/response validation
+- **Error Handling**: Comprehensive error responses and logging
+
+#### Data Processing
+- **Anomaly Detection**: Statistical methods for data analysis
+- **Physics Calculations**: Velocity, acceleration, and performance metrics
+- **Data Compression**: Efficient storage and transmission
+- **Real-time Processing**: Stream processing capabilities
+
+#### Security
+- **Authentication**: API key or token-based authentication
+- **Authorization**: Role-based access control
+- **Data Encryption**: Secure data transmission and storage
+- **Input Validation**: Protection against malicious inputs
+
+### Frontend Requirements
+
+#### User Interface
+- **Responsive Design**: Support for desktop, tablet, and mobile devices
+- **Accessibility**: WCAG 2.1 AA compliance
+- **Performance**: Fast loading times and smooth interactions
+- **Cross-browser Compatibility**: Support for modern browsers
+
+#### State Management
+- **Zustand Integration**: Efficient state management
+- **Real-time Updates**: WebSocket integration for live data
+- **Caching**: Client-side caching for performance
+- **Error Handling**: Graceful error states and recovery
+
+#### Visualization
+- **Interactive Charts**: Recharts integration for data visualization
+- **Real-time Maps**: Flight path and location tracking
+- **Custom Components**: Reusable UI components
+- **Export Capabilities**: Data export in multiple formats
+
+### Integration Requirements
+
+#### Streamlit Integration
+- **Data Exploration**: Interactive data analysis tools
+- **Rapid Prototyping**: Quick dashboard development
+- **Sharing Capabilities**: Easy deployment and sharing
+- **Custom Visualizations**: Plotly integration for charts
+
+#### Jupyter Integration
+- **Advanced Analytics**: Custom data processing workflows
+- **Research Tools**: Statistical analysis and modeling
+- **Export Features**: Multiple export formats
+- **Collaboration**: Notebook sharing and version control
+
+## 📈 Performance Requirements
+
+### System Performance
+- **Response Time**: API endpoints respond within 200ms
+- **Throughput**: Support for 1000+ concurrent users
+- **Availability**: 99.9% uptime for production systems
+- **Scalability**: Horizontal scaling capabilities
+
+### Data Performance
+- **Processing Speed**: Real-time data processing within 1 second
+- **Storage Efficiency**: Optimized data compression and storage
+- **Query Performance**: Fast data retrieval and analysis
+- **Backup and Recovery**: Automated backup and recovery procedures
+
+### User Experience
+- **Page Load Time**: Dashboard loads within 3 seconds
+- **Real-time Updates**: Live data updates within 500ms
+- **Mobile Performance**: Responsive design with fast interactions
+- **Offline Capability**: Basic functionality during connectivity issues
+
+## 🔒 Security Requirements
+
+### Data Security
+- **Encryption**: End-to-end encryption for sensitive data
+- **Access Control**: Role-based permissions and authentication
+- **Audit Logging**: Comprehensive activity logging
+- **Data Privacy**: GDPR and privacy regulation compliance
+
+### Application Security
+- **Input Validation**: Protection against injection attacks
+- **CORS Configuration**: Proper cross-origin resource sharing
+- **Rate Limiting**: Protection against abuse and attacks
+- **Secure Headers**: Implementation of security headers
+
+### Infrastructure Security
+- **Container Security**: Secure Docker container configuration
+- **Network Security**: Isolated network communication
+- **Monitoring**: Security monitoring and alerting
+- **Updates**: Regular security updates and patches
+
+## 🧪 Testing Requirements
+
+### Unit Testing
+- **Backend Tests**: 90% code coverage for API endpoints
+- **Frontend Tests**: Component and utility function testing
+- **Integration Tests**: End-to-end workflow testing
+- **Performance Tests**: Load and stress testing
+
+### Quality Assurance
+- **Code Quality**: Linting and code style enforcement
+- **Documentation**: Comprehensive API and user documentation
+- **Error Handling**: Graceful error handling and recovery
+- **Logging**: Structured logging for debugging and monitoring
+
+## 📚 Documentation Requirements
+
+### Technical Documentation
+- **API Documentation**: Interactive API documentation with examples
+- **Architecture Guide**: System design and component documentation
+- **Deployment Guide**: Setup and configuration instructions
+- **Troubleshooting Guide**: Common issues and solutions
+
+### User Documentation
+- **User Guide**: Step-by-step usage instructions
+- **Feature Overview**: Detailed feature descriptions
+- **Best Practices**: Recommended workflows and procedures
+- **FAQ**: Common questions and answers
+
+## 🔮 Future Enhancements
+
+### Planned Features
+- **Machine Learning**: Advanced anomaly detection and prediction
+- **Mobile Application**: Native mobile app for field operations
+- **Cloud Integration**: Cloud-based data storage and processing
+- **Advanced Analytics**: Custom analysis and reporting tools
+
+### Scalability Improvements
+- **Microservices**: Service decomposition for better scalability
+- **Database Integration**: Persistent data storage solutions
+- **Caching**: Performance optimization through caching
+- **Load Balancing**: High availability and load distribution
+
+### User Experience
+- **Custom Dashboards**: User-configurable dashboard layouts
+- **Advanced Visualizations**: 3D flight paths and immersive views
+- **Export Options**: Multiple format support for data export
+- **API Documentation**: Interactive API documentation and testing
+
+## 📊 Success Metrics
+
+### Technical Metrics
+- **System Uptime**: 99.9% availability target
+- **Response Time**: < 200ms average API response time
+- **Error Rate**: < 1% error rate for critical operations
+- **Data Accuracy**: 99.5% accuracy for sensor data
+
+### User Metrics
+- **User Adoption**: Dashboard usage rates and engagement
+- **Feature Usage**: Tab and feature utilization statistics
+- **User Satisfaction**: Feedback scores and ratings
+- **Performance**: User-reported performance and reliability
+
+### Business Metrics
+- **Operational Efficiency**: Time saved in mission planning
+- **Safety Improvements**: Reduction in incidents and accidents
+- **Cost Savings**: Reduced maintenance and operational costs
+- **Compliance**: Regulatory compliance and audit success
+
+---
+
+**Document Version**: 1.0  
+**Last Updated**: January 2024  
+**Next Review**: Quarterly review and updates

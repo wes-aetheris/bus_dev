@@ -6,15 +6,18 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=sqlite:///./watchtower.db
-      - WEBSOCKET_PORT=8001
-      - JWT_SECRET=watchtower_secret_key_2024
-      - PHYSICS_MODELS_ENABLED=true
+      - ENVIRONMENT=development
     volumes:
+      - ./backend:/app
       - ./data:/app/data
-      - ./notebooks:/app/notebooks
     networks:
       - watchtower-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
   frontend:
     build: ./frontend
@@ -22,44 +25,66 @@ services:
       - "3000:3000"
     environment:
       - NEXT_PUBLIC_API_URL=http://localhost:8000
-      - NEXT_PUBLIC_WEBSOCKET_URL=ws://localhost:8001
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
     depends_on:
       - backend
     networks:
       - watchtower-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
   streamlit:
     build: ./streamlit
     ports:
       - "8501:8501"
     environment:
-      - DATABASE_URL=sqlite:///./watchtower.db
-      - API_URL=http://backend:8000
+      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
     volumes:
+      - ./streamlit:/app
       - ./data:/app/data
-      - ./notebooks:/app/notebooks
     depends_on:
       - backend
     networks:
       - watchtower-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
   jupyter:
     build: ./notebooks
     ports:
       - "8888:8888"
     environment:
+      - JUPYTER_ENABLE_LAB=yes
       - JUPYTER_TOKEN=watchtower
     volumes:
-      - ./data:/app/data
-      - ./notebooks:/app/notebooks
+      - ./notebooks:/home/jovyan/work
+      - ./data:/home/jovyan/work/data
     depends_on:
       - backend
     networks:
       - watchtower-network
+    # Health check disabled due to authentication issues
+    # healthcheck:
+    #   test: ["CMD", "curl", "-f", "http://localhost:8888/lab?token=watchtower"]
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 3
+    #   start_period: 40s
 
 networks:
   watchtower-network:
     driver: bridge
 
 volumes:
-  data: 
+  data:
