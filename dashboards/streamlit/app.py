@@ -28,7 +28,7 @@ page = st.sidebar.selectbox(
         "Maintenance",
         "Environment & Context",
         "Camera Sensor Profile",
-        "Operational Flight"
+        "Live Flight"
     ]
 )
 
@@ -275,8 +275,8 @@ elif page == "Camera Sensor Profile":
         for metric, value in analysis.items():
             st.metric(label=metric, value=value)
 
-elif page == "Operational Flight":
-    st.header("Operational Flight")
+elif page == "Live Flight":
+    st.header("Live Flight")
     
     col1, col2 = st.columns(2)
     

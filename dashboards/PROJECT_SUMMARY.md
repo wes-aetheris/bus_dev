@@ -100,7 +100,7 @@ Watchtower is a comprehensive drone sensor dashboard system designed to provide 
 - **Recording Modes**: Photo, video, timelapse configurations
 - **Quality Metrics**: Image quality assessment
 
-### 7. Operational Flight Tab
+### 7. Live Flight Tab
 - **Real-time Monitoring**: Live flight status and metrics
 - **Mission Progress**: Waypoint completion, ETA
 - **Live Telemetry**: Altitude, speed, heading, battery

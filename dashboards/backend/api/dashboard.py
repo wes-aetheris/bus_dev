@@ -16,7 +16,7 @@ async def get_dashboard_tabs():
             {"id": "maintenance", "name": "Maintenance", "icon": "wrench", "description": "Maintenance schedules and component health"},
             {"id": "environment", "name": "Environment & Context", "icon": "globe", "description": "Environmental conditions and context data"},
             {"id": "camera-profile", "name": "Camera Sensor Profile", "icon": "camera", "description": "Camera settings and image analysis"},
-            {"id": "operational-flight", "name": "Operational Flight", "icon": "flight", "description": "Real-time flight monitoring"}
+            {"id": "live-flight", "name": "Live Flight", "icon": "flight", "description": "Real-time flight monitoring"}
         ]
     }
 
@@ -176,9 +176,9 @@ async def get_camera_profile_data():
         ]
     }
 
-@router.get("/operational-flight")
-async def get_operational_flight_data():
-    """Get operational flight data"""
+@router.get("/live-flight")
+async def get_live_flight_data():
+    """Get live flight data"""
     return {
         "current_status": {
             "flight_mode": "mission",

@@ -49,7 +49,7 @@ async def get_dashboard_tabs():
             {"id": "maintenance", "name": "Maintenance", "icon": "wrench"},
             {"id": "environment", "name": "Environment & Context", "icon": "globe"},
             {"id": "camera-profile", "name": "Camera Sensor Profile", "icon": "camera"},
-            {"id": "operational-flight", "name": "Operational Flight", "icon": "flight"}
+            {"id": "live-flight", "name": "Live Flight", "icon": "flight"}
         ]
     }
 

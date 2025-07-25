@@ -194,7 +194,7 @@ The Watchtower Drone Sensor Dashboard is a comprehensive full-stack application 
 - **Processing Speed**: Real-time image analysis
 - **Storage Efficiency**: Optimized compression algorithms
 
-### 7. Operational Flight Tab
+### 7. Live Flight Tab
 
 #### Functional Requirements
 - **Real-time Monitoring**

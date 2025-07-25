@@ -24,9 +24,9 @@ USER jovyan
 # Expose port
 EXPOSE 8888
 
-# Health check
+# Health check with proper authentication
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:8888/api/status || exit 1
+    CMD curl -f "http://localhost:8888/lab?token=watchtower" || exit 1
 
-# Start Jupyter
-CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]
+# Start Jupyter with proper configuration
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root", "--NotebookApp.token=watchtower", "--NotebookApp.allow_origin=*"]

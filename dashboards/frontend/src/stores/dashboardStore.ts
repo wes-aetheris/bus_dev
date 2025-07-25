@@ -24,7 +24,7 @@ export const useDashboardStore = create<DashboardState>((set, get) => ({
     { id: 'maintenance', name: 'Maintenance', icon: 'wrench', description: 'Maintenance schedules and component health' },
     { id: 'environment', name: 'Environment & Context', icon: 'globe', description: 'Environmental conditions and context data' },
     { id: 'camera-profile', name: 'Camera Sensor Profile', icon: 'camera', description: 'Camera settings and image analysis' },
-    { id: 'operational-flight', name: 'Operational Flight', icon: 'flight', description: 'Real-time flight monitoring' }
+    { id: 'live-flight', name: 'Live Flight', icon: 'flight', description: 'Real-time flight monitoring' }
   ],
   loading: false,
   activeTab: 'pre-flight',

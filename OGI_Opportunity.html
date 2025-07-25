@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OGI Opportunities & Value Drivers</title>
+    <style>
+        html, body { box-sizing: border-box; margin: 0; padding: 0; }
+        *, *::before, *::after { box-sizing: inherit; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px !important; line-height: 1.3; color: #333; background: #fff; padding: 15px; }
+        .header { background: linear-gradient(135deg, #1e40af, #3b82f6); color: white; padding: 15px; text-align: center; margin-bottom: 15px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .header h1 { font-size: 27px !important; font-weight: bold; margin-bottom: 4px; }
+        .header p { font-size: 17px !important; opacity: 0.95; }
+        .container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .column { display: flex; flex-direction: column; gap: 15px; }
+        .section { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 10px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .section-header { background: #1e40af; color: white; padding: 8px 10px; font-size: 20px !important; font-weight: bold; }
+        .section-content { padding: 10px; }
+        .opportunity-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 8px 0; }
+        .opportunity-card { background: white; border: 1px solid #cbd5e1; border-radius: 4px; padding: 8px; text-align: center; }
+        .opportunity-icon { font-size: 20px; margin-bottom: 4px; }
+        .opportunity-title { font-weight: bold; color: #1e40af; font-size: 15px !important; margin-bottom: 2px; }
+        .opportunity-desc { font-size: 14px !important; color: #64748b; }
+        .value-drivers { display: grid; grid-template-columns: 1fr; gap: 6px; }
+        .value-driver { background: white; border-left: 4px solid #10b981; padding: 8px; border-radius: 0 4px 4px 0; }
+        .driver-title { font-weight: bold; color: #059669; font-size: 17px !important; margin-bottom: 3px; }
+        .driver-desc { font-size: 14px !important; color: #64748b; line-height: 1.4; }
+        .market-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 8px 0; }
+        .stat-box { background: white; border: 1px solid #cbd5e1; border-radius: 4px; padding: 8px; text-align: center; }
+        .stat-value { font-weight: bold; color: #dc2626; font-size: 19px !important; }
+        .stat-label { font-size: 14px !important; color: #64748b; margin-top: 2px; }
+        .full-width { grid-column: 1 / -1; }
+        .highlight { background: #fef3c7; padding: 2px 4px; border-radius: 2px; font-weight: bold; }
+        .network-diagram { background: white; border: 1px solid #cbd5e1; border-radius: 4px; padding: 10px; margin: 8px 0; text-align: center; }
+        .network-layer { margin: 6px 0; padding: 4px; border-radius: 3px; font-size: 14px !important; }
+        .layer-sensors { background: #fef3c7; border: 1px solid #f59e0b; }
+        .layer-edge { background: #dbeafe; border: 1px solid #3b82f6; }
+        .layer-cloud { background: #ecfdf5; border: 1px solid #10b981; }
+        .arrow { font-size: 19px !important; color: #64748b; margin: 2px 0; }
+        .comparison-table { font-size: 14px !important; margin: 6px 0; }
+        .comparison-table table { width: 100%; border-collapse: collapse; }
+        .comparison-table th, .comparison-table td { border: 1px solid #cbd5e1; padding: 3px; text-align: left; }
+        .comparison-table th { background: #f1f5f9; font-weight: bold; }
+        .advantage { color: #059669; font-weight: bold; }
+        .disadvantage { color: #dc2626; }
+        ul { margin: 4px 0; padding-left: 12px; }
+        li { margin: 2px 0; font-size: 14px !important; }
+        h3 { color: #1e40af; font-size: 17px !important; margin: 8px 0 4px 0; font-weight: bold; }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>OGI Market Opportunities & Physics-Informed AI-Enhanced Sensor Networks</h1>
+    <p>Transforming Optical Gas Imaging Through Physics-Enhanced Intelligence</p>
+    <div style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 4px; padding: 8px; margin-top: 8px; font-size: 17px; line-height: 1.4;">
+        <strong>Physics-Informed AI Sensor Intelligence Network:</strong> Enables the first quantitative measurement with uncooled thermal sensors at $27K—bridging the critical gap between $35K qualitative-only and $150K+ cooled quantitative systems. Delivering $248K net savings per monitoring point over 5 years with 21-month payback, our solution addresses the $2.4B OGI market's urgent need for cost-effective regulatory compliance while reducing false alarms by 70-80%.
+    </div>
+</div>
+<div class="container">
+    <div class="column">
+        
+        <div class="section">
+            <div class="section-header">PoC Scope & Limitations</div>
+            <div class="section-content">
+
+                
+                <h3>PoC Focus Areas</h3>
+                <ul>
+                    <li><strong>Quantitative Thermal Measurement:</strong> Physics-enhanced accuracy for temperature quantification and gas quantity estimation (not species identification). Initial PoC will use broadband LWIR filters optimized for signal-to-noise ratio rather than precise spectroscopy.</li>
+                    <li><strong>Methane Detection Sensitivity:</strong> Conservative goal: 15-20 g/h methane at 6m distance (beats current median by 25-30%, achievable with physics-based environmental compensation). Stretch goal: 8-12 g/h methane at 6m (significant industry improvement, requires advanced modeling).</li>
+                    <li><strong>General Gas Leak Detection:</strong> Detection and quantification of thermal signatures from gas emissions</li>
+                    <li><strong>False Alarm Reduction:</strong> Environmental compensation and noise filtering algorithms (reducing 30-60% false positives to 15-25% under typical outdoor industrial conditions, targeting <15% in steady-state operations)</li>
+                    <li><strong>Cost-Effective Platform:</strong> Demonstrating superior performance at breakthrough pricing</li>
+                    <li><strong>Network Integration:</strong> Edge AI processing with automated diagnostic capabilities</li>
+                </ul>
+                
+                <h3>Future Development Pathways</h3>
+                <ul>
+                    <li><strong>Specific Gas Identification:</strong> Integration with narrowband LWIR lenses for methane, SF6, NH3, and other target gases</li>
+                    <li><strong>Multi-Gas Detection:</strong> Expansion to simultaneous detection of multiple gas types</li>
+                    <li><strong>Exquisite MWIR/T2SSL Detector Integration:</strong> Enhancement of ecosystem with high-performance mid-wave infrared and Type-II Superlattice detectors for superior spectral resolution, enhanced sensitivity, and extended detection ranges across challenging environmental conditions</li>
+                    <li><strong>Regulatory Certification:</strong> Validation and approval processes for compliance applications</li>
+                    <li><strong>Industry-Specific Solutions:</strong> Customized spectral configurations for different applications (oil & gas, chemical, petrochemical)</li>
+                    <li><strong>Spectroscopic Gas Identification:</strong> Dedicated spectral camera (Tau 2 + diffraction grating) for species identification and quantitative concentration measurement</li>
+                    <li><strong>Sensor Health Monitoring:</strong> Mapping physical deterioration processes of sensors as a function of noise pattern characteristics and performance degradation</li>
+                </ul>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-header">Market Opportunity Landscape</div>
+            <div class="section-content">
+                <div class="opportunity-grid">
+                    <div class="opportunity-card">
+                        <div class="opportunity-icon">🏭</div>
+                        <div class="opportunity-title">Industrial Monitoring</div>
+                        <div class="opportunity-desc">Continuous emission monitoring at refineries, chemical plants, processing facilities, and storage terminals</div>
+                    </div>
+                    <div class="opportunity-card">
+                        <div class="opportunity-icon">⚡</div>
+                        <div class="opportunity-title">Utility Infrastructure</div>
+                        <div class="opportunity-desc">Power generation facilities, transmission systems, and renewable energy integration</div>
+                    </div>
+                    <div class="opportunity-card">
+                        <div class="opportunity-icon">🛢️</div>
+                        <div class="opportunity-title">Oil & Gas Operations</div>
+                        <div class="opportunity-desc">Upstream production, midstream transport, downstream processing, and storage facilities</div>
+                    </div>
+                    <div class="opportunity-card">
+                        <div class="opportunity-icon">🌊</div>
+                        <div class="opportunity-title">Offshore Infrastructure</div>
+                        <div class="opportunity-desc">Offshore platforms, floating production systems, subsea installations, and marine terminals</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-header">Current Market Limitations</div>
+            <div class="section-content">
+                <div class="comparison-table">
+                    <table>
+                        <tr>
+                            <th>Limiting Factor</th>
+                            <th>Current State</th>
+                            <th>Impact</th>
+                        </tr>
+                        <tr>
+                            <td>Cost vs Capability Gap</td>
+                            <td class="disadvantage">Qualitative: $35K | Quantitative: $100K+</td>
+                            <td>No affordable quantitative option</td>
+                        </tr>
+                        <tr>
+                            <td>Qualitative Detection Only</td>
+                            <td class="disadvantage">Cheaper systems lack measurement</td>
+                            <td>Can see leaks but not quantify them</td>
+                        </tr>
+                        <tr>
+                            <td>Quantitative Systems Cost</td>
+                            <td class="disadvantage">$100K+ for thermal measurement</td>
+                            <td>Limited deployment due to high cost</td>
+                        </tr>
+                        <tr>
+                            <td>High False Alarm Rates</td>
+                            <td class="disadvantage">30-60% false positives</td>
+                            <td>Operational inefficiency</td>
+                        </tr>
+                        <tr>
+                            <td>Manual Operation</td>
+                            <td class="disadvantage">Operator-dependent surveys</td>
+                            <td>Inconsistent coverage</td>
+                        </tr>
+                        <tr>
+                            <td>Training Requirements</td>
+                            <td class="disadvantage">2-4 weeks expert interpretation</td>
+                            <td>High operational overhead, skilled operator dependency</td>
+                        </tr>
+                        <tr>
+                            <td>Post-Mission Insights</td>
+                            <td class="disadvantage">No archival utility or trend detection</td>
+                            <td>No memory, no policy optimization, no operational intelligence</td>
+                        </tr>
+                        <tr>
+                            <td>Environmental Sensitivity</td>
+                            <td class="disadvantage">Weather-dependent accuracy</td>
+                            <td>Reduced reliability</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-header">OGI Sensor Network Architecture</div>
+            <div class="section-content">
+                <div class="network-diagram">
+                    <div class="network-layer layer-sensors">
+                        <strong>Sensor Layer:</strong> Distributed OGI cameras, environmental monitors, leak detectors
+                    </div>
+                    <div class="arrow">↓ Real-time Data Streams</div>
+                    <div class="network-layer layer-edge">
+                        <strong>Edge Processing:</strong> Physics-informed AI, edge inference & confidence engine, automated detection (Jetson Nano to Xavier NX range)
+                    </div>
+                    <div class="arrow">↓ Processed Intelligence</div>
+                    <div class="network-layer layer-cloud">
+                        <strong>Cloud Analytics:</strong> Trend analysis, predictive modeling, compliance reporting, model refinement
+                    </div>
+                </div>
+                
+                <h3>Network Benefits</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 6px 0;">
+                    <div>
+                        <h4 style="color: #1e40af; font-size: 15px; margin: 0 0 3px 0; font-weight: bold;">Operational Benefits</h4>
+                        <ul style="margin: 2px 0; padding-left: 10px;">
+                            <li><strong>Continuous Monitoring:</strong> 24/7 automated surveillance vs periodic manual surveys</li>
+                            <li><strong>AI-Driven Detection:</strong> Automated leak identification eliminates expert interpretation requirements</li>
+                            <li><strong>Risk Mitigation:</strong> Early warning systems and rapid response triggers</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: #1e40af; font-size: 15px; margin: 0 0 3px 0; font-weight: bold;">Business Benefits</h4>
+                        <ul style="margin: 2px 0; padding-left: 10px;">
+                            <li><strong>Scalable Deployment:</strong> Cost-effective expansion across large facilities</li>
+                            <li><strong>Predictive Analytics:</strong> Equipment health monitoring and failure prediction</li>
+                            <li><strong>Regulatory Compliance:</strong> Automated reporting and audit trails</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section" style="margin-top: 75px;">
+            <div class="section-header">5-Year Net Savings Analysis (Including All Costs)</div>
+            <div class="section-content">
+                <div class="comparison-table">
+                    <table style="font-size: 15px;">
+                        <tr>
+                            <th>Scenario</th>
+                            <th>5-Sensor Pilot</th>
+                            <th>10-Sensor Pilot</th>
+                        </tr>
+                        <tr>
+                            <td><strong>UPFRONT COSTS</strong></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>PoC Investment</td>
+                            <td class="disadvantage">$155K (midpoint)</td>
+                            <td class="disadvantage">$155K (midpoint)</td>
+                        </tr>
+                        <tr>
+                            <td>Pilot Program Cost</td>
+                            <td class="disadvantage">$265K (midpoint)</td>
+                            <td class="disadvantage">$395K (midpoint)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total Upfront Investment</strong></td>
+                            <td class="disadvantage"><strong>$420K</strong></td>
+                            <td class="disadvantage"><strong>$550K</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>ANNUAL SAVINGS</strong></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Traditional OGI Cost (per monitoring point)</td>
+                            <td class="disadvantage">$123K (Year 1), $88K (Years 2-5)</td>
+                            <td class="disadvantage">Same per monitoring point</td>
+                        </tr>
+                        <tr>
+                            <td>Our System Cost (per monitoring point)</td>
+                            <td class="disadvantage">$69.5K (Year 1), $40K (Years 2-5)</td>
+                            <td class="disadvantage">Same per monitoring point</td>
+                        </tr>
+                        <tr>
+                            <td>Annual Savings (per monitoring point)</td>
+                            <td class="advantage">$53.5K (Year 1), $48K (Years 2-5)</td>
+                            <td class="advantage">Same per monitoring point</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total Annual Savings</strong></td>
+                            <td class="advantage"><strong>$267.5K (Y1), $240K (Y2-5)</strong></td>
+                            <td class="advantage"><strong>$535K (Y1), $480K (Y2-5)</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>5-YEAR FINANCIAL SUMMARY</strong></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Total 5-Year Savings</td>
+                            <td class="advantage">$1,227.5K</td>
+                            <td class="advantage">$2,455K</td>
+                        </tr>
+                        <tr>
+                            <td>Less: Upfront Costs</td>
+                            <td class="disadvantage">-$615K</td>
+                            <td class="disadvantage">-$695K</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Net 5-Year Benefit</strong></td>
+                            <td class="advantage"><strong>$612.5K</strong></td>
+                            <td class="advantage"><strong>$1,760K</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>PAYBACK ANALYSIS</strong></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Payback Period</td>
+                            <td class="advantage">21 months</td>
+                            <td class="advantage">21 months</td>
+                        </tr>
+                        <tr>
+                            <td>ROI over 5 years</td>
+                            <td class="advantage">107%</td>
+                            <td class="advantage">107%</td>
+                        </tr>
+                        <tr>
+                            <td>Annual Net Benefit (after payback)</td>
+                            <td class="advantage">$200K per year</td>
+                            <td class="advantage">$400K per year</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="column">
+        
+        <div class="section">
+            <div class="section-header">Our Value Drivers</div>
+            <div class="section-content">
+                <div style="background: #f0f9ff; border: 1px solid #0ea5e9; border-radius: 4px; padding: 10px; margin-bottom: 15px; text-align: center;">
+                    <strong style="color: #0c4a6e; font-size: 19px;">Average Total Savings Per Monitoring Point Per Year: $48K</strong>
+                </div>
+                <div class="value-drivers">
+                    <div class="value-driver">
+                        <div class="driver-title">Enhanced Detection & Quantifiable Thermal Measurement | $9K Per Monitoring Point Savings (One-time)</div>
+                        <div class="driver-desc">Physics-enhanced algorithms provide <span class="highlight">quantitative gas measurements</span> at breakthrough pricing. Superior accuracy (±0.8-1.2°C long-term target, ±1.2°C PoC target depending on distance, emissivity contrast, and environmental factors) with 1-4x better precision than existing solutions, enabling leak quantification and regulatory compliance at breakthrough cost points. <span class="highlight">Conservative methane detection goal: 15-20 g/h at 6m; stretch goal: 8-12 g/h at 6m. This represents a 2-3x improvement in detection sensitivity and reliable detection in conditions where standard OGI fails.</span> (Savings derived from lower upfront hardware costs, decreased false alarm rates, and reduced environmental compensation requirements.)</div>
+                    </div>
+                    
+                    <div class="value-driver">
+                        <div class="driver-title">Physics-Informed AI Data Stream Optimization | $6K Annual Savings Per Monitoring Point</div>
+                        <div class="driver-desc">Advanced AI algorithms leverage <span class="highlight">physical principles</span> to automate detection and interpretation, reducing expert operator requirements. Automated analysis reduces false alarms and provides instant, confident leak identification with minimal training requirements. (Savings derived from reduced labor costs, eliminated false alarm response, minimized training requirements, reduced calibration needs).</div>
+                    </div>
+                    
+                    <div class="value-driver">
+                        <div class="driver-title">Health & Alignment Monitoring & Lifecycle Prediction | $6K Annual Savings Per Monitoring Point</div>
+                        <div class="driver-desc">Continuous monitoring of equipment health and operational parameters enables <span class="highlight">trend monitoring and early indicators of equipment degradation</span>. This system transforms thermal sensors from passive imagers to intelligent, self-correcting diagnostic agents. Mapping physical deterioration processes as a function of noise pattern characteristics provides predictive insights. (Savings derived from reduced emergency repairs, optimized maintenance scheduling, extended equipment life).</div>
+                    </div>
+                    
+                    <div class="value-driver">
+                        <div class="driver-title">Environmental Employment Optimization | $15K Annual Savings Per Monitoring Point</div>
+                        <div class="driver-desc">Automated environmental compensation and <span class="highlight">adaptive sensing strategies</span> optimize performance across varying weather conditions, humidity, temperature, and atmospheric disturbances for consistent reliability. (Savings derived from reduced weather-related downtime, consistent operational performance, eliminated manual recalibration).</div>
+                    </div>
+                    
+                    <div class="value-driver">
+                        <div class="driver-title">Multi-Source Sensor Fusion & Data Integration | $14K Annual Savings Per Monitoring Point</div>
+                        <div class="driver-desc">Intelligent fusion of <span class="highlight">multiple sensor modalities</span> (thermal, visual, environmental, gas detection) creates comprehensive situational awareness. Cross-validation between sensor types enhances detection confidence and reduces false positives through corroborating evidence from independent measurement systems. (Savings derived from reduced software licensing costs, improved detection accuracy, reduced investigation time).</div>
+                    </div>
+                    
+                    <div class="value-driver">
+                        <div class="driver-title">Data Stream Assurance & Noise Fingerprinting | $7K Annual Savings Per Monitoring Point</div>
+                        <div class="driver-desc">Advanced signal processing and <span class="highlight">forensic-grade data integrity</span> ensure measurement provenance and reliability. Intelligent filtering and validation provide high-confidence measurements with comprehensive quality assurance and audit trails. This includes mapping sensor degradation through noise pattern analysis and confidence decay tracking. (Savings derived from streamlined regulatory reporting, reduced audit preparation time, compliance assurance).</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-header">Competitive Advantage Matrix</div>
+            <div class="section-content">
+                <div style="margin-bottom: 10px; font-size: 15px; color: #1e293b;">
+                    <strong>Positioning Strategy:</strong> Rather than claiming absolute detection limits, we focus on 2-3x improvement in detection sensitivity, reliable detection in conditions where standard OGI fails, and consistent performance across environmental conditions. Physics limitations mean sub-5 g/h detection is not realistic for uncooled sensors in real-world settings, but our approach delivers a defensible, valuable improvement for operators.
+                </div>
+                <div class="comparison-table">
+                    <table>
+                        <tr>
+                            <th>Capability</th>
+                            <th>Traditional OGI</th>
+                            <th>Our Solution</th>
+                        </tr>
+                        <tr>
+                            <td>Detection Type</td>
+                            <td class="disadvantage">Qualitative only</td>
+                            <td class="advantage">Quantitative + Qualitative</td>
+                        </tr>
+                        <tr>
+                            <td>Deployment Cost</td>
+                            <td class="disadvantage">$35K-100K+ per monitoring point</td>
+                            <td class="advantage">$27K per monitoring point</td>
+                        </tr>
+                        <tr>
+                            <td>False Alarm Rate</td>
+                            <td class="disadvantage">30-60%</td>
+                            <td class="advantage">15-25% (targeting &lt;15% in steady-state)</td>
+                        </tr>
+                        <tr>
+                            <td>Detection Method</td>
+                            <td class="disadvantage">Manual expert interpretation</td>
+                            <td class="advantage">Automated AI detection</td>
+                        </tr>
+                        <tr>
+                            <td>Environmental Compensation</td>
+                            <td class="disadvantage">Manual adjustment</td>
+                            <td class="advantage">Automated physics-based</td>
+                        </tr>
+                        <tr>
+                            <td>Maintenance Requirements</td>
+                            <td class="disadvantage">Frequent calibration and servicing</td>
+                            <td class="advantage">Minimal maintenance with self-calibration</td>
+                        </tr>
+                        <tr>
+                            <td>Environmental Adaptability</td>
+                            <td class="disadvantage">Performance degrades in harsh conditions</td>
+                            <td class="advantage">Robust operation across environments</td>
+                        </tr>
+                        <tr>
+                            <td>Training Requirements</td>
+                            <td class="disadvantage">2-4 weeks expert interpretation</td>
+                            <td class="advantage">&lt;4 hours due to AI automation</td>
+                        </tr>
+                        <tr>
+                            <td>Network Integration</td>
+                            <td class="disadvantage">Limited connectivity</td>
+                            <td class="advantage">Native IoT/Edge AI</td>
+                        </tr>
+                        <tr>
+                            <td>Predictive Analytics</td>
+                            <td class="disadvantage">Not available</td>
+                            <td class="advantage">Built-in AI capabilities</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-header">Implementation Roadmap</div>
+            <div class="section-content">
+                <h3>Pre-PoC Development (6 months)</h3>
+                <ul>
+                    <li>Build out and test core physics-enhanced detection algorithms</li>
+                    <li>Develop thermal modeling and noise tracking systems</li>
+                    <li>Create PINN calibration pipelines and environmental simulation</li>
+                    <li>Establish ground-truth alignment and uncertainty scoring</li>
+                </ul>
+                
+                <h3>Phase 1: Proof of Concept (4 weeks)</h3>
+                <ul>
+                    <li>Validate core physics-enhanced detection algorithms</li>
+                    <li>Demonstrate quantitative measurement accuracy</li>
+                    <li>Establish baseline performance vs traditional OGI</li>
+                    <li>Document regulatory compliance pathway</li>
+                </ul>
+                
+                <h3>Phase 2: Pilot Deployment (6 months)</h3>
+                <ul>
+                    <li>Deploy 5-10 sensor network at partner facility</li>
+                    <li>Validate network architecture and data flows</li>
+                    <li>Develop operational procedures and training materials</li>
+                    <li>Optimize AI algorithms with real-world data</li>
+                </ul>
+                
+                <h3>Phase 3: Initial Commercial Availability (12-15 months)</h3>
+                <ul>
+                    <li>System integration and final assembly (not silicon/optics manufacturing)</li>
+                    <li>Establish channel partnerships and sales infrastructure</li>
+                    <li>Launch cloud analytics platform and services</li>
+                    <li>Target initial market penetration in key verticals</li>
+                    <li>Broader scaling and manufacturing partnerships thereafter</li>
+                </ul>
+                
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-header">Customer ROI & Value Proposition</div>
+            <div class="section-content">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                    <div>
+                        <h3 style="margin: 0 0 8px 0; font-size: 17px;">Key Metrics</h3>
+                        <ul style="margin: 0; padding-left: 15px; font-size: 15px; line-height: 1.3;">
+                            <li><strong>Customer Investment:</strong> $27K per monitoring point</li>
+                            <li><strong>Software & Monitoring:</strong> $2,500 annually per monitoring point</li>
+                            <li><strong>Total Year 1 Investment:</strong> $29.5K per monitoring point</li>
+                            <li><strong>Ongoing Annual Cost:</strong> $40K per monitoring point</li>
+                            <li><strong>Traditional OGI 5-Year Total:</strong> $475K per monitoring point</li>
+                            <li><strong>Our System 5-Year Total:</strong> $227K per monitoring point</li>
+                            <li><strong>5-Year Net Savings:</strong> $248K per monitoring point (52% total cost savings)</li>
+                            <li><strong>Payback Period:</strong> 6-7 months</li>
+                            <li><strong>5-Year Customer ROI:</strong> 109%</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="margin: 0 0 8px 0; font-size: 17px;">Priority Customer Segments</h3>
+                        <div style="font-size: 15px; line-height: 1.3;">
+                            Offshore O&G, Chemical Processing, Power Generation, Oil & Gas Refinement, Petrochemical Storage & Transport, LNG Terminals & Facilities, Chemical Manufacturing Plants, Pipeline Operations
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="margin: 15px 0 8px 0; font-size: 17px;">Conservative 5-Year ROI Breakdown</h3>
+                <div class="comparison-table">
+                    <table style="font-size: 15px;">
+                        <tr>
+                            <th>Category</th>
+                            <th>Traditional OGI</th>
+                            <th>Our System</th>
+                            <th>Annual Savings</th>
+                            <th>5-Year Total</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Equipment & Initial Investment</strong></td>
+                            <td class="disadvantage">$35K (GF77)</td>
+                            <td class="disadvantage">$27K</td>
+                            <td class="advantage">$9K (one-time)</td>
+                            <td class="advantage">$9K</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Expert Operator Salary</strong></td>
+                            <td class="disadvantage">$10K/year (1/10th of operator cost)</td>
+                            <td class="disadvantage">$4K/year (reduced oversight)</td>
+                            <td class="advantage">$6K</td>
+                            <td class="advantage">$30K</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Training & Certification</strong></td>
+                            <td class="disadvantage">$10K/year</td>
+                            <td class="disadvantage">$5K/year</td>
+                            <td class="advantage">$5K</td>
+                            <td class="advantage">$25K</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Maintenance & Calibration</strong></td>
+                            <td class="disadvantage">$12K/year</td>
+                            <td class="disadvantage">$6K/year</td>
+                            <td class="advantage">$6K</td>
+                            <td class="advantage">$30K</td>
+                        </tr>
+                        <tr>
+                            <td><strong>False Alarm Response</strong></td>
+                            <td class="disadvantage">$25K/year</td>
+                            <td class="disadvantage">$10K/year</td>
+                            <td class="advantage">$15K</td>
+                            <td class="advantage">$75K</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Travel & Survey Costs</strong></td>
+                            <td class="disadvantage">$18K/year</td>
+                            <td class="disadvantage">$4K/year (remote monitoring)</td>
+                            <td class="advantage">$14K</td>
+                            <td class="advantage">$70K</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Software & Monitoring</strong></td>
+                            <td class="disadvantage">$13K/year</td>
+                            <td class="disadvantage">$2.5K/year</td>
+                            <td class="advantage">$2K</td>
+                            <td class="advantage">$12.5K</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Annual Operating Costs</strong></td>
+                            <td class="disadvantage"><strong>$88K</strong></td>
+                            <td class="disadvantage"><strong>$40K</strong></td>
+                            <td class="advantage"><strong>$48K</strong></td>
+                            <td class="advantage"><strong>$240K</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>5-Year Operating Total</strong></td>
+                            <td class="disadvantage"><strong>$440K</strong></td>
+                            <td class="disadvantage"><strong>$200K</strong></td>
+                            <td class="advantage"><strong>$240K</strong></td>
+                            <td class="advantage"><strong>$240K</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total 5-Year Savings</strong></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="advantage"><strong>$248K</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Net Savings vs $27K Investment</strong></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="advantage"><strong>$248K</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>ROI vs $27K Investment</strong></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="advantage"><strong>109%</strong></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -3,6 +3,27 @@
 *.jpg
 *.png
 *.pdf
+# Python cache
+__pycache__/
 *.pyc
 # Ignore node_modules completely
 node_modules/
+# Next.js build output
+.next/
+out/
+# LaTeX build files
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
+# IDEs and editors
+.vscode/
+*.swp
+.DS_Store
+# OS and user clutter
+Thumbs.db
+ehthumbs.db
+desktop.ini
+# Data files
+*.csv

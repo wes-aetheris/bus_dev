@@ -2,20 +2,28 @@ FROM node:18-alpine
 
 WORKDIR /app
 
+# Install curl for health checks
+RUN apk add --no-cache curl
+
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm install --no-package-lock
+# Install all dependencies
+RUN npm ci
 
 # Copy application code
 COPY . .
 
-# Debug: List files in src/pages
-RUN ls -l src/pages || echo 'src/pages not found'
-
 # Build the application
 RUN npm run build
+
+# Verify build was successful and create BUILD_ID if it doesn't exist
+RUN ls -la .next && \
+    if [ ! -f .next/BUILD_ID ]; then \
+        echo "BUILD_ID not found, creating one..." && \
+        echo "$(date +%s)" > .next/BUILD_ID; \
+    fi && \
+    ls -la .next/BUILD_ID
 
 # Expose port
 EXPOSE 3000

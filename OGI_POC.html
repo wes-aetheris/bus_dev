@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OGI Inspection PoC - Business One-Pager</title>
+    <style>
+        html, body { box-sizing: border-box; margin: 0; padding: 0; }
+        *, *::before, *::after { box-sizing: inherit; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px !important; line-height: 1.3; color: #333; background: #fff; padding: 15px; }
+        .header { background: linear-gradient(135deg, #1e40af, #3b82f6); color: white; padding: 12px; text-align: center; margin-bottom: 12px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .header h1 { font-size: 27px !important; font-weight: bold; margin-bottom: 3px; }
+        .header p { font-size: 17px !important; opacity: 0.95; }
+        .container { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .section { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .section-header { background: #1e40af; color: white; padding: 6px 8px; font-size: 20px !important; font-weight: bold; }
+        .section-content { padding: 8px; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin: 6px 0; }
+        .timeline-item { background: white; border: 1px solid #cbd5e1; border-radius: 4px; padding: 4px; text-align: center; }
+        .week { font-weight: bold; color: #1e40af; font-size: 15px !important; }
+        .activity { font-size: 14px !important; color: #64748b; margin-top: 1px; }
+        .metric-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin: 6px 0; }
+        .metric-box { background: white; border: 1px solid #cbd5e1; border-radius: 4px; padding: 6px; text-align: center; }
+        .metric-value { font-weight: bold; color: #059669; font-size: 19px !important; }
+        .metric-label { font-size: 14px !important; color: #64748b; margin-top: 1px; }
+        .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+        .step { background: white; border: 1px solid #10b981; border-radius: 4px; padding: 6px; text-align: center; }
+        .step-num { background: #10b981; color: white; border-radius: 50%; width: 16px; height: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 3px; font-size: 14px !important; font-weight: bold; }
+        .step-text { font-size: 15px !important; font-weight: bold; margin-bottom: 2px; }
+        .step-desc { font-size: 14px !important; color: #64748b; }
+        h3 { color: #1e40af; font-size: 17px !important; margin: 6px 0 3px 0; font-weight: bold; }
+        ul { margin: 3px 0; padding-left: 10px; }
+        li { margin: 1px 0; font-size: 14px !important; }
+        table { width: 100%; border-collapse: collapse; font-size: 14px !important; margin: 4px 0; }
+        th, td { border: 1px solid #cbd5e1; padding: 3px; text-align: left; }
+        th { background: #f1f5f9; font-weight: bold; }
+        .highlight { background: #fef3c7; padding: 1px 3px; border-radius: 2px; font-weight: bold; }
+        .corrected { background: #fde68a; padding: 1px 3px; border-radius: 2px; font-weight: bold; }
+        .full-width { grid-column: 1 / -1; background: #ecfdf5; border: 1px solid #10b981; }
+        .full-width .section-header { background: #10b981; }
+        .budget-breakdown { font-size: 14px !important; margin: 4px 0; }
+        .budget-item { display: flex; justify-content: space-between; padding: 2px 0; border-bottom: 1px solid #e2e8f0; }
+        .risk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+        .risk-category { background: white; border-left: 3px solid #ef4444; padding: 4px 6px; border-radius: 0 4px 4px 0; }
+        .risk-title { font-weight: bold; color: #dc2626; font-size: 17px !important; margin-bottom: 2px; }
+        .risk-text { font-size: 14px !important; color: #64748b; }
+        .correction-notice { background: #fef3c7; border: 1px solid #f59e0b; border-radius: 4px; padding: 6px; margin-bottom: 8px; font-size: 14px !important; }
+        .correction-notice strong { color: #92400e; }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>OGI Inspection Proof of Concept V1.0</h1>
+    <p>Physics-Enhanced Thermal Imaging Solution for Oil & Gas Applications</p>
+</div>
+<div class="container">
+    <div class="column">
+        
+        <div class="section">
+            <div class="section-header">Executive Summary</div>
+            <div class="section-content">
+                <p>This Proof of Concept validates our physics-enhanced thermal imaging solution's capability to provide quantitative gas detection using uncooled sensors. The PoC will demonstrate technical feasibility of core performance claims and assess market interest for potential pilot deployment programs. Our objective is to test whether physics-informed AI can successfully bridge the detection gap between qualitative and quantitative OGI systems while achieving breakthrough pricing compared to traditional $100K+ cooled solutions.
+
+                The four-week validation program will confirm our solution's ability to deliver quantitative measurement capabilities at $27K per monitoring point, representing a 5x cost reduction versus existing quantitative OGI systems. Success will establish the foundation for advancing to customer pilot programs and commercial development.</p>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-header">PoC Objectives</div>
+            <div class="section-content">
+                <div class="two-col">
+                    <div>
+                        <h3>Technical Validation</h3>
+                        <ul>
+                            <li>Methane Detection Threshold: 15-20 g/h at 6m distance (conservative PoC goal, stretch goal 8-12 g/h)</li>
+                            <li>Temperature Accuracy: ±1.2°C under controlled conditions (PoC target vs ±0.8-1.2°C long-term target)</li>
+                            <li>False Alarm Rate: Demonstrate reduction from 30-60% baseline to 15-25% under typical outdoor industrial conditions (targeting &lt;15% in steady-state operations)</li>
+                            <li>Environmental Compensation: Validate physics-based approach across humidity, wind, altitude, temperature, and pressure variations</li>
+                            <li>Detection Range: Confirm 6m performance baseline for commercial development pathway</li>
+                            <li>Continuous Operation: 2.5+ hour stable operation periods</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Business Validation</h3>
+                        <ul>
+                            <li>Customer Interest Assessment: Evaluate operator receptivity to $27K quantitative solution vs $35K-100K+ alternatives</li>
+                            <li>Performance Gap Validation: Confirm 2-3x improvement in detection sensitivity over standard uncooled sensors</li>
+                            <li>Cost Feasibility: Validate component costs can achieve target $27K per monitoring point system cost</li>
+                            <li>Operational Workflow: Assess integration with existing inspection processes and training requirements</li>
+                            <li>Competitive Positioning: Document performance advantages vs FLIR GF77/GF320 solutions during field testing</li>
+                            <li>Regulatory Pathway: Establish EPA Method 21 compatibility for pilot deployment advancement</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-header">4-Week Test Protocol</div>
+            <div class="section-content">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="week">Week 1-2</div>
+                        <div class="activity">Controlled Environment Testing</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="week">Week 3</div>
+                        <div class="activity">Operational Field Testing</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="week">Week 4</div>
+                        <div class="activity">Economic Validation</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="week">Post-PoC</div>
+                        <div class="activity">Analysis & Reporting</div>
+                    </div>
+                </div>
+                
+                <div class="two-col">
+                    <div>
+                        <h3>Phase 1: Controlled Testing</h3>
+                        <ul>
+                            <li>Known leak rates (5, 10, 20, 50 g/h methane releases)</li>
+                            <li>Extreme desert conditions (40-50°C, 10-30% RH)</li>
+                            <li>Distance testing (detection range: 1m to 100m)</li>
+                            <li>Sensor stability (2.5+ hour continuous operation)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Phase 2: Field Operations</h3>
+                        <ul>
+                            <li>Routine facility inspections using both methods</li>
+                            <li>Comparative analysis vs FLIR GF77/GF320 systems</li>
+                            <li>Weather independence testing during various conditions</li>
+                            <li>Operator training and ease-of-use evaluation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-header">Success Metrics & KPIs</div>
+            <div class="section-content">
+                <table>
+                    <tr>
+                        <th>Metric</th>
+                        <th>PoC Target</th>
+                        <th>Standard Uncooled</th>
+                        <th>Traditional Quantitative</th>
+                        <th>What PoC Validates</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Methane Detection</strong></td>
+                        <td>15-20 g/h at 6m</td>
+                        <td>No gas detection capability</td>
+                        <td>~10.7 g/h (lab), ≤60 g/h (EPA)</td>
+                        <td><strong>Detection capability achieved</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Temperature Accuracy</strong></td>
+                        <td>±1.2°C (controlled conditions)</td>
+                        <td>±5°C or ±5% (radiometric)</td>
+                        <td>±1°C (GF320)</td>
+                        <td><strong>Measurement improvement</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>False Alarm Rate</strong></td>
+                        <td>15-25% (targeting &lt;15%)</td>
+                        <td>80-90% (no compensation)</td>
+                        <td>30-50% (manual adjustment)</td>
+                        <td><strong>Physics compensation effective</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>System Cost Target</strong></td>
+                        <td>$27K per monitoring point</td>
+                        <td>~$35K</td>
+                        <td>~$100K+</td>
+                        <td><strong>Cost feasibility confirmed</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Training Requirements</strong></td>
+                        <td>&lt;4 hours (AI automation)</td>
+                        <td>1-2 days (basic thermal)</td>
+                        <td>2-4 weeks (expert interpretation)</td>
+                        <td><strong>Operational advantage</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Environmental Compensation</strong></td>
+                        <td>Physics-based automated</td>
+                        <td>None</td>
+                        <td>Manual adjustment</td>
+                        <td><strong>Automated approach works</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Detection Type</strong></td>
+                        <td>Quantitative + Qualitative</td>
+                        <td>Thermal imaging only</td>
+                        <td>Qualitative OGI</td>
+                        <td><strong>Quantitative capability</strong></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-header">PoC Investment Rationale</div>
+            <div class="section-content">
+                This PoC investment validates technical approach and market demand before larger pilot commitments. Success enables advancement to 5-sensor pilot programs ($420K total investment) or 10-sensor pilots ($550K total investment) with significantly reduced technical and market risk. The PoC provides essential data for customer pilot program proposals and establishes foundation for commercial development pathway.
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-header">Site Selection - International Operations</div>
+            <div class="section-content">
+                <div class="two-col">
+                    <div>
+                        <h3>Target Locations</h3>
+                        <ul>
+                            <li><strong>Primary:</strong> Middle East oil & gas facilities (international operators)</li>
+                            <li><strong>Secondary:</strong> Regional upstream operations (major operators)</li>
+                            <li><strong>Alternative:</strong> Offshore rigs and platforms</li>
+                            <li>Desert environmental extremes (40-50°C, low humidity)</li>
+                            <li>International safety standards and protocols</li>
+                            <li>Established US-international partnerships</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Recommended Facility Types</h3>
+                        <ul>
+                            <li><strong>Upstream Production:</strong> Desert well heads, gas-oil separation plants</li>
+                            <li><strong>Midstream Processing:</strong> LNG facilities, pipeline gathering stations</li>
+                            <li><strong>Petrochemical:</strong> Refinery units, export terminals</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="column">
+        
+        <div class="section">
+            <div class="section-header">Hardware Configuration</div>
+            <div class="section-content">
+                <div class="two-col">
+                    <div>
+                        <h3>Core System Components</h3>
+                        <ul>
+                            <li><strong>FLIR Boson+ 640×512 Core or Similar</strong> (~$6K)</li>
+                            <li><strong>Narrowband LWIR Gas Detection Lens Assembly</strong> (~$15K)</li>
+                            <li><strong>Connectors and Housing</strong> (~$5K)</li>
+                            <li><strong>Physics-Enhanced Software Suite</strong> (licensing TBD)</li>
+                            <li><strong>Handheld Configuration</strong> (ground-based inspections)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Supporting Equipment</h3>
+                        <ul>
+                            <li><strong>Reference Gas Leak Sources</strong> (controlled release systems)</li>
+                            <li><strong>Environmental Monitoring</strong> (weather station, humidity sensors)</li>
+                            <li><strong>Validation Instruments</strong> (EPA Method 21 compatible detectors)</li>
+                            <li><strong>Data Recording Systems</strong> (monitoring logs, measurement databases)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-header">Budget Analysis</div>
+            <div class="section-content">
+                <div class="metric-grid">
+                    <div class="metric-box">
+                        <div class="metric-value">$133K-178K</div>
+                        <div class="metric-label">Total Investment</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-value">$88K-103K</div>
+                        <div class="metric-label">Hardware Costs</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-value">$45K-75K</div>
+                        <div class="metric-label">Personnel + Travel</div>
+                    </div>
+                </div>
+                
+                <h3>Detailed Cost Breakdown</h3>
+                <div class="budget-breakdown">
+                    <div class="budget-item"><span><strong>Core thermal systems (3 units):</strong></span><span>$78K</span></div>
+                    <div class="budget-item"><span><strong>Engineering team (2 people, 4 weeks + Middle East deployment):</strong></span><span>$30K-45K</span></div>
+                    <div class="budget-item"><span><strong>Supporting equipment:</strong></span><span>$10K-15K</span></div>
+                    <div class="budget-item"><span><strong>Business development (2 weeks):</strong></span><span>$10K-15K</span></div>
+                    <div class="budget-item"><span><strong>International travel and logistics:</strong></span><span>$15K-25K</span></div>
+                    <div class="budget-item"><span><strong>Site fees, permits & local support:</strong></span><span>$5K-12K</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-header">Risk Mitigation Strategies</div>
+            <div class="section-content">
+                <div class="section-header">PoC Technical Risks</div>
+                <ul>
+                    <li><strong>Detection Performance Shortfall</strong> → Multiple test scenarios under controlled and field conditions, backup algorithm approaches</li>
+                    <li><strong>Environmental Compensation Inadequate</strong> → Extended condition testing across temperature/humidity ranges, algorithm refinement protocols</li>
+                    <li><strong>System Reliability Issues</strong> → Backup equipment procurement, comprehensive troubleshooting protocols, vendor support agreements</li>
+                    <li><strong>Component Cost Overruns</strong> → Alternative component sourcing, manufacturing cost analysis, value engineering assessment</li>
+                </ul>
+                <div class="section-header">PoC Market Risks</div>
+                <ul>
+                    <li><strong>Customer Disinterest</strong> → Multiple operator engagement sessions, clear value proposition communication, competitive demonstration</li>
+                    <li><strong>Technical Approach Infeasible</strong> → Alternative physics modeling approaches, scope adjustment protocols, pivot strategies</li>
+                    <li><strong>Regulatory Barriers</strong> → Early EPA Method 21 compliance assessment, regulatory consultation, alternative pathway development</li>
+                    <li><strong>Competitive Response</strong> → Accelerated development timeline, IP protection assessment, first-mover advantage establishment</li>
+                </ul>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-header">Stakeholder Engagement Plan</div>
+            <div class="section-content">
+                <div class="two-col">
+                    <div>
+                        <h3>Internal Stakeholders</h3>
+                        <ul>
+                            <li><strong>Engineering Team:</strong> Daily technical reviews, issue resolution</li>
+                            <li><strong>Business Development:</strong> Customer interaction, feedback collection</li>
+                            <li><strong>Product Management:</strong> Requirements validation, roadmap updates</li>
+                            <li><strong>Quality Assurance:</strong> Compliance verification, documentation</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>External Stakeholders</h3>
+                        <ul>
+                            <li><strong>Regional Operators:</strong> International oil & gas facility teams</li>
+                            <li><strong>Local Safety Personnel:</strong> HSE compliance, cultural protocols</li>
+                            <li><strong>Regulatory Bodies:</strong> Regional environmental agencies, US export compliance</li>
+                            <li><strong>Regional Customers:</strong> International market validation, purchase intent</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-header">Expected Outcomes</div>
+            <div class="section-content">
+                <h3>PoC Technical Deliverables</h3>
+                <ul>
+                    <li>Performance validation data confirming 15-20 g/h detection thresholds achievable at 6m</li>
+                    <li>Environmental compensation effectiveness measurements across test conditions</li>
+                    <li>System reliability and stability data over 2.5+ hour continuous operation periods</li>
+                    <li>Technical risk assessment and mitigation strategies for full development</li>
+                    <li>Component cost analysis validating $27K system target feasibility</li>
+                </ul>
+                <h3>PoC Market Validation</h3>
+                <ul>
+                    <li>Customer feedback compilation on solution approach and value proposition</li>
+                    <li>Competitive analysis based on direct field comparison with FLIR systems</li>
+                    <li>Operational workflow assessment and integration requirements</li>
+                    <li>Training time and ease-of-use evaluation vs traditional OGI methods</li>
+                    <li>Commercial viability assessment for advancing to pilot program deployment</li>
+                </ul>
+                <h3>PoC Strategic Deliverables</h3>
+                <ul>
+                    <li>Technology readiness assessment for 5-10 sensor pilot programs</li>
+                    <li>Risk identification and mitigation strategies for commercial development</li>
+                    <li>Regulatory compliance pathway documentation for EPA Method 21 compatibility</li>
+                    <li>Customer interest and purchase intent indicators for pilot advancement</li>
+                    <li>Development roadmap recommendations based on PoC findings</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section full-width">
+    <div class="section-header">Next Steps - Action Plan</div>
+    <div class="section-content">
+        <div class="steps-grid">
+            <div class="step">
+                <div class="step-num">1</div>
+                <div class="step-text">Regional Partnership</div>
+                <div class="step-desc">Secure pilot funding, international facility access and local technical support</div>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <div class="step-text">Equipment Procurement</div>
+                <div class="step-desc">Order hardware components and supporting systems</div>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <div class="step-text">Team Assembly</div>
+                <div class="step-desc">Assign dedicated personnel and define roles</div>
+            </div>
+            <div class="step">
+                <div class="step-num">4</div>
+                <div class="step-text">Stakeholder Alignment</div>
+                <div class="step-desc">Confirm participation from key external parties</div>
+            </div>
+            <div class="step">
+                <div class="step-num">5</div>
+                <div class="step-text">Protocol Finalization</div>
+                <div class="step-desc">Complete detailed test procedures and safety plans</div>
+            </div>
+            <div class="step">
+                <div class="step-num">6</div>
+                <div class="step-text">PoC Execution</div>
+                <div class="step-desc">Begin controlled testing phase</div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
